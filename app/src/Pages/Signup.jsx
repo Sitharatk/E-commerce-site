@@ -47,7 +47,7 @@ function Registration() {
     >
       <div className="w-2/6 h-auto bg-white rounded-lg shadow-lg p-6">
         <div className="text-center mb-4">
-          <h3 className="text-3xl font-bold text-gray-800">Registration</h3>
+          <h3 className="text-3xl font-bold text-gray-800">SignUp</h3>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -94,7 +94,7 @@ function Registration() {
           </div>
 
           <button type="submit" className="w-full bg-gray-600 font-semibold text-l text-white py-2 rounded-md hover:bg-gray-900">
-            Register
+            Signup
           </button>
         </form>
         <p className="mt-4 text-center">

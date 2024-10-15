@@ -5,17 +5,22 @@ import viteLogo from '/vite.svg'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login';
 import Home from './Pages/Home'
+import Navbar from './Component/Navbar';
+import Footer from './Component/Footer';
 function App() {
 
 
   return (
     <>
+    <Navbar/>
     <Routes>
      <Route path='/login' element={<Login/>}/>
      <Route path='/signup' element={<Signup/>}/>
      <Route path='/' element={<Home/>}/>
     
     </Routes>
+    <Footer/>
+    
     </>
   )
 }
