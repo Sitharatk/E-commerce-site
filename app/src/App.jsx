@@ -1,6 +1,4 @@
 import { Routes,Route } from 'react-router-dom'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 // import './App.css'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login';
@@ -11,6 +9,8 @@ import Product from './Pages/Product';
 import AboutUs from './Pages/AboutUs';
 import Contact from './Pages/Contact';
 import Cart from './Pages/Cart';
+import Collections from './Pages/Collections';
+import Catogory from './Pages/Catogory';
 function App() {
 
 
@@ -21,9 +21,10 @@ function App() {
      <Route path='/login' element={<Login/>}/>
      <Route path='/signup' element={<Signup/>}/>
      <Route path='/' element={<Home/>}/>
-    <Route path='/product' element={<Product/>}>
-      <Route path=':productId' element={<Product/>}/>
-    </Route>
+    
+    <Route path='/product/:id' element={<Product />} />
+    <Route path='/collections' element={<Collections/>}/>
+    <Route path='/catogory/:category' element={<Catogory/>}/>
     <Route path='/aboutus' element={<AboutUs/>}/>
     <Route path='/contact' element={<Contact/>}/>
     <Route path='/cart' element={<Cart/>}/>
