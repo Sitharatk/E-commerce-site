@@ -11,13 +11,22 @@ function CartProvider({children}) {
     useEffect(() => {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
+
   
+    const updateQuantity = (itemId, action) => {
+      setCartItems((prevItems) =>prevItems.map((item) =>item.id === itemId
+       ? { ...item, quantity: action === 'increment' ? item.quantity + 1 : Math.max(1, item.quantity - 1) }: item)
+      );
+    }; 
+    
+   
     const addToCart = (item) => {
-        setCartItems((prevItems) => [...prevItems, item]);
+        setCartItems((prevItems) => [...prevItems, { ...item, quantity: 1 }]);
       };
-      console.log(cartItems)
+     
+    
   return (
-    <cartContext.Provider value={{cartItems,addToCart,setCartItems}}>
+    <cartContext.Provider value={{cartItems,addToCart,setCartItems,updateQuantity}}>
      {children}
     </cartContext.Provider>
   )

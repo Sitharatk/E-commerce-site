@@ -1,45 +1,49 @@
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import  { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Registration() {
-  const [formData, setFormData] = useState({
+  const [Data, setData] = useState({
     username: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    cart: [],
+    order: []
   });
-
-  const [errors, setErrors] = useState({});
+  const [cPassword,setcPassword]=useState('')
+const [user,setUser]=useState([])
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.username) newErrors.username = 'Username is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
-    }
-    return newErrors;
+    setData({ ...Data, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-  
-      console.log('Form submitted', formData);
-      navigate('/login'); 
-    }
+    axios.get("http://localhost:5000/users")
+    .then((response)=>{
+      setUser(response.data)
+      if(user.some(item=>item.email!==Data.email)){
+        if(Data.password==cPassword){
+          axios.post("http://localhost:5000/users",Data)
+          .then(()=>{
+            alert("posted")
+            navigate('/login')
+          })
+          .catch((err)=>console.log(err)
+          )
+        }else{
+          alert("password dont match")
+        }
+      }else{
+        alert("user already exist")
+      }
+    })
+    .catch((error)=>console.log(error))
+   
   };
-
+  
   return (
     <div
       className="flex items-center justify-center w-full min-h-screen"
@@ -54,43 +58,43 @@ function Registration() {
             <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="username">
               Username
             </label>
-            <input type="text" id="username" name="username" value={formData.username} onChange={handleChange}
+            <input type="text" id="username" name="username" value={Data.username} onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
               placeholder="Enter your username" required/>
-            {errors.username && <span className="text-red-600">{errors.username}</span>}
+    
           </div>
 
           <div className="mb-4 mt-4">
             <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="email">
               Email
             </label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange}
+            <input type="email" id="email" name="email" value={Data.email} onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
               placeholder="Enter your email" required
             />
-            {errors.email && <span className="text-red-600">{errors.email}</span>}
+         
           </div>
 
           <div className="mb-4 mt-4">
             <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="password">
               Password
             </label>
-            <input type="password" id="password" name="password" value={formData.password} onChange={handleChange}
+            <input type="password" id="password" name="password" value={Data.password} onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
               placeholder="Enter your password" required
             />
-            {errors.password && <span className="text-red-600">{errors.password}</span>}
+
           </div>
 
           <div className="mb-4 mt-4">
             <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="confirm-password">
               Confirm Password
             </label>
-            <input type="password" id="confirm-password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange}
+            <input type="password" id="confirm-password" name="confirmPassword" value={cPassword} onChange={(e)=>setcPassword(e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
               placeholder="Confirm your password" required
             />
-            {errors.confirmPassword && <span className="text-red-600">{errors.confirmPassword}</span>}
+
           </div>
 
           <button type="submit" className="w-full bg-gray-600 font-semibold text-l text-white py-2 rounded-md hover:bg-gray-900">

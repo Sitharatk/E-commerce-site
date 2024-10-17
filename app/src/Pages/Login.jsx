@@ -1,19 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      setError('Email and password are required.');
-      return;
-    }
+    
    navigate('/');
   };
  
@@ -29,7 +25,7 @@ function Login() {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="mb-4 mt-4">
-              <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="email">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                 Email
               </label>
               <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required
@@ -38,7 +34,7 @@ function Login() {
               />
             </div>
             <div className="mb-4 mt-4">
-              <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="password">
+              <label className="block mb-2 text-sm font-medium text-gray-900" >
                 Password
               </label>
               <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required
@@ -46,7 +42,7 @@ function Login() {
                 placeholder="Enter your password"
               />
             </div>
-            {error && <p className="text-red-600">{error}</p>}
+          
             <button type="submit" className="w-full bg-gray-600 font-semibold text-l text-white py-2 rounded-md hover:bg-gray-900" >
               Login
             </button>

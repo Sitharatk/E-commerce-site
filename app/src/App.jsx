@@ -1,4 +1,7 @@
 import { Routes,Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // import './App.css'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login';
@@ -11,11 +14,13 @@ import Contact from './Pages/Contact';
 import Cart from './Pages/Cart';
 import Collections from './Pages/Collections';
 import Catogory from './Pages/Catogory';
+import Payment from './Pages/Payment';
 function App() {
 
 
   return (
     <>
+    <ToastContainer />
     <Navbar/>
     <Routes>
      <Route path='/login' element={<Login/>}/>
@@ -28,6 +33,7 @@ function App() {
     <Route path='/aboutus' element={<AboutUs/>}/>
     <Route path='/contact' element={<Contact/>}/>
     <Route path='/cart' element={<Cart/>}/>
+    <Route path='/payment' element={<Payment/>}/>
 
     </Routes>
     <Footer/>

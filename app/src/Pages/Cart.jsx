@@ -1,12 +1,22 @@
-import React, { useContext } from 'react';
+import  { useContext } from 'react';
 import { cartContext } from './../Context/CartContext';
 
+import { shopContext } from './../Context/shopContext';
+import { Link } from 'react-router-dom';
+
 function Cart() {
-  const { cartItems, setCartItems } = useContext(cartContext);
+  const { cartItems, setCartItems ,updateQuantity} = useContext(cartContext);
+  const {products}=useContext(shopContext)
 
-
-  const handleRemove = (itemId) => {
+const handleRemove = (itemId) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  };
+
+
+  const cartItemCalculate = () => {
+    return cartItems.reduce((acc, item) => {
+     return acc + item.price * item.quantity;
+    }, 0);
   };
 
   if (cartItems.length === 0) {
@@ -31,13 +41,23 @@ function Cart() {
               <p className="text-lg text-gray-600">${product.price}</p>
               <p className="text-sm text-gray-500">{product.description}</p>
             </div>
+            <div className="flex items-center ">
+              <button onClick={()=>updateQuantity(product.id,'increment')} className="bg-gray-200 text-gray-600 px-2 py-1 text-xl font-bold rounded">+</button>
+              <input type="text" className="w-12 text-center border border-gray-500" value={product.quantity} readOnly/>
+              <button  onClick={()=>updateQuantity(product.id,'decrement')} className="bg-gray-200 text-gray-600 px-3 py-1 text-xl font-bold mr-8 rounded">-</button>
+            </div>
             <button
               onClick={() => handleRemove(product.id)}
-              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-300">
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-300 ">
               Remove
             </button>
           </div>
         ))}
+      </div>
+      <div className=' flex flex-row items-center justify-between bg-white shadow-lg rounded-lg p-7 '>
+        <h1 className='font-bold text-2xl text-gray-800'>Total:${cartItemCalculate()}</h1>
+       <Link to='/payment'><button className='bg-black text-white px-6 py-3 rounded '>Buy Now</button></Link> 
+
       </div>
     </div>
   );

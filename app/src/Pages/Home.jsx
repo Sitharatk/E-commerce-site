@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import {useContext} from 'react'
 
 import womenImage from '../assets/womenImage.jpg';
 import menImage from '../assets/menImage.jpg';
@@ -17,9 +17,9 @@ function Home() {
 
   return (
     <div>
-      <div>
-
-      </div>
+      {/* <div>
+       <image scr={}/>
+      </div> */}
       <div className='p-7'>
       <p className='font-bold text-xl'>CATEGORIES</p>
       </div>
@@ -58,7 +58,7 @@ function Home() {
           products
           .filter((product)=>product.arrival=="new")
           .map((product)=>
-            <Link className="" to="/product" key={product.id} >
+            <Link to={`/product/${product.id}`} key={product.id}>
               
               <div className='border  p-3 mb-2 overflow-hidden '>
                   <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
@@ -75,4 +75,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home 

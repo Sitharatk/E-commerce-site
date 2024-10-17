@@ -9,7 +9,7 @@ import { cartContext } from './../Context/CartContext';
 function Navbar() {
   const [visible,setVisible]=useState(false)
   const { cartItems } = useContext(cartContext);
-const cartCount=cartItems.length
+  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   return (
    <div className="h-24 bg-slate-50 flex justify-between items-center relative sm:px-9 px-3 ">
       <div className="flex items-center sm:space-x-4 space-x-2">

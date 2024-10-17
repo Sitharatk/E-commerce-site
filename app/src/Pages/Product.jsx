@@ -9,12 +9,12 @@ import { Link} from 'react-router-dom';
 
 function Product() {
   const { products } = useContext(shopContext);
-  const { addToCart } = useContext(cartContext);
+  const { addToCart,cartItems } = useContext(cartContext);
   const { id } = useParams();
   const [added, setAdded] = useState(false);
 
  
-  const product = products.find((item) => item.id === Number(id));
+  const product = products.find((item) => item.id === id);
 
   if (!product) {
     return (
@@ -23,6 +23,12 @@ function Product() {
       </div>
     );
   }
+  
+  useEffect(()=>{
+    if(product&&cartItems){
+    let includedProduct=cartItems?.some(items=>items.id===product.id)
+    setAdded(includedProduct)}
+  },[product,cartItems])
 
   const handleAddToCart = () => {
     addToCart(product);
