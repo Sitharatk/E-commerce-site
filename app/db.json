@@ -50,9 +50,44 @@
     },
     {
       "id": "5c4a",
-      "username": "Hi",
+      "username": "Sithara",
       "email": "sithara@gmail.com",
       "password": "777",
+      "cart": [],
+      "order": [
+        [
+          {
+            "id": "13",
+            "name": "Shirt",
+            "category": "men",
+            "image": "https://img.freepik.com/free-photo/guy-modern-street-casual-clothing-with-laptop_613910-7453.jpg?t=st=1728971194~exp=1728974794~hmac=ce19824af3bcce072680113ee23979a8b5dd64ce01cba60cfbb5096826063589&w=360",
+            "price": 85,
+            "old_price": 120.5,
+            "description": "The Men’s Plain Casual Shirt combines comfort and style with its simple design, making it perfect for everyday wear.",
+            "arrival": "old",
+            "quantity": 1
+          }
+        ],
+        [
+          {
+            "id": "3",
+            "name": "Maxi dress",
+            "category": "women",
+            "image": "https://img.freepik.com/free-photo/young-woman-getting-ready-wedding_23-2149329162.jpg?t=st=1728969376~exp=1728972976~hmac=4ea282b0d4e83b3c9fdeb3fcc1103d2c79254b8eab5a5380f6f8f07fbc9defeb&w=360",
+            "price": 60,
+            "old_price": 100.5,
+            "description": "The Plain Silk Dress exudes elegance with its luxurious fabric and simple, classic design, perfect for any occasion.",
+            "arrival": "old",
+            "quantity": 1
+          }
+        ]
+      ]
+    },
+    {
+      "id": "a81d",
+      "username": "yaseen",
+      "email": "yaseen@gmail.com",
+      "password": "1234",
       "cart": [],
       "order": []
     }

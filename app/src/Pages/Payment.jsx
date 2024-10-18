@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import {  useNavigate } from 'react-router-dom';
+import { cartContext } from '../Context/CartContext';
+import { toast } from 'react-toastify';
+    
 
 function Payment() {
   const [fullName, setFullName] = useState('');
@@ -6,11 +10,25 @@ function Payment() {
   const [landmark, setLandmark] = useState('');
   const [pinCode, setPinCode] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const navigate =useNavigate()
 
+ const {setCartItems,patchUpdateCart,setOrderItems,cartItems}=useContext(cartContext)
 const handleSubmit = (e) => {
     e.preventDefault();
-   alert("Payment Successful");
+   toast("Payment Successful");
+ 
+   placeOrder()
+   navigate('/')
   };
+
+
+  const placeOrder = async () => {
+    setOrderItems((prev)=> [...prev, cartItems])
+    await patchUpdateCart([]); 
+    setCartItems([]);
+    
+  };
+  
 
   return (
     <div className="flex items-center justify-center bg-gray-100 ">
@@ -118,7 +136,7 @@ const handleSubmit = (e) => {
 
             
 
-              <button type="submit" className="mt-4 py-2 bg-black text-white hover:bg-gray-700 transition duration-200">
+              <button  type="submit" className="mt-4 py-2 bg-black text-white hover:bg-gray-700 transition duration-200">
                 Place Order
               </button>
             </div>

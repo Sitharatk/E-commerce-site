@@ -1,9 +1,11 @@
 
 import { useContext, useState,useEffect} from 'react'
 import { shopContext } from './../Context/shopContext';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { cartContext } from './../Context/CartContext';
 import { Link} from 'react-router-dom';
+import { UserContext } from '../Context/UserContext';
+import { toast } from 'react-toastify';
 
 
 
@@ -12,6 +14,8 @@ function Product() {
   const { addToCart,cartItems } = useContext(cartContext);
   const { id } = useParams();
   const [added, setAdded] = useState(false);
+  const {currentUser}=useContext(UserContext);
+  const navigate=useNavigate()
 
  
   const product = products.find((item) => item.id === id);
@@ -31,11 +35,15 @@ function Product() {
   },[product,cartItems])
 
   const handleAddToCart = () => {
-    addToCart(product);
-    setAdded(true);
-    console.log(product); 
+    if (currentUser) {
+      addToCart(product);
+      
+    } else {
+      toast("Please login")
+      navigate('/login');
+    }
   };
-
+  
   
   return (
    
@@ -48,7 +56,7 @@ function Product() {
       <p className='text-lg text-gray-600 mb-2'>${product.price}</p>
       <p className='text-sm text-gray-500 mb-4'>{product.description}</p>
       
-      {/* <p className='text-sm text-gray-700 mb-2' >Rating:{ Math.floor(Math.random() * (100 - 10 + 1)) + 10} | Reviwes: { Math.floor(Math.random() * (50 - 10 + 1)) + 10}</p> */}
+      <p className='text-sm text-gray-700 mb-3' >Rating:{ Math.floor(Math.random() * (100 - 10 + 1)) + 10} | Reviwes: { Math.floor(Math.random() * (50 - 10 + 1)) + 10}</p>
       {added?
       <Link to='/cart'><button  className='bg-blue-500 text-white w-40 px-2 py-1 rounded hover:bg-blue-600 transition duration-300 '>
         Go To Cart

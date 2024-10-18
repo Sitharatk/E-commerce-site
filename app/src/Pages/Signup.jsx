@@ -60,7 +60,7 @@ const [user,setUser]=useState([])
             </label>
             <input type="text" id="username" name="username" value={Data.username} onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-              placeholder="Enter your username" required/>
+              placeholder=" username" required/>
     
           </div>
 
@@ -70,7 +70,7 @@ const [user,setUser]=useState([])
             </label>
             <input type="email" id="email" name="email" value={Data.email} onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-              placeholder="Enter your email" required
+              placeholder=" email" required
             />
          
           </div>
@@ -81,7 +81,7 @@ const [user,setUser]=useState([])
             </label>
             <input type="password" id="password" name="password" value={Data.password} onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-              placeholder="Enter your password" required
+              placeholder=" password" required
             />
 
           </div>
@@ -92,7 +92,7 @@ const [user,setUser]=useState([])
             </label>
             <input type="password" id="confirm-password" name="confirmPassword" value={cPassword} onChange={(e)=>setcPassword(e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-              placeholder="Confirm your password" required
+              placeholder="Confirm  password" required
             />
 
           </div>

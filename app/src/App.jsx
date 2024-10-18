@@ -15,6 +15,8 @@ import Cart from './Pages/Cart';
 import Collections from './Pages/Collections';
 import Catogory from './Pages/Catogory';
 import Payment from './Pages/Payment';
+import UserData from './Pages/UserData';
+import Orders from './Pages/Orders';
 function App() {
 
 
@@ -34,6 +36,8 @@ function App() {
     <Route path='/contact' element={<Contact/>}/>
     <Route path='/cart' element={<Cart/>}/>
     <Route path='/payment' element={<Payment/>}/>
+    <Route path='/userdata' element={<UserData/>}/>
+    <Route path='/orders' element={<Orders/>}/>
 
     </Routes>
     <Footer/>
