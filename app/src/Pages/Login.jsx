@@ -36,9 +36,9 @@ const handleSubmit = (e) => {
  
   return (
     <>
-      <div className="flex items-center justify-center h-screen"
+      <div className="flex items-center justify-center min-h-96"
         style={{ background: 'linear-gradient(to bottom, #d1d5db, #ffffff)' }}>
-        <div className="w-2/6 h-auto bg-white rounded-lg shadow-lg p-6">
+        <div className="w-2/6 h-auto bg-white mt-40  mb-24 rounded-lg shadow-lg p-6">
           <div className="text-center mb-4">
             <h3 className="text-3xl font-bold text-gray-800">Login</h3>
           </div>

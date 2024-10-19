@@ -20,6 +20,7 @@ function Orders() {
                   <p className="text-lg text-gray-600">${product?.price}</p>
                   <p className="text-sm text-gray-500">{product?.description}</p>
                 </div>
+                
               </div>
             ))
           )}

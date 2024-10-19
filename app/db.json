@@ -53,31 +53,30 @@
       "username": "Sithara",
       "email": "sithara@gmail.com",
       "password": "777",
-      "cart": [],
+      "cart": [
+        {
+          "id": "8",
+          "name": "Mini dress",
+          "category": "women",
+          "image": "https://img.freepik.com/free-photo/happy-woman-with-lemons_23-2148510353.jpg?t=st=1728970296~exp=1728973896~hmac=fcb188d726cb05114437c08c0c868f1cb15474149aa9b34ec9dd639e4009cc96&w=360",
+          "price": 85,
+          "old_price": 120.5,
+          "description": "The Mini Plain Yellow Dress offers a fresh and vibrant look with its simple design, making it a versatile and cheerful choice for any occasion.",
+          "arrival": "new",
+          "quantity": 1
+        }
+      ],
       "order": [
         [
           {
-            "id": "13",
-            "name": "Shirt",
-            "category": "men",
-            "image": "https://img.freepik.com/free-photo/guy-modern-street-casual-clothing-with-laptop_613910-7453.jpg?t=st=1728971194~exp=1728974794~hmac=ce19824af3bcce072680113ee23979a8b5dd64ce01cba60cfbb5096826063589&w=360",
-            "price": 85,
-            "old_price": 120.5,
-            "description": "The Men’s Plain Casual Shirt combines comfort and style with its simple design, making it perfect for everyday wear.",
-            "arrival": "old",
-            "quantity": 1
-          }
-        ],
-        [
-          {
-            "id": "3",
-            "name": "Maxi dress",
+            "id": "1",
+            "name": "Slit knit dress",
             "category": "women",
-            "image": "https://img.freepik.com/free-photo/young-woman-getting-ready-wedding_23-2149329162.jpg?t=st=1728969376~exp=1728972976~hmac=4ea282b0d4e83b3c9fdeb3fcc1103d2c79254b8eab5a5380f6f8f07fbc9defeb&w=360",
-            "price": 60,
-            "old_price": 100.5,
-            "description": "The Plain Silk Dress exudes elegance with its luxurious fabric and simple, classic design, perfect for any occasion.",
-            "arrival": "old",
+            "image": "https://img.freepik.com/free-photo/expressive-woman-posing-bridge-full-shot_23-2148926721.jpg?t=st=1728968947~exp=1728972547~hmac=79c7d478f6c05a2d6b1cc841e9ad9bdcfc83ed3c3bcaae5d4401f4b5b80af616&w=360",
+            "price": 50,
+            "old_price": 80.5,
+            "description": "Made from soft, stretchy knit fabric for comfort and ease of wear.",
+            "arrival": "new",
             "quantity": 1
           }
         ]
@@ -88,7 +87,19 @@
       "username": "yaseen",
       "email": "yaseen@gmail.com",
       "password": "1234",
-      "cart": [],
+      "cart": [
+        {
+          "id": "1",
+          "name": "Slit knit dress",
+          "category": "women",
+          "image": "https://img.freepik.com/free-photo/expressive-woman-posing-bridge-full-shot_23-2148926721.jpg?t=st=1728968947~exp=1728972547~hmac=79c7d478f6c05a2d6b1cc841e9ad9bdcfc83ed3c3bcaae5d4401f4b5b80af616&w=360",
+          "price": 50,
+          "old_price": 80.5,
+          "description": "Made from soft, stretchy knit fabric for comfort and ease of wear.",
+          "arrival": "new",
+          "quantity": 1
+        }
+      ],
       "order": []
     }
   ],
@@ -107,7 +118,7 @@
       "id": "2",
       "name": "Slit knit dress",
       "category": "women",
-      "image": "https://img.freepik.com/free-photo/young-beautiful-brunette-girl-nice-trendy-summer-dress_158538-15215.jpg?t=st=1728969204~exp=1728972804~hmac=bdfbad36d6c1a168651c49af042d1e7c0fa504259683e667d85da7305f55aaf0&w=360",
+      "image": "https://img.freepik.com/free-photo/full-shot-woman-holding-bag_23-2149080913.jpg?t=st=1729315637~exp=1729319237~hmac=0bbd06497a9573e725aa32e8e2780b2570877fa9bc95501338880b69a667519c&w=360",
       "price": 85,
       "old_price": 120.5,
       "description": "Features a flattering silhouette with a fitted bodice and a flowing skirt.",
@@ -401,6 +412,16 @@
       "price": 85,
       "old_price": 120.5,
       "description": "The Rectangle Sunglasses showcase a bold, angular shape that adds a touch of sophistication to your look, offering both style and UV protection.",
+      "arrival": "old"
+    },
+    {
+      "id": "32",
+      "name": "Round Sunglasses",
+      "category": "sunglasses",
+      "image": "https://img.freepik.com/premium-photo/woman-yellow-jacket-sunglasses-looking-out-car-window_629524-8672.jpg?w=826",
+      "price": 85,
+      "old_price": 120.5,
+      "description": "The Rounded Sunglasses showcase a bold, angular shape that adds a touch of sophistication to your look, offering both style and UV protection.",
       "arrival": "old"
     }
   ]

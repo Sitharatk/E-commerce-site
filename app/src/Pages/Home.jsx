@@ -8,6 +8,7 @@ import Handm from '../assets/handm.png';
 import shopify from '../assets/shopify.png';
 import levis from '../assets/levis.png';
 import amazon from '../assets/amazon.png';
+import Lady from '../assets/Lady.jpg';
 import { shopContext } from './../Context/shopContext';
 import { Link} from 'react-router-dom';
 
@@ -17,11 +18,13 @@ function Home() {
 
   return (
     <div>
-      {/* <div>
-       <image scr={}/>
+            {/* <div className="relative h-96 bg-gray-">
+        <img src={Lady} alt="Lady" className="w-full h-full object-cover" />
       </div> */}
+
+
       <div className='p-7'>
-      <p className='font-bold text-xl'>CATEGORIES</p>
+      <p className='font-bold text-2xl'>CATEGORIES</p>
       </div>
       <div className='flex items-center justify-center gap-28 w-screen mb-3 mt-4 '>
         <div>
@@ -38,14 +41,14 @@ function Home() {
         <p className='font-semibold p-4'>SUNGLASSES</p>
         </div>
       </div>
-      <div className='h-32 w-screen bg-slate-300 flex items-center justify-evenly'>
+      {/* <div className='h-32 w-screen bg-slate-300 flex items-center justify-evenly'>
       <img src={Handm} alt="obey" className="w-20 h-16"/>
         <img src={obey} alt="obey" className="w-24 h-16"/>
         <img src={shopify} alt="obey" className="w-28 h-16"/>
         <img src={levis} alt="obey" className="w-24 h-16"/>
         <img src={amazon} alt="obey" className="w-24 h-16"/>
 
-      </div>
+      </div> */}
       <div >
         <div className='p-7'>
          <p className='font-bold text-xl'> NEW ARRIVAL</p>

@@ -133,9 +133,8 @@ const handleSubmit = (e) => {
                   <label htmlFor="netBanking" className="text-sm text-gray-700">Net Banking</label>
                 </div>
               </div>
-
-            
-
+               
+              
               <button  type="submit" className="mt-4 py-2 bg-black text-white hover:bg-gray-700 transition duration-200">
                 Place Order
               </button>

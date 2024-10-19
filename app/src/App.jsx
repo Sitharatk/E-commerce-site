@@ -17,6 +17,8 @@ import Catogory from './Pages/Catogory';
 import Payment from './Pages/Payment';
 import UserData from './Pages/UserData';
 import Orders from './Pages/Orders';
+import Search from './Pages/Search';
+
 function App() {
 
 
@@ -24,8 +26,9 @@ function App() {
     <>
     <ToastContainer />
     <Navbar/>
-    <Routes>
+   <Routes>
      <Route path='/login' element={<Login/>}/>
+     
      <Route path='/signup' element={<Signup/>}/>
      <Route path='/' element={<Home/>}/>
     
@@ -38,6 +41,7 @@ function App() {
     <Route path='/payment' element={<Payment/>}/>
     <Route path='/userdata' element={<UserData/>}/>
     <Route path='/orders' element={<Orders/>}/>
+   <Route path='/search' element={<Search/>}/>
 
     </Routes>
     <Footer/>
