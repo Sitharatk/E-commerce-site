@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const shopContext = createContext();
 
 // eslint-disable-next-line react/prop-types
@@ -15,13 +16,9 @@ const ShopProvider = ({ children }) => {
   }, []);
 
  
-  const value = {
-    products
-  };
-
 
   return (
-    <shopContext.Provider value={value}>
+    <shopContext.Provider value={{products}}>
       {children}
     </shopContext.Provider>
   );

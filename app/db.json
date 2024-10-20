@@ -55,14 +55,25 @@
       "password": "777",
       "cart": [
         {
-          "id": "8",
-          "name": "Mini dress",
-          "category": "women",
-          "image": "https://img.freepik.com/free-photo/happy-woman-with-lemons_23-2148510353.jpg?t=st=1728970296~exp=1728973896~hmac=fcb188d726cb05114437c08c0c868f1cb15474149aa9b34ec9dd639e4009cc96&w=360",
+          "id": "32",
+          "name": "Round Sunglasses",
+          "category": "sunglasses",
+          "image": "https://img.freepik.com/premium-photo/woman-yellow-jacket-sunglasses-looking-out-car-window_629524-8672.jpg?w=826",
           "price": 85,
           "old_price": 120.5,
-          "description": "The Mini Plain Yellow Dress offers a fresh and vibrant look with its simple design, making it a versatile and cheerful choice for any occasion.",
-          "arrival": "new",
+          "description": "The Rounded Sunglasses showcase a bold, angular shape that adds a touch of sophistication to your look, offering both style and UV protection.",
+          "arrival": "old",
+          "quantity": 1
+        },
+        {
+          "id": "31",
+          "name": "Rectangle Sunglasses",
+          "category": "sunglasses",
+          "image": "https://img.freepik.com/free-photo/portrait-handsome-smiling-stylish-hipster-lambersexual-modelmodern-man-dressed-white-shirt-fashion-male-posing-street-background-sunglasses-outdoors-sunset_158538-20626.jpg?t=st=1728978108~exp=1728981708~hmac=1f3dce91788fb48537cf973335941a2f86d3014023d2f22e6bc748261cfc2297&w=740",
+          "price": 85,
+          "old_price": 120.5,
+          "description": "The Rectangle Sunglasses showcase a bold, angular shape that adds a touch of sophistication to your look, offering both style and UV protection.",
+          "arrival": "old",
           "quantity": 1
         }
       ],
@@ -87,20 +98,44 @@
       "username": "yaseen",
       "email": "yaseen@gmail.com",
       "password": "1234",
-      "cart": [
-        {
-          "id": "1",
-          "name": "Slit knit dress",
-          "category": "women",
-          "image": "https://img.freepik.com/free-photo/expressive-woman-posing-bridge-full-shot_23-2148926721.jpg?t=st=1728968947~exp=1728972547~hmac=79c7d478f6c05a2d6b1cc841e9ad9bdcfc83ed3c3bcaae5d4401f4b5b80af616&w=360",
-          "price": 50,
-          "old_price": 80.5,
-          "description": "Made from soft, stretchy knit fabric for comfort and ease of wear.",
-          "arrival": "new",
-          "quantity": 1
-        }
-      ],
-      "order": []
+      "cart": [],
+      "order": [
+        [
+          {
+            "id": "1",
+            "name": "Slit knit dress",
+            "category": "women",
+            "image": "https://img.freepik.com/free-photo/expressive-woman-posing-bridge-full-shot_23-2148926721.jpg?t=st=1728968947~exp=1728972547~hmac=79c7d478f6c05a2d6b1cc841e9ad9bdcfc83ed3c3bcaae5d4401f4b5b80af616&w=360",
+            "price": 50,
+            "old_price": 80.5,
+            "description": "Made from soft, stretchy knit fabric for comfort and ease of wear.",
+            "arrival": "new",
+            "quantity": 2
+          },
+          {
+            "id": "10",
+            "name": "Pencil Skirts",
+            "category": "women",
+            "image": "https://img.freepik.com/premium-photo/woman-skirt-stands-front-couch-looks-camera_1113569-18914.jpg?w=360",
+            "price": 85,
+            "old_price": 120.5,
+            "description": "The Pencil Print Short Skirt features a sleek silhouette with a stylish print, making it a chic addition to your wardrobe.",
+            "arrival": "new",
+            "quantity": 1
+          },
+          {
+            "id": "18",
+            "name": "Solid Casual Shirt",
+            "category": "men",
+            "image": "https://img.freepik.com/premium-photo/man-with-beard-mustache-wearing-shirt-that-says-word-it_1133484-802.jpg?w=740",
+            "price": 85,
+            "old_price": 120.5,
+            "description": "The Men’s Solid Black Shirt provides a sleek and sophisticated appearance, making it a versatile staple for both casual and formal settings.",
+            "arrival": "new",
+            "quantity": 1
+          }
+        ]
+      ]
     }
   ],
   "products": [
@@ -369,7 +404,7 @@
       "name": "Aviator Sunglasses",
       "category": "Sunglasses",
       "image": "https://img.freepik.com/premium-photo/portrait-young-handsome-man-model-fashion-wearing-tinted-sunglasses-urban-background_1208970-40451.jpg?w=740",
-      "new_price": 85,
+      "price": 85,
       "old_price": 120.5,
       "description": "The Aviator Sunglasses feature a classic design with a sleek frame and large lenses, offering a timeless look and excellent sun protection.",
       "arrival": "old"

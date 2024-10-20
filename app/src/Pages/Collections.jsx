@@ -6,7 +6,8 @@ import { Link} from 'react-router-dom';
 function Collections() {
   const {products}=useContext(shopContext)
   return (
-    <div><div className='flex items-center justify-center my-5'>
+    <div>
+      <div className='flex items-center justify-center my-5'>
     <p className='font-bold text-3xl text-gray-800 border-b-2 border-gray-300 pb-2'>COLLECTIONS</p>
      </div>
 

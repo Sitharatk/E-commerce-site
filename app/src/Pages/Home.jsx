@@ -18,9 +18,9 @@ function Home() {
 
   return (
     <div>
-            {/* <div className="relative h-96 bg-gray-">
-        <img src={Lady} alt="Lady" className="w-full h-full object-cover" />
-      </div> */}
+            <div className="sm:relative sm:h-96 ">
+        <img src={Lady} alt="Lady" className="sm:w-full sm:h-full sm:object-cover" />
+      </div>
 
 
       <div className='p-7'>
@@ -79,3 +79,4 @@ function Home() {
 }
 
 export default Home 
+
