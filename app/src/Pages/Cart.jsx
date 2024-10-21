@@ -5,11 +5,16 @@ import { shopContext } from './../Context/shopContext';
 import { Link } from 'react-router-dom';
 
 function Cart() {
-  const { cartItems, setCartItems ,updateQuantity} = useContext(cartContext);
+  const { cartItems, setCartItems ,updateQuantity,patchUpdateCart} = useContext(cartContext);
   const {products}=useContext(shopContext)
 
 const handleRemove = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+    setCartItems((prevItems) =>{
+     const updatecart=prevItems.filter((item) => item.id !== itemId)
+     patchUpdateCart(updatecart)
+     return updatecart
+});
+    
   };
 
 

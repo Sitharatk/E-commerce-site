@@ -18,10 +18,13 @@ import Payment from './Pages/Payment';
 import UserData from './Pages/UserData';
 import Orders from './Pages/Orders';
 import Search from './Pages/Search';
+import { useContext } from 'react';
+import { UserContext } from './Context/UserContext';
+import Sidebar from './Admin/Components/Sidebar';
 
 function App() {
 
-
+const {currentUser} =useContext(UserContext )
   return (
     <>
     <ToastContainer />
@@ -37,14 +40,24 @@ function App() {
     <Route path='/catogory/:category' element={<Catogory/>}/>
     <Route path='/aboutus' element={<AboutUs/>}/>
     <Route path='/contact' element={<Contact/>}/>
-    <Route path='/cart' element={<Cart/>}/>
-    <Route path='/payment' element={<Payment/>}/>
+    
+    {currentUser ? (
+    <>
+      <Route path='/cart' element={<Cart />} />
+      <Route path='/orders' element={<Orders />} />
+      <Route path='/payment' element={<Payment />} />
+          </>
+        ) :null}
     <Route path='/userdata' element={<UserData/>}/>
-    <Route path='/orders' element={<Orders/>}/>
+   
    <Route path='/search' element={<Search/>}/>
+   <Route path='/sidebar' element={<Sidebar/>}/>
+      
 
     </Routes>
     <Footer/>
+
+    
     
     </>
   )

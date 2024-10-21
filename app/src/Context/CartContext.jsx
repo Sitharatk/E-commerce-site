@@ -3,9 +3,10 @@ import { UserContext } from './UserContext';
 import axios from 'axios';
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const cartContext = createContext();
-// eslint-disable-next-line react/prop-types
 
+// eslint-disable-next-line react/prop-types
 function CartProvider({children}) {
   const [cartItems, setCartItems] = useState(() => {
     const savedCartItems = localStorage.getItem('cartItems');
@@ -14,7 +15,7 @@ function CartProvider({children}) {
   const [orderItems, setOrderItems] = useState(() => {
     const savedOrderItems = localStorage.getItem('orderItems');
     return savedOrderItems ? JSON.parse(savedOrderItems) : [];
-  });
+  }); 
 
     useEffect(() => {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -25,9 +26,13 @@ function CartProvider({children}) {
 const {currentUser,setCurrentUser}=useContext(UserContext)
   
     const updateQuantity = (itemId, action) => {
-      setCartItems((prevItems) =>prevItems.map((item) =>item.id === itemId
+    setCartItems((prevItems) =>{
+      const updateCart=prevItems.map((item) =>item.id === itemId
        ? { ...item, quantity: action === 'increment' ? item.quantity + 1 : Math.max(1, item.quantity - 1) }: item)
-      );
+       patchUpdateCart(updateCart)
+       return updateCart
+    });
+    
     }; 
 
     const patchUpdateCart = async (updatedCart) => {

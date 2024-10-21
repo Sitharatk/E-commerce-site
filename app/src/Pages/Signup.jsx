@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
-import  { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Registration() {
   const [Data, setData] = useState({
@@ -10,8 +11,7 @@ function Registration() {
     cart: [],
     order: []
   });
-  const [cPassword,setcPassword]=useState('')
-const [user,setUser]=useState([])
+  const [cPassword, setcPassword] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -22,28 +22,26 @@ const [user,setUser]=useState([])
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.get("http://localhost:5000/users")
-    .then((response)=>{
-      setUser(response.data)
-      if(user.some(item=>item.email!==Data.email)){
-        if(Data.password==cPassword){
-          axios.post("http://localhost:5000/users",Data)
-          .then(()=>{
-            alert("posted")
-            navigate('/login')
-          })
-          .catch((err)=>console.log(err)
-          )
-        }else{
-          alert("password dont match")
+      .then((response) => {
+        const existingUsers = response.data;
+        if (!existingUsers.some(user => user.email === Data.email)) {
+          if (Data.password === cPassword) {
+            axios.post("http://localhost:5000/users", Data)
+              .then(() => {
+                toast("User successfully registered");
+                navigate('/login');
+              })
+              .catch((err) => console.log(err));
+          } else {
+            toast("Passwords do not match");
+          }
+        } else {
+          toast("User already exists");
         }
-      }else{
-        alert("user already exist")
-      }
-    })
-    .catch((error)=>console.log(error))
-   
+      })
+      .catch((error) => console.log(error));
   };
-  
+
   return (
     <div
       className="flex items-center justify-center w-full min-h-screen"
@@ -55,40 +53,54 @@ const [user,setUser]=useState([])
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="username">
+            <label className="block mb-2 text-sm font-medium text-gray-900">
               Username
             </label>
-            <input type="text" id="username" name="username" value={Data.username} onChange={handleChange}
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={Data.username}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-              placeholder=" username" required/>
-    
+              placeholder="username"
+              required
+            />
           </div>
 
           <div className="mb-4 mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="email">
+            <label className="block mb-2 text-sm font-medium text-gray-900">
               Email
             </label>
-            <input type="email" id="email" name="email" value={Data.email} onChange={handleChange}
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={Data.email}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-              placeholder=" email" required
+              placeholder="email"
+              required
             />
-         
           </div>
 
           <div className="mb-4 mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="password">
+            <label className="block mb-2 text-sm font-medium text-gray-900">
               Password
             </label>
-            <input type="password" id="password" name="password" value={Data.password} onChange={handleChange}
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={Data.password}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-              placeholder=" password" required
+              placeholder="password"
+              required
             />
-
           </div>
-
           <div className="mb-4 mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="confirm-password">
-              Confirm Password
+            <label className="block mb-2 text-sm font-medium text-gray-900">Confirm Password
             </label>
             <input type="password" id="confirm-password" name="confirmPassword" value={cPassword} onChange={(e)=>setcPassword(e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"

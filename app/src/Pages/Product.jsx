@@ -28,6 +28,7 @@ function Product() {
     );
   }
   
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(()=>{
     if(product&&cartItems){
     let includedProduct=cartItems?.some(items=>items.id===product.id)
@@ -56,7 +57,7 @@ function Product() {
       <p className='text-lg text-gray-600 mb-2'>${product.price}</p>
       <p className='text-sm text-gray-500 mb-4'>{product.description}</p>
       
-      <p className='text-sm text-gray-700 mb-3' >Rating:{ Math.floor(Math.random() * (100 - 10 + 1)) + 10} | Reviwes: { Math.floor(Math.random() * (50 - 10 + 1)) + 10}</p>
+      <p className='text-sm text-gray-700 mb-3' >Rating:{ Math.floor(Math.random() * (90 - 10 )) + 10} | Reviwes: { Math.floor(Math.random() * (50 - 10 )) + 10}</p>
       {added?
       <Link to='/cart'><button  className='bg-blue-500 text-white w-40 px-2 py-1 rounded hover:bg-blue-600 transition duration-300 '>
         Go To Cart

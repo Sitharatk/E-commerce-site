@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart, faUser,faBars, faWindowClose } from '@fortawesome/free-solid-svg-icons';
-import { useState,useContext,useRef } from "react";
+import { useState,useContext} from "react";
 import { NavLink,Link } from 'react-router-dom';
 import { cartContext } from './../Context/CartContext';
 import { UserContext } from "../Context/UserContext";

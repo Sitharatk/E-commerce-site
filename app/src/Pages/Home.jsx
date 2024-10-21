@@ -3,11 +3,11 @@ import {useContext} from 'react'
 import womenImage from '../assets/womenImage.jpg';
 import menImage from '../assets/menImage.jpg';
 import sunglasses from '../assets/sunglasses.jpg';
-import obey from '../assets/obey.png';
-import Handm from '../assets/handm.png';
-import shopify from '../assets/shopify.png';
-import levis from '../assets/levis.png';
-import amazon from '../assets/amazon.png';
+// import obey from '../assets/obey.png';
+// import Handm from '../assets/handm.png';
+// import shopify from '../assets/shopify.png';
+// import levis from '../assets/levis.png';
+// import amazon from '../assets/amazon.png';
 import Lady from '../assets/Lady.jpg';
 import { shopContext } from './../Context/shopContext';
 import { Link} from 'react-router-dom';
@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <div>
-            <div className="sm:relative sm:h-96 ">
+      <div className="sm:relative sm:h-96 ">
         <img src={Lady} alt="Lady" className="sm:w-full sm:h-full sm:object-cover" />
       </div>
 
@@ -63,7 +63,7 @@ function Home() {
           .map((product)=>
             <Link to={`/product/${product.id}`} key={product.id}>
               
-              <div className='border  p-3 mb-2 overflow-hidden '>
+              <div className='bg-white shadow-lg rounded-lg overflow-hidden p-4 transition-transform duration-300 hover:scale-105'>
                   <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
                   <p className='font-semibold p-2 ml-16'>{product.name}</p>
                   <p className='text-sm ml-28'>${product.price}</p>
