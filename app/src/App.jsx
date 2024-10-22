@@ -20,47 +20,57 @@ import Orders from './Pages/Orders';
 import Search from './Pages/Search';
 import { useContext } from 'react';
 import { UserContext } from './Context/UserContext';
-import Sidebar from './Admin/Components/Sidebar';
+
+import MainLayout from './Layout/MainLayout';
+import AdminLayout from './Layout/AdminLayout';
+import NotFound from './Pages/NotFound';
+import Dashboard from './Admin/Pages/Dashboard';
+import User from './Admin/Pages/User';
+import ProductManagment from './Admin/Pages/ProductManagment';
+import Edit from './Admin/Pages/Edit';
+import AddProduct from './Admin/Pages/AddProduct';
+
 
 function App() {
 
 const {currentUser} =useContext(UserContext )
-  return (
-    <>
+return (
+  <>
     <ToastContainer />
-    <Navbar/>
-   <Routes>
-     <Route path='/login' element={<Login/>}/>
+    <Routes>
      
-     <Route path='/signup' element={<Signup/>}/>
-     <Route path='/' element={<Home/>}/>
-    
-    <Route path='/product/:id' element={<Product />} />
-    <Route path='/collections' element={<Collections/>}/>
-    <Route path='/catogory/:category' element={<Catogory/>}/>
-    <Route path='/aboutus' element={<AboutUs/>}/>
-    <Route path='/contact' element={<Contact/>}/>
-    
-    {currentUser ? (
-    <>
-      <Route path='/cart' element={<Cart />} />
-      <Route path='/orders' element={<Orders />} />
-      <Route path='/payment' element={<Payment />} />
+      <Route element={<MainLayout/>}>
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/product/:id' element={<Product />} />
+        <Route path='/collections' element={<Collections />} />
+        <Route path='/catogory/:category' element={<Catogory />} />
+        <Route path='/aboutus' element={<AboutUs />} />
+        <Route path='/contact' element={<Contact />} />
+       
+        <Route path='/search' element={<Search />} />
+        
+        {currentUser? (
+          <>
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/orders' element={<Orders />} />
+            <Route path='/payment' element={<Payment />} />
+            <Route path='/userdata' element={<UserData />} />
           </>
-        ) :null}
-    <Route path='/userdata' element={<UserData/>}/>
-   
-   <Route path='/search' element={<Search/>}/>
-   <Route path='/sidebar' element={<Sidebar/>}/>
+        ):(<Route path='/*' element={<NotFound/>}/>)}
+      </Route>
+      <Route element={<AdminLayout/>}>
+        <Route path='/dashboard' element={<Dashboard/>} />
+        <Route path='/productmanagment' element={<ProductManagment/>}/>
+        <Route path='/user' element={<User/>}/>
+        <Route path='/edit/:id' element={<Edit/>}/>
+        <Route path='/addproduct' element={<AddProduct/>}/>
       
-
+      </Route>
     </Routes>
-    <Footer/>
-
-    
-    
-    </>
-  )
+  </>
+);
 }
 
-export default App
+export default App;

@@ -184,7 +184,7 @@
       "category": "women",
       "image": "https://img.freepik.com/free-photo/full-shot-woman-holding-bag_23-2149080913.jpg?t=st=1729315637~exp=1729319237~hmac=0bbd06497a9573e725aa32e8e2780b2570877fa9bc95501338880b69a667519c&w=360",
       "price": 85,
-      "old_price": 120.5,
+      "old_price": 130.5,
       "description": "Features a flattering silhouette with a fitted bodice and a flowing skirt.",
       "arrival": "new"
     },
@@ -193,7 +193,7 @@
       "name": "Maxi dress",
       "category": "women",
       "image": "https://img.freepik.com/free-photo/young-woman-getting-ready-wedding_23-2149329162.jpg?t=st=1728969376~exp=1728972976~hmac=4ea282b0d4e83b3c9fdeb3fcc1103d2c79254b8eab5a5380f6f8f07fbc9defeb&w=360",
-      "price": 60,
+      "price": "65",
       "old_price": 100.5,
       "description": "The Plain Silk Dress exudes elegance with its luxurious fabric and simple, classic design, perfect for any occasion.",
       "arrival": "old"
@@ -213,8 +213,8 @@
       "name": "Mini Fit and Flare",
       "category": "women",
       "image": "https://img.freepik.com/premium-photo/portrait-her-she-attractive-lovely-glad-cheerful-cheery-girl-holding-hand-small-little-tiny-ever_433022-115.jpg?w=360",
-      "price": 85,
-      "old_price": 120.5,
+      "price": "50",
+      "old_price": 99,
       "description": "The Mini Fit and Flare Frock features a playful silhouette that cinches at the waist and flares out, perfect for showcasing a fun and flattering look.",
       "arrival": "new"
     },
@@ -223,8 +223,8 @@
       "name": "Mini Fit and Flare",
       "category": "women",
       "image": "https://img.freepik.com/premium-photo/woman-wearing-pink-dress-with-rose-front_1265719-1772.jpg?w=740",
-      "price": 85,
-      "old_price": 120.5,
+      "price": "115",
+      "old_price": 108,
       "description": "The Mini Fit and Flare Frock in plain fabric features elegant embroidered thread roses, adding a touch of sophistication and charm to a classic silhouette.",
       "arrival": "new"
     },
@@ -234,7 +234,7 @@
       "category": "women",
       "image": "https://img.freepik.com/free-photo/young-woman-beautiful-red-dress_1303-17501.jpg?t=st=1728969685~exp=1728973285~hmac=80f98713697119ce26e679990f8f21bb0bdbfb932024056915fe75c12191680a&w=740",
       "price": 85,
-      "old_price": 120.5,
+      "old_price": 117,
       "description": "The Red Soft Dress combines a rich, bold hue with a lightweight, comfortable fabric, making it an ideal choice for both casual and elegant settings.",
       "arrival": "old"
     },
@@ -243,27 +243,17 @@
       "name": "Mini dress",
       "category": "women",
       "image": "https://img.freepik.com/free-photo/happy-woman-with-lemons_23-2148510353.jpg?t=st=1728970296~exp=1728973896~hmac=fcb188d726cb05114437c08c0c868f1cb15474149aa9b34ec9dd639e4009cc96&w=360",
-      "price": 85,
-      "old_price": 120.5,
+      "price": "80",
+      "old_price": 126,
       "description": "The Mini Plain Yellow Dress offers a fresh and vibrant look with its simple design, making it a versatile and cheerful choice for any occasion.",
       "arrival": "new"
-    },
-    {
-      "id": "9",
-      "name": "Skirts",
-      "category": "women",
-      "image": "https://img.freepik.com/free-photo/young-girl-with-red-skirt-leaning-white-metal-railing_1157-1587.jpg?t=st=1728970480~exp=1728974080~hmac=8fe12e30965ffacce659ded25a38b91fc5c55f5a98a3d7826ca162d481491483&w=360",
-      "price": 85,
-      "old_price": 120.5,
-      "description": "The Pleated Plain Skirt features a classic design with gentle folds that add texture and movement, making it a versatile piece for both casual and dressy outfits.",
-      "arrival": "old"
     },
     {
       "id": "10",
       "name": "Pencil Skirts",
       "category": "women",
       "image": "https://img.freepik.com/premium-photo/woman-skirt-stands-front-couch-looks-camera_1113569-18914.jpg?w=360",
-      "price": 85,
+      "price": 104,
       "old_price": 120.5,
       "description": "The Pencil Print Short Skirt features a sleek silhouette with a stylish print, making it a chic addition to your wardrobe.",
       "arrival": "new"
@@ -273,7 +263,7 @@
       "name": "Shirt",
       "category": "women",
       "image": "https://img.freepik.com/premium-photo/woman-with-yellow-shirt-that-says-she-s-wearing-floral-shirt_1100672-17127.jpg?w=740",
-      "price": 85,
+      "price": 44,
       "old_price": 120.5,
       "description": "The Yellow Shirt features a bright and cheerful hue with a classic design, making it a versatile staple for any wardrobe.",
       "arrival": "new"
@@ -283,7 +273,7 @@
       "name": "Pencil Skirts",
       "category": "women",
       "image": "https://img.freepik.com/free-photo/refined-young-woman-leather-skirt-silk-blouse-walking-confident-near-building_158595-949.jpg?t=st=1728970884~exp=1728974484~hmac=44d1a207b9acbe43cc7b6d4c61fc7acaca0201ba9f9737b24b6c43ea9bb32c67&w=360",
-      "price": 85,
+      "price": 78,
       "old_price": 120.5,
       "description": "The Black Pencil Short Skirt offers an elegant and tailored silhouette, perfect for a sophisticated and polished look.",
       "arrival": "old"
@@ -293,7 +283,7 @@
       "name": "Shirt",
       "category": "men",
       "image": "https://img.freepik.com/free-photo/guy-modern-street-casual-clothing-with-laptop_613910-7453.jpg?t=st=1728971194~exp=1728974794~hmac=ce19824af3bcce072680113ee23979a8b5dd64ce01cba60cfbb5096826063589&w=360",
-      "price": 85,
+      "price": 81,
       "old_price": 120.5,
       "description": "The Men’s Plain Casual Shirt combines comfort and style with its simple design, making it perfect for everyday wear.",
       "arrival": "old"
@@ -303,7 +293,7 @@
       "name": "Plain shirt",
       "category": "men",
       "image": "https://img.freepik.com/free-photo/portrait-handsome-smiling-model-sexy-stylish-man-dressed-shirt-trousers-fashion-hipster-male-posing-near-grey-wall-studio-isolated_158538-26739.jpg?t=st=1728971300~exp=1728974900~hmac=4469c3f5ffbc7db378535c17eb457a9272b4e54a849cb3f35e01a6a8df0e08f6&w=740",
-      "price": 85,
+      "price": 64,
       "old_price": 120.5,
       "description": "The Plain White Shirt offers a clean, classic look with its timeless design, making it a versatile essential for any wardrobe.",
       "arrival": "new"
@@ -313,7 +303,7 @@
       "name": "Casual Jean",
       "category": "men",
       "image": "https://img.freepik.com/premium-photo/young-man-wearing-black-tshirt-against-white-background_93675-211163.jpg?w=360",
-      "price": 85,
+      "price": 74,
       "old_price": 120.5,
       "description": "The Casual Jeans offer a comfortable fit and versatile style, perfect for everyday wear and easy to pair with any top.",
       "arrival": "old"
@@ -323,7 +313,7 @@
       "name": "Cargo Jean",
       "category": "men",
       "image": "https://img.freepik.com/free-photo/handsome-man-street-shoot-long-shot_23-2148289253.jpg?t=st=1728971808~exp=1728975408~hmac=14e6aad9c2ce57d989b72cdba5e179603ab44ecb6bcfe3f5cadca6c164c23fad&w=360",
-      "price": 85,
+      "price": 92,
       "old_price": 120.5,
       "description": "The White Cargo Jeans feature a relaxed fit with practical pockets, combining comfort and utility for a stylish casual look.",
       "arrival": "old"
@@ -333,7 +323,7 @@
       "name": "Comfy Jean",
       "category": "men",
       "image": "https://img.freepik.com/premium-psd/pair-blue-jeans-with-white-pink-background_410516-229845.jpg?w=740",
-      "price": 85,
+      "price": 66,
       "old_price": 120.5,
       "description": "The Comfy Men’s Black Jeans provide a relaxed fit with soft fabric, ensuring all-day comfort while maintaining a sleek, stylish appearance.",
       "arrival": "old"
@@ -343,7 +333,7 @@
       "name": "Solid Casual Shirt",
       "category": "men",
       "image": "https://img.freepik.com/premium-photo/man-with-beard-mustache-wearing-shirt-that-says-word-it_1133484-802.jpg?w=740",
-      "price": 85,
+      "price": 46,
       "old_price": 120.5,
       "description": "The Men’s Solid Black Shirt provides a sleek and sophisticated appearance, making it a versatile staple for both casual and formal settings.",
       "arrival": "new"
@@ -353,7 +343,7 @@
       "name": "T-Shirt",
       "category": "men",
       "image": "https://img.freepik.com/free-photo/white-shirt-gentleman-street-photography_1409-6743.jpg?t=st=1728972015~exp=1728975615~hmac=7314dc16324635589c32d9794fb329b38dec0fbe1c3dbd261b658e18f9089580&w=740",
-      "price": 85,
+      "price": 72,
       "old_price": 120.5,
       "description": "The Men’s White Daily Wear T-Shirt offers a classic fit and breathable fabric, making it a versatile and comfortable essential for everyday outfits.",
       "arrival": "new"
@@ -363,7 +353,7 @@
       "name": "Comfy T-Shirts",
       "category": "men",
       "image": "https://img.freepik.com/premium-photo/photography-men-green-plain-tshirt-mockup_1288657-117005.jpg?w=740",
-      "price": 85,
+      "price": 83,
       "old_price": 120.5,
       "description": "The Blue Comfy T-Shirt features a soft fabric and relaxed fit, perfect for casual wear and ensuring all-day comfort.",
       "arrival": "new"
@@ -373,7 +363,7 @@
       "name": "Short Pants",
       "category": "men",
       "image": "https://img.freepik.com/free-photo/long-shot-boy-relaxing-sea_23-2148606059.jpg?t=st=1728972546~exp=1728976146~hmac=e13b856a1bb27023b66bd7711e56063e9b7049e7633ae3cb26154dd5e3b9363b&w=740",
-      "price": 85,
+      "price": 51,
       "old_price": 120.5,
       "description": "The White Men's Short Trousers feature a sleek design and comfortable fit, making them a stylish choice for warm weather and casual outings.",
       "arrival": "new"
@@ -383,7 +373,7 @@
       "name": "Sports Pants",
       "category": "men",
       "image": "https://img.freepik.com/free-photo/low-section-man-standing-rock-against-blue-sky_23-2148182853.jpg?t=st=1728972446~exp=1728976046~hmac=bb4103e2d2ab7a3a1ed7449fd5e44033e733a9b8052cb17f29b77523cbc045a9&w=740",
-      "price": 85,
+      "price": 64,
       "old_price": 120.5,
       "description": "The Sports Comfy Men's Pants are crafted from lightweight, breathable fabric, offering flexibility and comfort for workouts or relaxed days.",
       "arrival": "nold"
@@ -393,7 +383,7 @@
       "name": "Black Short-Seeve T-shirt",
       "category": "men",
       "image": "https://img.freepik.com/free-photo/close-up-portrait-man-shirt-mockup_23-2149260950.jpg?t=st=1728972218~exp=1728975818~hmac=969d625b5bdb74d81994e9062f41c040c224ffd4917bd4cb17f3bf34aa452f47&w=360",
-      "price": 85,
+      "price": 35,
       "old_price": 120.5,
       "description": "The Short Black Short Sleeve T-Shirt offers a classic look with its simple design and comfortable fit, making it a versatile addition to any wardrobe.",
       "arrival": "old"
@@ -403,19 +393,9 @@
       "name": "Men Plain shirt",
       "category": "men",
       "image": "https://img.freepik.com/premium-photo/moslem-pose-wear-traditional-islamic-cloth_144481-1640.jpg?w=360",
-      "price": 85,
+      "price": 55,
       "old_price": 120.5,
       "description": "The Plain Blue Shirt offers a timeless and versatile look, making it a staple piece that can be easily dressed up or down for any occasion.",
-      "arrival": "new"
-    },
-    {
-      "id": "25",
-      "name": "Royal Son",
-      "category": "Sunglasses",
-      "image": "https://img.freepik.com/free-photo/portrait-pretty-young-blonde-beautiful-woman-cool-sunglasses-posing-sunny-tropical-beach_273443-2075.jpg?t=st=1728972985~exp=1728976585~hmac=d87deee4373397c59099c373dae6b2ccc4bb56bc35e770fdadeccddd2d4fe4d2&w=360",
-      "price": 85,
-      "old_price": 120.5,
-      "description": "The Pink Stylish Sunglasses feature a trendy design that adds a pop of color and flair to any outfit while providing UV protection for your eyes.",
       "arrival": "new"
     },
     {
@@ -423,7 +403,7 @@
       "name": "Cateye sunglasses",
       "category": "sunglasses",
       "image": "https://img.freepik.com/free-photo/confident-caucasian-girl-dark-sunglasses-looking-distance-outdoor-shot-good-humoured-fashionable-woman_197531-11313.jpg?t=st=1728973120~exp=1728976720~hmac=37121c2f72ffd320e6cf896e669a8a680485304e6a3bdc9c191f669be2f6426c&w=740",
-      "price": 85,
+      "price": 155,
       "old_price": 120.5,
       "description": "The Cat Eye Black Sunglasses exude a chic and sophisticated vibe, featuring a classic shape that enhances any outfit while providing stylish UV protection.",
       "arrival": "new"
@@ -433,7 +413,7 @@
       "name": "Aviator Sunglasses",
       "category": "Sunglasses",
       "image": "https://img.freepik.com/premium-photo/portrait-young-handsome-man-model-fashion-wearing-tinted-sunglasses-urban-background_1208970-40451.jpg?w=740",
-      "price": 85,
+      "price": 77,
       "old_price": 120.5,
       "description": "The Aviator Sunglasses feature a classic design with a sleek frame and large lenses, offering a timeless look and excellent sun protection.",
       "arrival": "old"
@@ -453,7 +433,7 @@
       "name": "Yellow Framed sunglasses",
       "category": "sunglasses",
       "image": "https://img.freepik.com/free-photo/portrait-fashionable-boy-from_23-2148184634.jpg?t=st=1728977683~exp=1728981283~hmac=7b29c6532b660a6deb6955d04555cf8dc05206200cf78a402060997e710b13ca&w=360",
-      "price": 85,
+      "price": "95",
       "old_price": 120.5,
       "description": "The Yellow Framed Sunglasses combine a bold, vibrant frame with stylish lenses, making them a fun accessory to brighten up any outfit while providing UV protection.",
       "arrival": "old"
@@ -473,7 +453,7 @@
       "name": "Rectangle Sunglasses",
       "category": "sunglasses",
       "image": "https://img.freepik.com/free-photo/portrait-handsome-smiling-stylish-hipster-lambersexual-modelmodern-man-dressed-white-shirt-fashion-male-posing-street-background-sunglasses-outdoors-sunset_158538-20626.jpg?t=st=1728978108~exp=1728981708~hmac=1f3dce91788fb48537cf973335941a2f86d3014023d2f22e6bc748261cfc2297&w=740",
-      "price": 85,
+      "price": 105,
       "old_price": 120.5,
       "description": "The Rectangle Sunglasses showcase a bold, angular shape that adds a touch of sophistication to your look, offering both style and UV protection.",
       "arrival": "old"
@@ -483,10 +463,18 @@
       "name": "Round Sunglasses",
       "category": "sunglasses",
       "image": "https://img.freepik.com/premium-photo/woman-yellow-jacket-sunglasses-looking-out-car-window_629524-8672.jpg?w=826",
-      "price": 85,
+      "price": 95,
       "old_price": 120.5,
       "description": "The Rounded Sunglasses showcase a bold, angular shape that adds a touch of sophistication to your look, offering both style and UV protection.",
       "arrival": "old"
+    },
+    {
+      "id": "4163",
+      "name": "Cateye sunglass",
+      "imageurl": "https://img.freepik.com/free-photo/beautiful-smiling-model-dressed-elegant-summer-clothes-sexy-carefree-girl-sitting-street-trendy-modern-businesswoman-sunglasses-having-fun_158538-6686.jpg?t=st=1729594656~exp=1729598256~hmac=de341d308a3d55712d94a62d76b4f4d6d0d7b324c6a90b29d872be5d227cef75&w=740",
+      "description": "The Cat Eye Black Sunglasses exude a chic and sophisticated vibe, featuring a classic shape that enhances any outfit while providing stylish UV protection",
+      "price": "103",
+      "image": "https://img.freepik.com/free-photo/beautiful-smiling-model-dressed-elegant-summer-clothes-sexy-carefree-girl-sitting-street-trendy-modern-businesswoman-sunglasses-having-fun_158538-6686.jpg?t=st=1729594656~exp=1729598256~hmac=de341d308a3d55712d94a62d76b4f4d6d0d7b324c6a90b29d872be5d227cef75&w=740"
     }
   ]
 }
