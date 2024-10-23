@@ -34,8 +34,15 @@ function UserData() {
       <button onClick={userLogout} className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-600 transition duration-300 ">
         Log Out
       </button>
+       {currentUser&&currentUser.isAdmin?
+      (<Link to='/dashboard'><button onClick={userLogout} className="px-6 ml-14 py-3 bg-black text-white rounded-lg hover:bg-gray-600 transition duration-300 ">
+       Go To AdminHub
+      </button></Link>):(null)
+  }
     </div>
+    
   </div>
+  
   
 
   );

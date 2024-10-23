@@ -8,7 +8,7 @@ function ProductManagement() {
 
   return (
     <div className="p-6">
-      <div className="mb-6 flex justify-between">
+      <div className="mb-6 flex justify-between ml-64">
         <h1 className="text-2xl font-bold">PRODUCTS</h1>
         <hr/>
      
@@ -18,7 +18,7 @@ function ProductManagement() {
     </button></Link>
     
       </div>
-      <div className="">
+      <div className="ml-64">
         <table className="w-full border border-gray-300">
           <thead className="border-2 border-gray-300 ">
             <tr>

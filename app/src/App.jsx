@@ -1,4 +1,4 @@
-import { Routes,Route } from 'react-router-dom'
+import { Routes,Route, Navigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,11 +29,14 @@ import User from './Admin/Pages/User';
 import ProductManagment from './Admin/Pages/ProductManagment';
 import Edit from './Admin/Pages/Edit';
 import AddProduct from './Admin/Pages/AddProduct';
+import Usersdetails from './Admin/Pages/Usersdetails';
+import Sidebar from './Admin/Components/Sidebar';
 
 
 function App() {
 
 const {currentUser} =useContext(UserContext )
+
 return (
   <>
     <ToastContainer />
@@ -58,19 +61,27 @@ return (
             <Route path='/payment' element={<Payment />} />
             <Route path='/userdata' element={<UserData />} />
           </>
-        ):(<Route path='/*' element={<NotFound/>}/>)}
+        ):(<Route path='/*' element={<NotFound/>}/>
+        )}
       </Route>
-      <Route element={<AdminLayout/>}>
-        <Route path='/dashboard' element={<Dashboard/>} />
-        <Route path='/productmanagment' element={<ProductManagment/>}/>
-        <Route path='/user' element={<User/>}/>
-        <Route path='/edit/:id' element={<Edit/>}/>
-        <Route path='/addproduct' element={<AddProduct/>}/>
-      
-      </Route>
-    </Routes>
-  </>
-);
+     
+      {currentUser && currentUser.isAdmin ? (
+          <Route element={<AdminLayout />}>
+            {/* <Route path="/dashboard" element={<Sidebar/>}/> */}
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/productmanagment" element={<ProductManagment />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/edit/:id" element={<Edit />} />
+            <Route path="/addproduct" element={<AddProduct />} />
+            <Route path="/usersdetails/:id" element={<Usersdetails />} />
+          </Route>
+        ) : (
+          <Route path="/admin" element={<AdminLayout/>} />
+        )}
+      </Routes>
+    </>
+  );
 }
+
 
 export default App;

@@ -23,14 +23,16 @@ const handleSubmit = (e) => {
   e.preventDefault();
 
   const foundUser = users.find(user => user.email === email && user.password === password);
+const foundBlock=users.find(user => user.email === email && user.password === password&&user.isBlock==true);
 
-  if (foundUser) {
-    setCurrentUser(foundUser);
-    navigate('/');
-   
-  } else {
-    toast.error("User not found");
-  }
+if (foundBlock) {
+    toast.error("User is Blocked");
+} else if (foundUser) {
+  setCurrentUser(foundUser);
+  navigate('/');
+} else {
+  toast.error("User not found");
+}
 };
 
  

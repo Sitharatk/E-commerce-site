@@ -13,9 +13,13 @@ function UserProvider({ children }) {
       setCurrentUser(storedUser)
     }
   },[])
-  useEffect(()=>{
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
-  },[currentUser])
+  useEffect(() => {
+    if (currentUser) {
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    } else {
+      localStorage.removeItem('currentUser');
+    }
+  }, [currentUser]);
   
   return (
     <UserContext.Provider value={{currentUser,setCurrentUser }}>
