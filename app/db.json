@@ -8,7 +8,32 @@
       "isAdmin": true,
       "isBlock": false,
       "cart": [],
-      "order": []
+      "order": [
+        [
+          {
+            "id": "2",
+            "name": "Slit knit dress",
+            "category": "women",
+            "image": "https://img.freepik.com/free-photo/full-shot-woman-holding-bag_23-2149080913.jpg?t=st=1729315637~exp=1729319237~hmac=0bbd06497a9573e725aa32e8e2780b2570877fa9bc95501338880b69a667519c&w=360",
+            "price": 85,
+            "old_price": 130.5,
+            "description": "Features a flattering silhouette with a fitted bodice and a flowing skirt.",
+            "arrival": "new",
+            "quantity": 2
+          },
+          {
+            "id": "6",
+            "name": "Mini Fit and Flare",
+            "category": "women",
+            "image": "https://img.freepik.com/premium-photo/woman-wearing-pink-dress-with-rose-front_1265719-1772.jpg?w=740",
+            "price": "115",
+            "old_price": 108,
+            "description": "The Mini Fit and Flare Frock in plain fabric features elegant embroidered thread roses, adding a touch of sophistication and charm to a classic silhouette.",
+            "arrival": "new",
+            "quantity": 1
+          }
+        ]
+      ]
     },
     {
       "id": "2",
@@ -68,32 +93,7 @@
       "isAdmin": true,
       "isBlock": false,
       "cart": [],
-      "order": [
-        [
-          {
-            "id": "2",
-            "name": "Slit knit dress",
-            "category": "women",
-            "image": "https://img.freepik.com/free-photo/full-shot-woman-holding-bag_23-2149080913.jpg?t=st=1729315637~exp=1729319237~hmac=0bbd06497a9573e725aa32e8e2780b2570877fa9bc95501338880b69a667519c&w=360",
-            "price": 85,
-            "old_price": 120.5,
-            "description": "Features a flattering silhouette with a fitted bodice and a flowing skirt.",
-            "arrival": "new",
-            "quantity": 1
-          },
-          {
-            "id": "10",
-            "name": "Pencil Skirts",
-            "category": "women",
-            "image": "https://img.freepik.com/premium-photo/woman-skirt-stands-front-couch-looks-camera_1113569-18914.jpg?w=360",
-            "price": 85,
-            "old_price": 120.5,
-            "description": "The Pencil Print Short Skirt features a sleek silhouette with a stylish print, making it a chic addition to your wardrobe.",
-            "arrival": "new",
-            "quantity": 1
-          }
-        ]
-      ]
+      "order": []
     },
     {
       "id": "a81d",
@@ -178,7 +178,7 @@
       "name": "Maxi dress",
       "category": "women",
       "image": "https://img.freepik.com/free-photo/sad-girl-rocks_1122-436.jpg?t=st=1728969531~exp=1728973131~hmac=5021ad69e514d6724676f116b70823c6ff683d7d08d574e9b090b92c73e1ca78&w=360",
-      "price": 100,
+      "price": "106",
       "old_price": 150,
       "description": "The Floral Print Maxi Dress features a vibrant, eye-catching design with a flowing silhouette, making it a perfect choice for warm weather and special occasions.",
       "arrival": "old"

@@ -29,7 +29,7 @@ function AddProduct() {
         }
       }
   return (
-    <div className="p-6">
+    <div className="p-6 ml-64">
       <h1 className="text-2xl font-bold mb-7">ADD PRODUCTS</h1>
       <hr></hr>
       <div className="space-y-5 mt-8">

@@ -4,15 +4,27 @@ import { useState,useContext} from "react";
 import { NavLink,Link } from 'react-router-dom';
 import { cartContext } from './../Context/CartContext';
 import { UserContext } from "../Context/UserContext";
-
+import { shopContext } from "../Context/shopContext";
 
 
 function Navbar() {
   const [visible,setVisible]=useState(false)
   const { cartItems } = useContext(cartContext);
   const {currentUser}=useContext(UserContext)
+  const {products}= useContext(shopContext)
+  const [search,setSearch]=useState("")
+  const[results,setResults]=useState([])
 
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+  const handlechange=(value)=>{
+    setSearch(value)
+
+    const filresults = products.filter((item) =>
+      item.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setResults(filresults);
+  }
  
   return (
    <div className="h-24 bg-white flex justify-between items-center relative sm:px-9 px-3 ">
@@ -27,9 +39,27 @@ function Navbar() {
         <NavLink to="/contact"><li className="font-semibold">CONTACT US</li></NavLink>
       </ul>
       <div className="sm:space-x-7 space-x-4 flex items-center">
-    
-      <Link to='/search'><FontAwesomeIcon className="sm:text-xl text-md" icon={faSearch}/></Link>
-      
+      <div className="relative">
+        <input className="w-40 h-12 px-4 py-2 pr-10 border border-gray-300 rounded-lg shadow-md focus:outline-none"
+            placeholder="Search..." onChange={(e)=>handlechange(e.target.value)}
+          />
+          <FontAwesomeIcon 
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 sm:text-xl text-md cursor-pointer" 
+              icon={faSearch} 
+            />
+          
+          {search && results.length > 0 && (
+    <div className="absolute bg-white w-full z-10 shadow-lg rounded-lg   ">
+      {results.map((item) => (
+        <Link key={item.id} to={`/product/${item.id}`}>
+          <div className="p-2  border-gray-200 hover:bg-gray-100 cursor-pointer">
+            {item.name}
+          </div>
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
         {currentUser ? (
           <>
             <div className="relative">
@@ -38,6 +68,7 @@ function Navbar() {
                 {cartCount}
               </div>
             </div>
+            
             <Link to="/userdata"><FontAwesomeIcon className="sm:text-xl text-md" icon={faUser} /></Link>
           </>
         ) : (
@@ -62,6 +93,7 @@ function Navbar() {
       <NavLink to="/contact"> <li className="font-semibold">CONTACT US</li></NavLink>
       </ul>
         </div>
+        
     </div>
   );
 }

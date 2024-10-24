@@ -1,13 +1,10 @@
-import { Routes,Route, Navigate } from 'react-router-dom'
+import { Routes,Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 // import './App.css'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login';
 import Home from './Pages/Home'
-import Navbar from './Component/Navbar';
-import Footer from './Component/Footer';
 import Product from './Pages/Product';
 import AboutUs from './Pages/AboutUs';
 import Contact from './Pages/Contact';
@@ -17,10 +14,8 @@ import Catogory from './Pages/Catogory';
 import Payment from './Pages/Payment';
 import UserData from './Pages/UserData';
 import Orders from './Pages/Orders';
-import Search from './Pages/Search';
 import { useContext } from 'react';
 import { UserContext } from './Context/UserContext';
-
 import MainLayout from './Layout/MainLayout';
 import AdminLayout from './Layout/AdminLayout';
 import NotFound from './Pages/NotFound';
@@ -30,7 +25,7 @@ import ProductManagment from './Admin/Pages/ProductManagment';
 import Edit from './Admin/Pages/Edit';
 import AddProduct from './Admin/Pages/AddProduct';
 import Usersdetails from './Admin/Pages/Usersdetails';
-import Sidebar from './Admin/Components/Sidebar';
+
 
 
 function App() {
@@ -51,8 +46,7 @@ return (
         <Route path='/catogory/:category' element={<Catogory />} />
         <Route path='/aboutus' element={<AboutUs />} />
         <Route path='/contact' element={<Contact />} />
-       
-        <Route path='/search' element={<Search />} />
+   
         
         {currentUser? (
           <>
@@ -66,18 +60,18 @@ return (
       </Route>
      
       {currentUser && currentUser.isAdmin ? (
-          <Route element={<AdminLayout />}>
-            {/* <Route path="/dashboard" element={<Sidebar/>}/> */}
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/productmanagment" element={<ProductManagment />} />
-            <Route path="/user" element={<User />} />
-            <Route path="/edit/:id" element={<Edit />} />
-            <Route path="/addproduct" element={<AddProduct />} />
-            <Route path="/usersdetails/:id" element={<Usersdetails />} />
-          </Route>
-        ) : (
-          <Route path="/admin" element={<AdminLayout/>} />
-        )}
+  <Route element={<AdminLayout />}>
+    <Route path='/dashboard' element={<Dashboard />} />
+    <Route path="/productmanagment" element={<ProductManagment />} />
+    <Route path="/user" element={<User />} />
+    <Route path="/edit/:id" element={<Edit />} />
+    <Route path="/addproduct" element={<AddProduct />} />
+    <Route path="/usersdetails/:id" element={<Usersdetails />} />
+  </Route>
+      ) : (
+        <Route path='/*' element={<NotFound/>}/>
+      )}
+
       </Routes>
     </>
   );
