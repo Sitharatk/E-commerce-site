@@ -1,4 +1,4 @@
-import { useState ,useEffect, useContext} from "react"
+import { useState ,useEffect} from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 
@@ -68,6 +68,7 @@ if (!user) {
         </div>
         <div>
         <p className="mb-4 font-bold">Orders:</p>
+       { user.order.length>0?(
         <table className="w-full border border-gray-300 text-left">
          
             <thead>
@@ -80,7 +81,8 @@ if (!user) {
           </thead>
             <tbody>
         
-          {user.order.map((order) => 
+          {
+          user.order.map((order) => 
             order.map((item) => (
                 <tr key={item.id} className="border-b text-center">
                 <td className="p-3 border">{item.id}</td>
@@ -92,8 +94,10 @@ if (!user) {
           )}
        </tbody>
        </table>
-      
+        ):(<p className="text-center text-red-500 text-xl font-semibold mt-5">No orders found</p>
 
+        )}
+      
        </div>
       <div className="flex items-center space-x-4 mt-6 ml-96">
         <button onClick={handleRole}className="bg-slate-900  text-white py-2 px-4 rounded hover:bg-gray-400 transition duration-200">

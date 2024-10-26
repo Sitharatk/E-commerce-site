@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import { useContext} from 'react';
 import { shopContext } from '../../Context/shopContext';
 import { Link} from 'react-router-dom';
-import axios from 'axios';
+
 
 function ProductManagement() {
   const {products}=useContext(shopContext)
