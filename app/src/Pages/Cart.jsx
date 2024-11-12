@@ -39,7 +39,8 @@ const handleRemove = (itemId) => {
         {cartItems.map((product) => (
           <div key={product.id} className="flex flex-row items-center justify-between bg-white shadow-lg rounded-lg p-4">
             <div className="w-32 h-32">
-              <img src={product.image} alt={product.name} className="w-full h-full object-cover rounded-sm" />
+            <img src={product.imageUrl || product.image} alt={product.name} className="w-full h-full object-cover rounded-sm" />
+
             </div>
             <div className="flex-grow pl-4">
               <p className="font-bold text-xl text-gray-800">{product.name}</p>

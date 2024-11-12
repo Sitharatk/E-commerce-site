@@ -6,7 +6,7 @@ function Footer() {
        <div className="flex-col mb-5 sm:mb-0  mt-5">
         <div className="flex sm:space-x-4 space-x-2 ">
         <i className="bx bxs-pyramid text-3xl sm:text-5xl text-black-500"></i>
-        <h1 className=" text-xl sm:text-2xl font-bold text-gray-800">FASHION</h1>
+        <h1 className=" text-xl sm:text-2xl font-bold text-gray-800">VINATALIA</h1>
         </div>
         <div className=" flex  justify-between gap-8 p-6 ">
           <FontAwesomeIcon icon={faInstagram}   className="text-2xl" />
