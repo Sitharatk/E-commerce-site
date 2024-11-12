@@ -19,7 +19,6 @@ function Home() {
        <Link to="/collections"> <button className="absolute sm:top-32  right-48 bg-black text-white px-6 py-2 hover:bg-gray-800 transition duration-300">SHOP NOW</button></Link>
       </div>
 
-
       <div className="p-4 sm:p-7">
         <p className="font-bold text-2xl text-center sm:text-left">CATEGORIES</p>
       </div>
