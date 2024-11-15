@@ -18,4 +18,5 @@ This is an e-commerce clothing website built using **React** and **Tailwind CSS*
   - React Router for navigation
   - Font Awesome for icons
   - React Toastify for notifications
+    
 
