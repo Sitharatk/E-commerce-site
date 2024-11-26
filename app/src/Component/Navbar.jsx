@@ -83,7 +83,7 @@ function Navbar() {
       <div className={`${visible ? "bg-white sm:hidden w-screen h-[40vh] absolute top-0 right-0" : "hidden"}`}>
 
         <div className="flex items-center justify-between">
-      <h1 className=" text-xl  p-4 font-bold text-gray-800">FASHION</h1>
+      <h1 className=" text-xl  p-4 font-bold text-gray-800">VINTALIA</h1>
       <button onClick={()=>setVisible(false)}><FontAwesomeIcon className="me-7" icon={faWindowClose}/></button>
       </div>
       <ul className=" space-y-6 p-5">

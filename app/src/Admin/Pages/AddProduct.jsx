@@ -19,7 +19,7 @@ function AddProduct() {
       };
       const handleSubmit=async ()=>{
         try{
-            await axios.post(`http://localhost:5000/products`,newproduct)
+            await axios.post(`http://localhost:4000/products`,newproduct)
             toast("product added")
             navigate('/productmanagment')
 

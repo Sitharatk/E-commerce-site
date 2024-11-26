@@ -10,7 +10,7 @@ const ShopProvider = ({ children }) => {
  
 
   useEffect(() => {
-    axios.get("http://localhost:5000/products")
+    axios.get("http://localhost:4000/products")
       .then((response) => setProducts(response.data))
       .catch((error) => console.error("Error fetching products:", error));
   }, []);

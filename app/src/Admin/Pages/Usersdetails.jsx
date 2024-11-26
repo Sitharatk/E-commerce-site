@@ -14,7 +14,7 @@ const [user,setUser]=useState(null)
 
 
 useEffect(()=>{
-axios.get(`http://localhost:5000/users/${id}`)
+axios.get(`http://localhost:4000/users/${id}`)
 .then((response) =>setUser( response.data ))
 .catch((error)=>console.log(error))
 
@@ -23,7 +23,7 @@ axios.get(`http://localhost:5000/users/${id}`)
 
 const handleRole = async () => {
   try {
-       await axios.patch(`http://localhost:5000/users/${id}`, { isAdmin: !user.isAdmin});
+       await axios.patch(`http://localhost:4000/users/${id}`, { isAdmin: !user.isAdmin});
         setUser((prevUser) => ({...prevUser,
             isAdmin: !user.isAdmin
         }));
@@ -35,7 +35,7 @@ const handleRole = async () => {
 
 const handleBlock = async () => {
     try {
-         await axios.patch(`http://localhost:5000/users/${id}`, { isBlock: !user.isBlock});
+         await axios.patch(`http://localhost:4000/users/${id}`, { isBlock: !user.isBlock});
           setUser((prevUser) => ({...prevUser,
               isBlock: !user.isBlock
           }));

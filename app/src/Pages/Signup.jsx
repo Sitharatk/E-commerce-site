@@ -21,12 +21,12 @@ function Registration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.get("http://localhost:5000/users")
+    axios.get("http://localhost:4000/users")
       .then((response) => {
         const existingUsers = response.data;
         if (!existingUsers.some(user => user.email === Data.email)) {
           if (Data.password === cPassword) {
-            axios.post("http://localhost:5000/users", Data)
+            axios.post("http://localhost:4000/users", Data)
               .then(() => {
                 toast("User successfully registered");
                 navigate('/login');

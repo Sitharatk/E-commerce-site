@@ -94,15 +94,26 @@
       "isBlock": false,
       "cart": [
         {
-          "id": "1",
-          "name": "Slit knit dress",
-          "category": "women",
-          "image": "https://img.freepik.com/free-photo/expressive-woman-posing-bridge-full-shot_23-2148926721.jpg?t=st=1728968947~exp=1728972547~hmac=79c7d478f6c05a2d6b1cc841e9ad9bdcfc83ed3c3bcaae5d4401f4b5b80af616&w=360",
-          "price": "38",
-          "old_price": 80.5,
-          "description": "Made from soft, stretchy knit fabric for comfort and ease of wear.",
-          "arrival": "new",
-          "quantity": 3
+          "id": "16",
+          "name": "Cargo Jean",
+          "category": "men",
+          "image": "https://img.freepik.com/free-photo/handsome-man-street-shoot-long-shot_23-2148289253.jpg?t=st=1728971808~exp=1728975408~hmac=14e6aad9c2ce57d989b72cdba5e179603ab44ecb6bcfe3f5cadca6c164c23fad&w=360",
+          "price": 92,
+          "old_price": 120.5,
+          "description": "The White Cargo Jeans feature a relaxed fit with practical pockets, combining comfort and utility for a stylish casual look.",
+          "arrival": "old",
+          "quantity": 1
+        },
+        {
+          "id": "13",
+          "name": "Shirt",
+          "category": "men",
+          "image": "https://img.freepik.com/free-photo/guy-modern-street-casual-clothing-with-laptop_613910-7453.jpg?t=st=1728971194~exp=1728974794~hmac=ce19824af3bcce072680113ee23979a8b5dd64ce01cba60cfbb5096826063589&w=360",
+          "price": 81,
+          "old_price": 120.5,
+          "description": "The Men’s Plain Casual Shirt combines comfort and style with its simple design, making it perfect for everyday wear.",
+          "arrival": "old",
+          "quantity": 1
         }
       ],
       "order": [
@@ -117,6 +128,19 @@
             "description": "The Plain White Shirt offers a clean, classic look with its timeless design, making it a versatile essential for any wardrobe.",
             "arrival": "new",
             "quantity": 2
+          }
+        ],
+        [
+          {
+            "id": "1",
+            "name": "Slit knit dress",
+            "category": "women",
+            "image": "https://img.freepik.com/free-photo/expressive-woman-posing-bridge-full-shot_23-2148926721.jpg?t=st=1728968947~exp=1728972547~hmac=79c7d478f6c05a2d6b1cc841e9ad9bdcfc83ed3c3bcaae5d4401f4b5b80af616&w=360",
+            "price": "38",
+            "old_price": 80.5,
+            "description": "Made from soft, stretchy knit fabric for comfort and ease of wear.",
+            "arrival": "new",
+            "quantity": 3
           }
         ]
       ]

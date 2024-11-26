@@ -38,7 +38,7 @@ const {currentUser,setCurrentUser}=useContext(UserContext)
     const patchUpdateCart = async (updatedCart) => {
       if (currentUser&&currentUser.id) {
         try {
-          await axios.patch(`http://localhost:5000/users/${currentUser.id}`, { cart: updatedCart });
+          await axios.patch(`http://localhost:4000/users/${currentUser.id}`, { cart: updatedCart });
           const updateddata={...currentUser,cart:updatedCart}
           setCurrentUser(updateddata)
           localStorage.setItem('currentUser',JSON.stringify(updateddata))
@@ -52,7 +52,7 @@ const {currentUser,setCurrentUser}=useContext(UserContext)
       const fetchCartItems = async () => {
         if (currentUser) {
           try {
-            const { data } = await axios.get(`http://localhost:5000/users/${currentUser.id}`);
+            const { data } = await axios.get(`http://localhost:4000/users/${currentUser.id}`);
             if (data) {
               setCartItems(data.cart); 
               setOrderItems(data.order)
@@ -73,7 +73,7 @@ const {currentUser,setCurrentUser}=useContext(UserContext)
       });
     };
     const patchUpdateOrder = (orderItems) => {
-      axios.patch(`http://localhost:5000/users/${currentUser?.id}`, { order: orderItems });
+      axios.patch(`http://localhost:4000/users/${currentUser?.id}`, { order: orderItems });
        
     };
     useEffect(() => {

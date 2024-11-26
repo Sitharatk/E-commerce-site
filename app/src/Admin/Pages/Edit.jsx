@@ -2,7 +2,7 @@ import  { useContext, useState ,useEffect} from 'react';
 import { shopContext } from '../../Context/shopContext';
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
-import { toast } from 'react-toastify';
+
 
 function Edit() {
     const {id} =useParams()
@@ -29,7 +29,7 @@ function Edit() {
         if (product) {
             try {
                 const updatedProduct = { ...product, name, description, price, image: imageurl };
-                await axios.patch(`http://localhost:5000/products/${product.id}`, updatedProduct);
+                await axios.patch(`http://localhost:4000/products/${product.id}`, updatedProduct);
                 setProducts((prevProducts) => 
                     prevProducts.map((item) => (item.id === product.id ? updatedProduct : item))
                 );
@@ -47,7 +47,7 @@ function Edit() {
 
     const handleRemove = async () => {
         try {
-              await axios.delete(`http://localhost:5000/products/${product.id}`)
+              await axios.delete(`http://localhost:4000/products/${product.id}`)
               setProducts((preitems)=>preitems.filter(item=>item.id!==product.id))
             //   toast("product Deleted")
               navigate('/productmanagment')
