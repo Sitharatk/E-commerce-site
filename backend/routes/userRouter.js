@@ -1,9 +1,12 @@
 import express from 'express'
-import { loginUser,registerUser,adminLogin } from '../Controllers/authController.js'
+import { allproducts,productById,productByCatogary } from '../Controllers/productController.js'
+import tryCatch from '../utils/trycatch.js'
 
-const userRouter=express.Router()
-userRouter.post('/register',registerUser)
-userRouter.post('/login',loginUser)
-userRouter.post('/admin',adminLogin)
+const router=express.Router()
 
-export default userRouter
+router
+.get('/products',tryCatch(allproducts))
+.get('/product/:id',tryCatch(productById))
+.get('/products/:category',tryCatch(productByCatogary))
+
+export default router

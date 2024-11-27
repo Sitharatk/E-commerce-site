@@ -3,7 +3,9 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import connectDB from './Config/mongodb.js'
 import connectCloudinary from './Config/cloudinary.js'
-import userRouter from './routes/userRouter.js'
+import userRouter from './routes/authRouter.js'
+import router from './routes/userRouter.js'
+import errorHandler from './middlewares/errorHandler.js'
 dotenv.config()
 
 const app=express()
@@ -14,8 +16,13 @@ connectCloudinary()
 app.use(express.json())
 app.use(cors())
 app.use('/auth',userRouter)
+app.use('/user',router)
 
 app.get('/',(req,res)=>{
     res.send("api working")
 })
+
+app.use(errorHandler)
+
 app.listen(port,()=>console.log("server started on PORT :"+port))
+
