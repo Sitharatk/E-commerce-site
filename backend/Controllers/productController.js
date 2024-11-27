@@ -25,4 +25,5 @@ const {category}=req.params
     }
     res.json({data:products})
 }
+
 export {allproducts,productById,productByCatogary} 

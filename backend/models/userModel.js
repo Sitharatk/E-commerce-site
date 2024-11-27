@@ -5,9 +5,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true},
   password: { type: String, required: true},
   isAdmin: { type: Boolean, default: false },
-  isBlock: { type: Boolean, default: false},
-  cart: {type: Array, default: []  },
-  order: { type: Array, default: []   }
+  isBlock: { type: Boolean, default: false}
 },{minimize:false});
 
 const userModel = mongoose.models.user || mongoose.model('User', userSchema);
