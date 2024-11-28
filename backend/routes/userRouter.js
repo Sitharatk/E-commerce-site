@@ -1,8 +1,10 @@
 import express from 'express'
 import { allproducts,productById,productByCatogary } from '../Controllers/productController.js'
 import { getUserCart, removefromCart, updateCart } from '../Controllers/cartController.js'
+import { getwishList,addTowishList, removefromwishList } from '../Controllers/wishListController.js'
 import { verifyToken } from '../middlewares/verifyTokens.js'
 import tryCatch from '../utils/trycatch.js'
+import { cancelOrder, getAllOrders, getoneOrder,  orderbycashondelvry } from '../Controllers/orderController.js'
 
 const router=express.Router()
 
@@ -14,5 +16,14 @@ router
 .get('/cart',verifyToken,tryCatch(getUserCart))
 .post('/cart',verifyToken,tryCatch(updateCart))
 .delete('/cart',verifyToken,tryCatch(removefromCart))
+
+.get('/wishlist',verifyToken,tryCatch(getwishList))
+.post('/wishlist',verifyToken,tryCatch(addTowishList))
+.delete('/wishlist',verifyToken,tryCatch(removefromwishList))
+
+.get('/order',verifyToken,tryCatch(getAllOrders))
+.get('/order/:orderId',verifyToken,tryCatch(getoneOrder))
+.post('/order/cod',verifyToken,tryCatch(orderbycashondelvry))
+.patch('/order/cancel/:orderId',verifyToken,tryCatch(cancelOrder))
 
 export default router

@@ -21,6 +21,7 @@ const updateCart=async(req,res,next)=>{
         userId: req.user.id,
         products: [{ productId, quantity }],
       });
+    
   }else{
     const productIndex = cart.products.findIndex(
         (item) => item.productId.toString() === productId.toString()
