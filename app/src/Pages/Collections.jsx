@@ -5,6 +5,7 @@ import { Link} from 'react-router-dom';
 
 function Collections() {
   const {products}=useContext(shopContext)
+ 
   return (
     <div>
       <div className='flex items-center justify-center my-5'>

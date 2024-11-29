@@ -18,7 +18,8 @@ function Orders() {
                 <div className="flex-grow pl-4">
                   <p className="font-bold text-xl text-gray-800">{product?.name}</p>
                   <p className="text-lg text-gray-600">${product?.price}</p>
-                  <p className="text-sm text-gray-500">{product?.description}</p>
+                  <p className="text-sm text-gray-500">{product?.description}</p><br/>
+                  <p className="text-sm text-gray-500">Quantity :{product.quantity}</p>
                 </div>
                 
               </div>

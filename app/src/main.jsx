@@ -6,10 +6,12 @@ import './index.css'
 import ShopProvider from './Context/shopContext.jsx'
 import CartProvider from './Context/CartContext.jsx'
 import UserProvider from './Context/UserContext.jsx'
+import { WishlistProvider } from './Context/WishlistContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <WishlistProvider>
     <BrowserRouter>
     <UserProvider>
     <ShopProvider>
@@ -19,5 +21,6 @@ createRoot(document.getElementById('root')).render(
     </ShopProvider>
     </UserProvider>
      </BrowserRouter>
+     </WishlistProvider>
   </StrictMode>,
 )

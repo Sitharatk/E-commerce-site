@@ -25,6 +25,7 @@ import ProductManagment from './Admin/Pages/ProductManagment';
 import Edit from './Admin/Pages/Edit';
 import AddProduct from './Admin/Pages/AddProduct';
 import Usersdetails from './Admin/Pages/Usersdetails';
+import Wishlist from './Pages/WishList';
 
 
 
@@ -54,6 +55,7 @@ return (
             <Route path='/orders' element={<Orders />} />
             <Route path='/payment' element={<Payment />} />
             <Route path='/userdata' element={<UserData />} />
+            <Route path='/wishlist'element={<Wishlist/>}/>
           </>
         ):(<Route path='/*' element={<NotFound/>}/>
         )}
@@ -66,6 +68,7 @@ return (
     <Route path="/user" element={<User />} />
     <Route path="/edit/:id" element={<Edit />} />
     <Route path="/addproduct" element={<AddProduct />} />
+
     <Route path="/usersdetails/:id" element={<Usersdetails />} />
   </Route>
       ) : (

@@ -17,27 +17,27 @@ function Footer() {
       </div>
 
       <div className="text-center sm:text-left mb-5 sm:mb-0">
-      <h1 className="font-bold text-lg sm:text-xl mb-3">SHOP</h1>
-        <p className="font-semibold"> Shop Women</p>
-        <p className="font-semibold"> Shop men</p>
-        <p className="font-semibold"> Sunglasses</p>
+      <h1 className="font-semibold text-lg sm:text-xl mb-3">SHOP</h1>
+        <p className="font-medium"> Shop Women</p>
+        <p className="font-medium"> Shop men</p>
+        <p className="font-medium"> Sunglasses</p>
 
 
       </div >
       <div className="text-center sm:text-left mb-5 sm:mb-0">
-        <h1 className="font-bold text-lg sm:text-xl mb-3">ABOUT</h1>
-        <p className="font-semibold"> Our shop </p>
-        <p className="font-semibold"> Our Materials</p>
-        <p className="font-semibold"> Our Value</p>
-        <p className="font-semibold"> Sustainability</p>
+        <h1 className="font-semibold text-lg sm:text-xl mb-3">ABOUT</h1>
+        <p className="font-medium"> Our shop </p>
+        <p className="font-medium"> Our Materials</p>
+        <p className="font-medium"> Our Value</p>
+        <p className="font-medium"> Sustainability</p>
 
       </div >
       <div className="text-center sm:text-left">
-        <h1 className="font-bold text-lg sm:text-xl mb-3">NEED HELP?</h1>
-        <p className="font-semibold"> FAQs </p>
-        <p className="font-semibold"> Shipping & Returns</p>
-        <p className="font-semibold"> Size Chart</p>
-        <p className="font-semibold"> Contact Us</p>
+        <h1 className="font-semibold text-lg sm:text-xl mb-3">NEED HELP?</h1>
+        <p className="font-medium"> FAQs </p>
+        <p className="font-medium"> Shipping & Returns</p>
+        <p className="font-medium"> Size Chart</p>
+        <p className="font-medium"> Contact Us</p>
 
       </div >
 

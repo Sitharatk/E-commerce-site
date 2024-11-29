@@ -7,7 +7,7 @@ function AddProduct() {
     
     const [newproduct,setNewproduct]=useState({
      name:'',
-     imageurl:'',
+     image:'',
      description:'',
      price:''
 
@@ -40,8 +40,8 @@ function AddProduct() {
         </div>
         <div>
           <label className=" mb-1 font-semibold">Image URL:</label>
-          <input type="text"   name="imageurl" className="border border-gray-300 p-2 w-full rounded mt-2"
-            placeholder="Enter image URL"  onChange={handleChange} value={newproduct.imageurl}
+          <input type="text"   name="image" className="border border-gray-300 p-2 w-full rounded mt-2"
+            placeholder="Enter image URL"  onChange={handleChange} value={newproduct.image}
           />
         </div>
         <div>

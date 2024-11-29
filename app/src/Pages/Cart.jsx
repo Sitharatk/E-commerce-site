@@ -45,12 +45,10 @@ function Cart() {
               <p className="font-bold text-lg sm:text-xl text-gray-800">{product.name}</p>
               <p className="text-base sm:text-lg text-gray-600">${product.price}</p>
               <p className="text-sm text-gray-500">{product.description}</p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center  sm:space-x-2 space-y-2 sm:space-y-0">
               <div className="flex items-center mt-14">
                 <button
                   onClick={() => updateQuantity(product.id, 'decrement')}
-                  className="bg-gray-200 text-gray-600 px-3 py-1 text-lg font-bold rounded"
+                  className="bg-white text-gray-600 px-3 py-1 text-2xl font-bold rounded"
                 >
                   -
                 </button>
@@ -62,15 +60,18 @@ function Cart() {
                 />
                 <button
                   onClick={() => updateQuantity(product.id, 'increment')}
-                  className="bg-gray-200 text-gray-600 px-3 py-1 text-lg font-bold rounded"
+                  className="bg-white text-gray-600 px-3 py-1 text-2xl font-bold rounded"
                 >
                   +
                 </button>
               </div>
-              <div className='mt-32'>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center  sm:space-x-2 space-y-2 sm:space-y-0">
+            
+              <div className='mt-14'>
               <button
                 onClick={() => handleRemove(product.id)}
-                className="bg-black text-white px-3 py-1  rounded hover:bg-red-600 transition duration-300"
+                className="bg-black text-white px-3 py-1  rounded hover:bg-amber-950 transition duration-300"
               >
                 Remove
               </button>
@@ -78,7 +79,7 @@ function Cart() {
             </div>
           </div>
         ))}
-      </div>
+      </div> 
       <div className="flex flex-col sm:flex-row items-center justify-between bg-white shadow-lg rounded-lg p-4 sm:p-7 mt-5">
         <h1 className="font-bold text-xl sm:text-2xl text-gray-800">
           Total: ${cartItemCalculate()}

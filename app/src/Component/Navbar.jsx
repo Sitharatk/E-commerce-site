@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faShoppingCart, faUser,faBars, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart, faUser,faBars,faHeart, faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { useState,useContext} from "react";
 import { NavLink,Link } from 'react-router-dom';
 import { cartContext } from './../Context/CartContext';
@@ -68,7 +68,7 @@ function Navbar() {
                 {cartCount}
               </div>
             </div>
-            
+            <Link to='/wishlist'><FontAwesomeIcon className="cursor-pointer text-xl sm:mb-3 mt-1" icon={faHeart} /></Link>
             <Link to="/userdata"><FontAwesomeIcon className="sm:text-xl text-md" icon={faUser} /></Link>
           </>
         ) : (
