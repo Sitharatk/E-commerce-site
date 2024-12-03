@@ -78,7 +78,13 @@ function Product() {
           <p className='font-bold text-2xl text-gray-800 mb-2'>{product.name}</p>
           <p className='text-lg text-gray-600 mb-2'>${product.price}</p>
           <p className='text-sm text-gray-500 mb-4'>{product.description}</p>
-          
+          <div className='flex'>
+            <p>Size:</p>
+        
+            <div><p>S</p></div>
+            <div><p>M</p></div>
+            <div><p>L</p></div>
+          </div>
           <p className='text-sm text-gray-700 mb-3'>
            
             <span className="text-yellow-500">
