@@ -1,5 +1,5 @@
-import Cart from '../models/cartModel.js'
-import CustomError from '../utils/CustomError.js'
+import Cart from '../../models/cartModel.js'
+import CustomError from '../../utils/CustomError.js'
 
 const getUserCart=async (req,res)=>{
     const data =await Cart.findOne({ userId: req.user.id }).populate('products.productId');
@@ -57,6 +57,6 @@ const removefromCart=async(req,res,next)=>{
 
   await cart.save();
 
-  res.status(200).json({ message: "Product removed from cart successfully" });
+  res.status(204).json({ message: "Product removed from cart successfully" });
 }
 export {getUserCart,updateCart,removefromCart}

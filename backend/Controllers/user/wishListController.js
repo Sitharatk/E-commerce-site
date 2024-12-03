@@ -1,5 +1,5 @@
-import wishList from "../models/whishListModel.js";
-import CustomError from "../utils/CustomError.js";
+import wishList from "../../models/whishListModel.js";
+import CustomError from "../../utils/CustomError.js";
 
 
 const getwishList=async(req,res,next)=>{
@@ -41,12 +41,13 @@ const removefromwishList= async (req,res,next)=>{
     { $pull: { products: productId } },
     { new: true }
   );
+
+
   if (newWishList) {
-    res.status(201).json({message: "Product removed from wishlist successfully"});
+    res.status(204).json({message: "Product removed from wishlist successfully"});
   } else {
     next(new CustomError("product not found in wishlist", 404));
   }
-
 
 }
 

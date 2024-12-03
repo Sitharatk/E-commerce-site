@@ -1,6 +1,6 @@
-import orderModel from '../models/orderModel.js'
-import CustomError from '../utils/CustomError.js'
-import Cart from '../models/cartModel.js'
+import orderModel from '../../models/orderModel.js'
+import CustomError from '../../utils/CustomError.js'
+import Cart from '../../models/cartModel.js'
 
 const orderbycashondelvry=async(req,res,next)=>{
     const { address } = req.body; 
@@ -43,7 +43,7 @@ const getAllOrders = async (req, res) => {
     res.status(200).json({ data: Orders });
   } else {
     res.status(200).json({ data: [] });
-  }
+  } 
 };
 
 const getoneOrder=async(req,res,next)=>{

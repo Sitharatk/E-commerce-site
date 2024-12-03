@@ -1,10 +1,10 @@
 import express from 'express'
-import { allproducts,productById,productByCatogary } from '../Controllers/productController.js'
-import { getUserCart, removefromCart, updateCart } from '../Controllers/cartController.js'
-import { getwishList,addTowishList, removefromwishList } from '../Controllers/wishListController.js'
+import { allproducts,productById,productByCatogary } from '../Controllers/publicController.js'
+import { getUserCart, removefromCart, updateCart } from '../Controllers/user/cartController.js'
+import { getwishList,addTowishList, removefromwishList } from '../Controllers/user/wishListController.js'
 import { verifyToken } from '../middlewares/verifyTokens.js'
 import tryCatch from '../utils/trycatch.js'
-import { cancelOrder, getAllOrders, getoneOrder,  orderbycashondelvry } from '../Controllers/orderController.js'
+import { cancelOrder, getAllOrders, getoneOrder,  orderbycashondelvry } from '../Controllers/user/orderController.js'
 
 const router=express.Router()
 

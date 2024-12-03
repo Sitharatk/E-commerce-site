@@ -6,6 +6,7 @@ import connectCloudinary from './Config/cloudinary.js'
 import userRouter from './routes/authRouter.js'
 import router from './routes/userRouter.js'
 import errorHandler from './middlewares/errorHandler.js'
+import admin from './routes/adminRoute.js'
 dotenv.config()
 
 const app=express()
@@ -17,6 +18,7 @@ app.use(express.json())
 app.use(cors())
 app.use('/auth',userRouter)
 app.use('/user',router)
+app.use('/admin',admin)
 
 app.get('/',(req,res)=>{
     res.send("api working")
