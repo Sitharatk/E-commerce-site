@@ -9,9 +9,14 @@ const orderSchema = new mongoose.Schema( {
       orderId:{type:String},
       purchasedDate: { type: Date, default: Date.now },
       address: { type: Object, required: true },
-      // totalAmount: { type: Number},
+      totalAmount: { type: Number},
+      paymentMethod:{type:String,enum: ['cash on delivery', 'stripe'],
+        default: 'cash on delivery'},
       paymentStatus: { type: String, default: 'pending' },
       shippingStatus: { type: String, default: 'pending' },
+      sessionId: {  // For Stripe session tracking
+        type: String,
+      },
       
     },
     { timestamps: true }

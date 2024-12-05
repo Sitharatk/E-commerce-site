@@ -1,7 +1,7 @@
 import Products from '../models/productModel.js'
 
 const allproducts=async(req,res)=>{
-    const products=await Products.find()
+    const products=await Products.find({isDelete:false})
     if(!products){
         return res.status(404).json({ message: "No item in products" });
     }

@@ -8,15 +8,17 @@ const joiUserSchema = Joi.object({
     isAdmin:Joi.boolean().default(false).required()
 })
 
-const joiProductSChema=Joi.object({
+const joiProductSchema=Joi.object({
     name:Joi.string().required(),
     description:Joi.string().required(),
     price:Joi.number().required(),
-    old_price:Joi.number().required(),
-    image:Joi.string().required(),
+    old_price:Joi.number(),
+    image:Joi.string(),
     category:Joi.string().required(),
-    arrival:Joi.boolean().required(),
-   
+    arrival: Joi.string()
+    .valid("new", "old") 
+    .required(),
+    isDelete:Joi.boolean().default(false)
 })
 
-export {joiUserSchema,joiProductSChema}
+export {joiUserSchema,joiProductSchema}
