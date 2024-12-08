@@ -5,6 +5,7 @@ import { blockUser, getAllusers, getUserById } from '../Controllers/admin/userCo
 import { allproducts, productByCatogary, productById } from '../Controllers/publicController.js'
 import upload from '../middlewares/multer.js'
 import { createProduct, deleteProduct, updateProduct } from '../Controllers/admin/productController.js'
+import { getOrderByUser, getTotalOrder } from '../Controllers/admin/orderController.js'
 
 const admin=express.Router()
 
@@ -21,4 +22,6 @@ admin
 .put('/products/:id',verifyToken,upload.single("image"),tryCatch(updateProduct))
 .delete('/products/:id',verifyToken,tryCatch(deleteProduct))
 
+.get('/orders',verifyToken,tryCatch(getTotalOrder))
+.get('/orders/:id',verifyToken,tryCatch(getOrderByUser))
 export default admin
