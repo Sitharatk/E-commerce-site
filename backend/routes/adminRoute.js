@@ -5,7 +5,7 @@ import { blockUser, getAllusers, getUserById } from '../Controllers/admin/userCo
 import { allproducts, productByCatogary, productById } from '../Controllers/publicController.js'
 import upload from '../middlewares/multer.js'
 import { createProduct, deleteProduct, updateProduct } from '../Controllers/admin/productController.js'
-import { getOrderByUser, getTotalOrder } from '../Controllers/admin/orderController.js'
+import { getOrderByUser, getTotalOrder, getTotalorders, getTotalRevenue, updatePaymentStatus, updateShipingStatus } from '../Controllers/admin/orderController.js'
 
 const admin=express.Router()
 
@@ -24,4 +24,9 @@ admin
 
 .get('/orders',verifyToken,tryCatch(getTotalOrder))
 .get('/orders/:id',verifyToken,tryCatch(getOrderByUser))
+.get('/total',verifyToken,tryCatch(getTotalorders))
+.get('/total/revenue',verifyToken,tryCatch(getTotalRevenue))
+.patch('/update/shipping/:id',verifyToken,tryCatch(updateShipingStatus))
+.patch('/update/payment/:id',verifyToken,tryCatch(updatePaymentStatus))
+
 export default admin
