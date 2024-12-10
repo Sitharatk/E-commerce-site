@@ -6,6 +6,10 @@ import userModel from "../models/userModel.js"
 const createToken=(id)=>{
    return jwt.sign({id,},process.env.JWT_SECRET)
 }
+const createRefreshToken = (id,isAdmin) =>{
+  return jwt.sign({id,isAdmin},process.env.JWT_REFRESH_TOKEN,{ expiresIn: '1D' })
+}
+
 const loginUser=async (req,res)=>{
       try{
         const {email,password}=req.body
