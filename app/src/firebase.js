@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: " process.env.REACT_APP_FIREBASE_API_KEY",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "ecommerce-b39f7.firebaseapp.com",
     projectId: "ecommerce-b39f7",
     storageBucket: "ecommerce-b39f7.firebasestorage.app",
