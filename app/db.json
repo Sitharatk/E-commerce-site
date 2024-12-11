@@ -116,34 +116,7 @@
           "quantity": 1
         }
       ],
-      "order": [
-        [
-          {
-            "id": "14",
-            "name": "Plain shirt",
-            "category": "men",
-            "image": "https://img.freepik.com/free-photo/portrait-handsome-smiling-model-sexy-stylish-man-dressed-shirt-trousers-fashion-hipster-male-posing-near-grey-wall-studio-isolated_158538-26739.jpg?t=st=1728971300~exp=1728974900~hmac=4469c3f5ffbc7db378535c17eb457a9272b4e54a849cb3f35e01a6a8df0e08f6&w=740",
-            "price": 64,
-            "old_price": 120.5,
-            "description": "The Plain White Shirt offers a clean, classic look with its timeless design, making it a versatile essential for any wardrobe.",
-            "arrival": "new",
-            "quantity": 2
-          }
-        ],
-        [
-          {
-            "id": "1",
-            "name": "Slit knit dress",
-            "category": "women",
-            "image": "https://img.freepik.com/free-photo/expressive-woman-posing-bridge-full-shot_23-2148926721.jpg?t=st=1728968947~exp=1728972547~hmac=79c7d478f6c05a2d6b1cc841e9ad9bdcfc83ed3c3bcaae5d4401f4b5b80af616&w=360",
-            "price": "38",
-            "old_price": 80.5,
-            "description": "Made from soft, stretchy knit fabric for comfort and ease of wear.",
-            "arrival": "new",
-            "quantity": 3
-          }
-        ]
-      ]
+      "order": []
     },
     {
       "id": "a81d",
@@ -190,6 +163,14 @@
           }
         ]
       ]
+    },
+    {
+      "id": "54ef",
+      "username": "Aysha pk",
+      "email": "ayshapk88@gmail.com",
+      "password": "",
+      "cart": [],
+      "order": []
     }
   ],
   "products": [

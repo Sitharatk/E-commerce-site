@@ -15,7 +15,7 @@ function Home() {
   return (
     <div>
       <div className="sm:relative sm:h-96 ">
-        <img src={Lady1} alt="Lady" className="sm:w-full sm:h-full sm:object-cover" />
+        <img src="https://i.pinimg.com/236x/89/db/a5/89dba55d842b72c02f649c3341503309.jpg" alt="Lady" className="sm:w-full sm:h-full sm:object-cover" />
        <Link to="/collections"> <button className="absolute sm:top-32  right-48 bg-black text-white px-6 py-2 hover:bg-gray-800 transition duration-300">SHOP NOW</button></Link>
       </div>
 
