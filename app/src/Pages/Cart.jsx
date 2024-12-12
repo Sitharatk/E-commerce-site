@@ -27,7 +27,7 @@ function Cart() {
 
   return (
     <div className="p-4 sm:p-8">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-5">Cart</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-[#522815] font-serif mb-5">Cart</h2>
       <div className="grid grid-cols-1 gap-6">
         {cartItems.map((product) => (
           <div

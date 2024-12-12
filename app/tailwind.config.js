@@ -8,6 +8,10 @@ export default {
     extend: {
       fontFamily: {
         cinzel: ['"Cinzel Decorative"', 'cursive'],
+        parisienne: ['Parisienne', 'cursive'], 
+        engagement: ['Engagement', 'cursive'],
+        ewert: ['Ewert', 'cursive'],
+        italianno: ['Italianno', 'cursive'],
       },
     },
   },

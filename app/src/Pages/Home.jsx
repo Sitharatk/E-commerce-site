@@ -15,59 +15,90 @@ function Home() {
   return (
     <div>
       <div className="sm:relative sm:h-96 ">
-        <img src="https://i.pinimg.com/236x/89/db/a5/89dba55d842b72c02f649c3341503309.jpg" alt="Lady" className="sm:w-full sm:h-full sm:object-cover" />
-       <Link to="/collections"> <button className="absolute sm:top-32  right-48 bg-black text-white px-6 py-2 hover:bg-gray-800 transition duration-300">SHOP NOW</button></Link>
+        <img src="https://i.pinimg.com/736x/4c/5a/55/4c5a550810ca01a7e271870b862b1549.jpg" alt="Lady" className="sm:w-full h-[500px] object-cover" />
+       <Link to="/collections"><button className="absolute top-44 font-engagement left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#522815] text-white px-6 py-2 rounded-full hover:bg-[#9b6d58] transition duration-300">
+      SHOP NOW
+    </button></Link>
       </div>
 
-      <div className="p-4 sm:p-7">
-        <p className="font-bold text-2xl text-center sm:text-left">CATEGORIES</p>
-      </div>
-      <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-28 mb-3 mt-4 px-4">
-        <div className="text-center">
-          <Link to="/catogory/men">
-            <img src={menImage} alt="MEN" className="w-40 h-52 sm:w-64 sm:h-80 transition-transform duration-300 hover:scale-110" />
-          </Link>
-          <p className="font-semibold pt-4">MEN</p>
-        </div>
-        <div className="text-center">
-          <Link to="/catogory/women">
-            <img src={womenImage} alt="WOMEN" className="w-40 h-52 sm:w-64 sm:h-80 transition-transform duration-300 hover:scale-110" />
-          </Link>
-          <p className="font-semibold pt-4">WOMEN</p>
-        </div>
-        <div className="text-center">
-          <Link to="/catogory/sunglasses">
-            <img src={sunglasses} alt="SUNGLASSES" className="w-40 h-52 sm:w-64 sm:h-80 transition-transform duration-300 hover:scale-110" />
-          </Link>
-          <p className="font-semibold pt-4">SUNGLASSES</p>
-        </div>
-      </div>
+      <div className="p-4 sm:p-7 mt-32">
+  <p className="font-bold text-2xl text-center sm:text-left text-[#522815] font-serif ">CATEGORIES</p>
+</div>
+<div className="flex flex-wrap items-center justify-center gap-8 sm:gap-20 mb-3 mt-6 px-4">
+  
+  <div className="text-center bg-[#e9ddd8] rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300">
+    <Link to="/catogory/men">
+      <img 
+        src={menImage} 
+        alt="MEN" 
+        className="w-40 h-52 sm:w-64 sm:h-80 rounded-md transition-transform duration-300 hover:scale-110 mb-4" 
+      />
+    </Link>
+
+    <Link to="/catogory/men">
+      <button className="mt-2 bg-[#6d4431] font-semibold text-white text-sm px-4 py-2 rounded-full hover:bg-[#9b6d58] transition duration-300">Explore MEN</button>
+    </Link>
+  </div>
+  
+
+  <div className="text-center bg-[#e9ddd8] rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300">
+    <Link to="/catogory/women">
+      <img 
+        src={womenImage} 
+        alt="WOMEN" 
+        className="w-40 h-52 sm:w-64 sm:h-80 rounded-md  mb-4 transition-transform duration-300 hover:scale-110" 
+      />
+    </Link>
+
+    <Link to="/catogory/women">
+      <button className="mt-2 bg-[#70432e] font-semibold text-white text-sm px-4 py-2 rounded-full hover:bg-[#9b6d58] transition duration-300">Explore WOMEN</button>
+    </Link>
+  </div>
+  
+
+  <div className="text-center bg-[#e9ddd8] rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300">
+    <Link to="/catogory/sunglasses">
+      <img 
+        src={sunglasses} 
+        alt="SUNGLASSES" 
+        className="w-40 h-52 sm:w-64 sm:h-80 mb-4 rounded-md transition-transform duration-300 hover:scale-110" 
+      />
+    </Link>
+  
+    <Link to="/catogory/sunglasses">
+      <button className="mt-2 bg-[#70432e]  font-semiboldfont-semibold text-white text-sm px-4 py-2 rounded-full hover:bg-[#9b6d58] transition duration-300">Explore SUNGLASSES</button>
+    </Link>
+  </div>
+</div>
 
     
       <div >
-        <div className='p-7'>
-         <p className='font-bold text-xl'> NEW ARRIVAL</p>
+        <div className='px-7'>
+         <p className='font-bold text-2xl text-center sm:text-left text-[#522815] font-serif mt-20 '> NEW ARRIVALS</p>
         </div>
       </div>
       <div>
-      <div className='grid grid-cols-2 sm:grid-cols-4 gap-6 p-8 '>
-        {
-          
-          products
-          .filter((product)=>product.arrival=="new")
-          .map((product)=>
-            <Link to={`/product/${product.id}`} key={product.id}>
-              
-              <div className='bg-white shadow-lg rounded-lg overflow-hidden p-4 transition-transform duration-300 hover:scale-105'>
-                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-                  <p className='font-semibold p-2 ml-16'>{product.name}</p>
-                  <p className='text-sm ml-28'>${product.price}</p>
-                </div>
-             
-            </Link>
-          )
-        }
-        </div>
+      <div className="p-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {products
+        .filter((product) => product.arrival === "new")
+        .map((product) => (
+          <Link to={`/product/${product.id}`} key={product.id}>
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden p-4 transition-transform duration-300 hover:scale-105">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-40 sm:h-48 object-cover rounded-t-lg"
+              />
+              <div className="text-center mt-2">
+                <p className="font-semibold text-base sm:text-lg">{product.name}</p>
+                <p className="text-sm sm:text-base">${product.price}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+    </div>
+  </div>
       </div>
     </div>
   )

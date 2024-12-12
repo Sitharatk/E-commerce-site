@@ -1,10 +1,15 @@
-
+import { useEffect } from "react";
 
 function AboutUs() {
+  useEffect(() => {
+    window.scrollTo({ top: 80, behavior: "smooth" });
+  }, []);
+
+
   return (
-    <div className="bg-gray-100 text-gray-800 py-16">
+    <div className="bg-white text-gray-800 py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-10">About Vinatlia</h2>
+        <h2 className="text-4xl font-italianno font-bold text-center mb-14">About Vinatlia</h2>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="flex justify-center">
             <img
@@ -14,7 +19,7 @@ function AboutUs() {
             />
           </div>
           <div>
-            <p className="text-lg leading-relaxed mb-6">
+            <p className="text-lg leading-relaxed mb-6 ">
               Welcome to <strong>Vinatlia</strong>, your destination for trendy
               and timeless sunglasses. At Vinatlia, we believe in blending
               elegance with functionality. Whether you are looking for bold
