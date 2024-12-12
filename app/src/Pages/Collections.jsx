@@ -12,7 +12,7 @@ function Collections() {
   return (
     <div>
       <div className='flex items-center justify-center my-5'>
-    <p className='font-bold text-3xl text-gray-800 border-b-2 font-serif border-gray-300 pb-2'>COLLECTIONS</p>
+    <p className='font-bold text-3xl text-[#31180d] border-b-2 font-serif border-gray-300 pb-2'>COLLECTIONS</p>
      </div>
 
      <div className='grid grid-cols-2 sm:grid-cols-4 gap-6 p-8'>

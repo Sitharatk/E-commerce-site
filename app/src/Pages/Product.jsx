@@ -75,8 +75,8 @@ function Product() {
           <img src={product.image} alt={product.name} className="w-full h-64 object-cover rounded-sm" />
         </div>
         <div className='flex flex-col pl-4'>
-          <p className='font-bold text-2xl text-gray-800 mb-2'>{product.name}</p>
-          <p className='text-lg text-gray-600 mb-2'>${product.price}</p>
+          <p className='font-bold text-2xl text-[#31180d]  mb-2'>{product.name}</p>
+          <p className='text-lg text-[#522815]  mb-2'>${product.price}</p>
           <p className='text-sm text-gray-500 mb-4'>{product.description}</p>
           <div className='flex'>
             <p>Size:</p>
@@ -85,14 +85,14 @@ function Product() {
             <div><p>M</p></div>
             <div><p>L</p></div>
           </div>
-          <p className='text-sm text-gray-700 mb-3'>
+          <p className='text-sm text-[#522815]  mb-3'>
            
             <span className="text-yellow-500">
               {[...Array(5)].map((_, index) => (
                 <FontAwesomeIcon
                   key={index}
                   icon={faStar}
-                  className={index < starCount ? "text-black" : "text-gray-300"}
+                  className={index < starCount ? "text-[#522815] " : "text-gray-300"}
                 />
               ))}
             </span>
@@ -102,26 +102,26 @@ function Product() {
           <div className='flex items-center space-x-5'>
             {added ? (
               <Link to='/cart'>
-                <button className='bg-black text-white w-40 px-2 py-1 rounded hover:bg-amber-950 transition duration-300'>
+                <button className='bg-[#522815]  text-white w-40 px-2 py-1 rounded hover:bg-[#a78475] transition duration-300'>
                   Go To Cart
                 </button>
               </Link>
             ) : (
-              <button onClick={handleAddToCart} className='bg-black text-white w-40 px-2 py-1 rounded hover:bg-amber-950 transition duration-300'>
+              <button onClick={handleAddToCart} className='bg-[#522815]  text-white w-40 px-2 py-1 rounded hover:bg-[#a5897c]  transition duration-300'>
                 Add To Cart
               </button>
             )}
             <button onClick={handleAddToWishlist}> 
-              <FontAwesomeIcon className="text-black text-3xl hover:text-amber-950 transition duration-300" icon={faHeart} />
+              <FontAwesomeIcon className="text-[#522815]  text-3xl hover:text-[#aa8c7f] transition duration-300" icon={faHeart} />
             </button>
           </div>
         </div>
       </div>
 
    <div className="relative flex items-center font-sans mt-8 mb-8 px-5 py-4 ">
-   <p className="text-2xl font-semibold text-gray-800 relative z-10 bg-white px-4">RELATED PRODUCTS</p>
+   <p className="text-2xl font-semibold text-[#31180d] relative z-10 bg-white px-4">RELATED PRODUCTS</p>
    <div className="absolute inset-0 flex items-center mb-2">
-     <div className="w-full border-t border-gray-400"></div>
+     <div className="w-full border-t border-[#31180d]"></div>
    </div>
  </div>
  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 px-6 ">
@@ -131,8 +131,8 @@ function Product() {
      <div key={product.id} className="bg-white mb-8 rounded-lg shadow-md  overflow-hidden w-48 transition-transform duration-300 hover:scale-105">
        <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
        <div className="p-3">
-         <p className="font-semibold text-center text-lg text-gray-800">{product.name}</p>
-         <p className="text-sm text-center text-gray-600">${product.price}</p>
+         <p className="font-semibold text-center text-lg text-[#31180d]">{product.name}</p>
+         <p className="text-sm text-center text-[#31180d]">${product.price}</p>
         
        </div>
      </div>

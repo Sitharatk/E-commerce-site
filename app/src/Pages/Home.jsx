@@ -91,8 +91,8 @@ function Home() {
                 className="w-full h-40 sm:h-48 object-cover rounded-t-lg"
               />
               <div className="text-center mt-2">
-                <p className="font-semibold text-base sm:text-lg">{product.name}</p>
-                <p className="text-sm sm:text-base">${product.price}</p>
+                <p className="font-semibold text-base sm:text-lg text-[#31180d]">{product.name}</p>
+                <p className="text-sm sm:text-base text-[#31180d]">${product.price}</p>
               </div>
             </div>
           </Link>

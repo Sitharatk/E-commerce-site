@@ -19,39 +19,39 @@ function Contact() {
 
         {/* Form Section */}
         <div className="lg:w-1/2 w-full p-6 lg:p-8">
-          <h2 className="text-2xl font-bold text-gray-800 text-center mb-4">
+          <h2 className="text-2xl font-bold text-[#522815]  text-center mb-4">
             Get in Touch
           </h2>
           <form>
             {/* Name Field */}
             <div className="mb-4">
-              <label
+              {/* <label
                 htmlFor="name"
-                className="block text-gray-600 font-medium text-sm mb-2"
+                className="block text-[#522815]  font-medium text-sm mb-2"
               >
                 Name
-              </label>
+              </label> */}
               <input
                 id="name"
                 type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-gray-400 focus:outline-none"
-                placeholder="Your Name"
+                className="w-full px-3  placeholder-[#c5b4ac] py-2 border border-[#c5b4ac]  rounded-md shadow-sm focus:ring-2 focus:ring-[#522815] focus:outline-none"
+                placeholder="Your Name "
                 required
               />
             </div>
 
             {/* Email Field */}
             <div className="mb-4">
-              <label
+              {/* <label
                 htmlFor="email"
                 className="block text-gray-600 font-medium text-sm mb-2"
               >
                 Email
-              </label>
+              </label> */}
               <input
                 id="email"
                 type="email"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-gray-400 focus:outline-none"
+                className="w-full px-3 py-2 border placeholder-[#c5b4ac] border-[#c5b4ac]  rounded-md shadow-sm focus:ring-2 focus:ring-[#522815]  focus:outline-none"
                 placeholder="Your Email"
                 required
               />
@@ -59,15 +59,15 @@ function Contact() {
 
             {/* Message Field */}
             <div className="mb-4">
-              <label
+              {/* <label
                 htmlFor="message"
                 className="block text-gray-600 font-medium text-sm mb-2"
               >
                 Message
-              </label>
+              </label> */}
               <textarea
                 id="message"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-gray-400 focus:outline-none"
+                className="w-full px-3 py-2 border placeholder-[#c5b4ac] border-[#c5b4ac] rounded-md shadow-sm focus:ring-2 focus:ring-[#522815] focus:outline-none"
                 rows="3"
                 placeholder="Write your message here..."
                 required
@@ -78,7 +78,7 @@ function Contact() {
             <div className="text-center">
               <button
                 type="submit"
-                className="w-full bg-gray-800 text-white py-2 rounded-md shadow-md hover:bg-gray-700 focus:ring-2 focus:ring-gray-400 transition"
+                className="w-full bg-[#522815]  text-white py-2 rounded-md shadow-md hover:bg-[#bb9c8e] focus:ring-2 focus:ring-[#522815] transition"
               >
                 Send Message
               </button>
