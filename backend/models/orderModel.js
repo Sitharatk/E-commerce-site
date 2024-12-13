@@ -13,7 +13,7 @@ const orderSchema = new mongoose.Schema( {
       paymentMethod:{type:String,enum: ['cash on delivery', 'stripe'],
         default: 'cash on delivery'},
         paymentStatus:{type:String, enum: ['pending', 'paid', 'cancelled'],default:"pending"},
-        shippingStatus:{type:String, enum: ['processing', 'delivered', 'cancelled'],dafault:"processing"},
+        shippingStatus:{type:String, enum: ['processing', 'delivered', 'cancelled','shipped'],dafault:"processing"},
       sessionId: {  // For Stripe session tracking
         type: String,
       },

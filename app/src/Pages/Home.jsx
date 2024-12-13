@@ -4,7 +4,7 @@ import womenImage from '../assets/womenImage.jpg';
 import menImage from '../assets/menImage.jpg';
 import sunglasses from '../assets/sunglasses.jpg';
 // import Lady from '../assets/Lady.jpg';
-import Lady1 from '../assets/Lady1.jpg';
+// import Lady1 from '../assets/Lady1.jpg';
 import { shopContext } from './../Context/shopContext';
 import { Link} from 'react-router-dom';
 

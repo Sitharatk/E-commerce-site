@@ -17,7 +17,7 @@ const createProduct=async(req,res,next)=>{
         name,arrival,description,category,price,
         image: req.file.path,
       });
-      
+     
       if (!newProduct) {
         return next(new CustomError("couldn't create the product"));
       }

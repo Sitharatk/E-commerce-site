@@ -19,7 +19,7 @@ admin
 .get('/products/:category',tryCatch(productByCatogary))
 
 .post('/products',verifyToken,upload.single("image"),tryCatch(createProduct))
-.put('/products/:id',verifyToken,upload.single("image"),tryCatch(updateProduct))
+.patch('/products/:id',verifyToken,upload.single("image"),tryCatch(updateProduct))
 .delete('/products/:id',verifyToken,tryCatch(deleteProduct))
 
 .get('/orders',verifyToken,tryCatch(getTotalOrder))

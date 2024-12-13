@@ -122,7 +122,7 @@ const successStripe=async(req,res,next)=>{
 
   // Update the order status
   order.shippingStatus = "shipped";
-  order.paymentStatus = "Paid";
+  order.paymentStatus = "paid";
   await order.save();
 
   // Respond with success message

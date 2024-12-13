@@ -4,7 +4,7 @@ import { getUserCart, removefromCart, updateCart } from '../Controllers/user/car
 import { getwishList,addTowishList, removefromwishList } from '../Controllers/user/wishListController.js'
 import { verifyToken } from '../middlewares/verifyTokens.js'
 import tryCatch from '../utils/trycatch.js'
-import { cancelOrder, getAllOrders, getoneOrder,  orderbycashondelvry, stripePayment } from '../Controllers/user/orderController.js'
+import { cancelOrder, getAllOrders, getoneOrder,  orderbycashondelvry, stripePayment, successStripe } from '../Controllers/user/orderController.js'
 
 const router=express.Router()
 
@@ -25,7 +25,7 @@ router
 .get('/order/:orderId',verifyToken,tryCatch(getoneOrder))
 .post('/order/cod',verifyToken,tryCatch(orderbycashondelvry))
 .post('/order/stripe',verifyToken,tryCatch(stripePayment))
-
+.put('/order/stripe/success/:sessionId',verifyToken,tryCatch(successStripe))
 .patch('/order/cancel/:orderId',verifyToken,tryCatch(cancelOrder))
 
 
