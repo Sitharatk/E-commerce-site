@@ -9,6 +9,7 @@ const createProduct=async(req,res,next)=>{
     if (error) {
       return next(new CustomError(error.details[0].message, 400));
     }
+    console.log(error)
     const { name,arrival,description,category,price,image}=req.body
     if (!req.file || !req.file.path) {
         return next(new CustomError("Product image is required", 400));
