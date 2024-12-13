@@ -2,16 +2,19 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import connectDB from './Config/mongodb.js'
-import connectCloudinary from './Config/cloudinary.js'
+// import connectCloudinary from './Config/cloudinary.js'
+
 import userRouter from './routes/authRouter.js'
 import router from './routes/userRouter.js'
 import errorHandler from './middlewares/errorHandler.js'
 import admin from './routes/adminRoute.js'
+import { connectCloudinary } from './Config/cloudinary.js'
 dotenv.config()
 
 const app=express()
 const port =process.env.PORT || 3000
 connectDB()
+// connectCloudinary()
 connectCloudinary()
 
 app.use(express.json())

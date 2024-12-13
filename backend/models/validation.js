@@ -13,7 +13,7 @@ const joiProductSchema=Joi.object({
     description:Joi.string().required(),
     price:Joi.number().required(),
     old_price:Joi.number(),
-    image:Joi.string(),
+    // image:Joi.string(),
     category:Joi.string().required(),
     arrival: Joi.string()
     .valid("new", "old") 
