@@ -83,7 +83,7 @@ function Home() {
       {products
         .filter((product) => product.arrival === "new")
         .map((product) => (
-          <Link to={`/product/${product.id}`} key={product.id}>
+          <Link to={`/product/${product._id}`} key={product._id}>
             <div className="bg-white shadow-lg rounded-lg overflow-hidden p-4 transition-transform duration-300 hover:scale-105">
               <img
                 src={product.image}

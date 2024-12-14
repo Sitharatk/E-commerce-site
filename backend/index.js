@@ -18,7 +18,12 @@ connectDB()
 connectCloudinary()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin:process.env.CLIENT_URL,
+    credentials:true,
+    allowedHeaders: ["Content-Type", "Authorization"]
+}))
+
 app.use('/auth',userRouter)
 app.use('/user',router)
 app.use('/admin',admin)

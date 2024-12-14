@@ -20,7 +20,7 @@ admin
 
 .post('/products',verifyToken,upload.single("image"),tryCatch(createProduct))
 .patch('/products/:id',verifyToken,upload.single("image"),tryCatch(updateProduct))
-.delete('/products/:id',verifyToken,tryCatch(deleteProduct))
+.patch('/products/delete/:id',verifyToken,tryCatch(deleteProduct))
 
 .get('/orders',verifyToken,tryCatch(getTotalOrder))
 .get('/orders/:id',verifyToken,tryCatch(getOrderByUser))

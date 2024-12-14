@@ -1,6 +1,4 @@
-
 import { useContext, useState,useEffect} from 'react'
-import { shopContext } from './../Context/shopContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { cartContext } from './../Context/CartContext';
 import { Link} from 'react-router-dom';
@@ -11,33 +9,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { WishlistContext } from '../Context/WishlistContext'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import axiosErrorManager from '../../utlities/axiosErrorManager';
+import axios from 'axios';
+import { shopContext } from '../Context/shopContext';
 
 
 
 function Product() {
-  const { products } = useContext(shopContext);
+  
   const { addToCart,cartItems } = useContext(cartContext);
+
+  const {products}=useContext(shopContext)
   const { id } = useParams();
   const [added, setAdded] = useState(false);
   const {currentUser}=useContext(UserContext);
   const {addToWishlist}=useContext(WishlistContext)
+  const [product,setProduct]=useState(null)
   const navigate=useNavigate()
 
  
-  const product = products.find((item) => item.id === id);
-
-  if (!product) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-lg text-red-500">Product not found!</p>
-      </div>
-    );
+useEffect(()=>{
+  const fetchProduct=async()=>{
+    try{
+    const response = await axios.get(`http://localhost:3000/user/product/${id}`)
+    console.log(response.data.data)
+   setProduct(response.data.data)
+    }catch(error){
+      console.error(axiosErrorManager(error))
+    }
   }
+  fetchProduct()
+},[id])
+
+ 
   
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(()=>{
     if(product&&cartItems){
-    let includedProduct=cartItems?.some(items=>items.id===product.id)
+    let includedProduct=cartItems?.some(items=>items._id===product._id)
     setAdded(includedProduct)}
   },[product,cartItems])
 
@@ -61,7 +70,7 @@ function Product() {
     }
   };
   
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+//   eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     window.scrollTo(0, 0);
  }, [id]); 
@@ -69,7 +78,11 @@ function Product() {
  const starCount = Math.floor(rating / 20); // Assuming 5 stars as maximum, so 20 rating per star
  
   return (
-   <>
+   <>{!product ? (
+    <div className="flex items-center justify-center h-screen">
+      <p className="text-lg text-red-500">Product not found!</p>
+    </div>
+  ) : (
     <div className='flex flex-row items-center justify-center p-14 bg-white'>
         <div className='w-64 h-auto pr-4'>
           <img src={product.image} alt={product.name} className="w-full h-64 object-cover rounded-sm" />
@@ -117,7 +130,7 @@ function Product() {
           </div>
         </div>
       </div>
-
+)}
    <div className="relative flex items-center font-sans mt-8 mb-8 px-5 py-4 ">
    <p className="text-2xl font-semibold text-[#31180d] relative z-10 bg-white px-4">RELATED PRODUCTS</p>
    <div className="absolute inset-0 flex items-center mb-2">
@@ -125,10 +138,10 @@ function Product() {
    </div>
  </div>
  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 px-6 ">
- { products. filter((item) => item.category === product.category  && item.id !== product.id ).slice(0, 6)
+ { products. filter((item) => item.category === product.category  && item._id !== product._id ).slice(0, 6)
    .map((product) => (
-     <Link to={`/product/${product.id}`} key={product.id} className='no-underline'>
-     <div key={product.id} className="bg-white mb-8 rounded-lg shadow-md  overflow-hidden w-48 transition-transform duration-300 hover:scale-105">
+     <Link to={`/product/${product._id}`} key={product._id} className='no-underline'>
+     <div key={product._id} className="bg-white mb-8 rounded-lg shadow-md  overflow-hidden w-48 transition-transform duration-300 hover:scale-105">
        <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
        <div className="p-3">
          <p className="font-semibold text-center text-lg text-[#31180d]">{product.name}</p>

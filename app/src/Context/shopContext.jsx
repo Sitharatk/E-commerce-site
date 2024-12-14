@@ -7,21 +7,27 @@ export const shopContext = createContext();
 // eslint-disable-next-line react/prop-types
 const ShopProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
- 
 
   useEffect(() => {
-    axios.get("http://localhost:4000/products")
-      .then((response) => setProducts(response.data))
-      .catch((error) => console.error("Error fetching products:", error));
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/user/products");
+        setProducts(response.data.data);
+        // console.log(response.data.data)
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
- 
-
   return (
-    <shopContext.Provider value={{products}}>
+    <shopContext.Provider value={{ products }}>
       {children}
     </shopContext.Provider>
   );
 };
 
 export default ShopProvider;
+

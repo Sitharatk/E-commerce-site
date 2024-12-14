@@ -16,7 +16,7 @@ function Catogory() {
       {filteredProducts
      
       .map((product) => (
-    <Link to={`/product/${product.id}`} key={product.id}>
+    <Link to={`/product/${product._id}`} key={product._id}>
       <div className='bg-white shadow-lg rounded-lg overflow-hidden p-4 transition-transform duration-300 hover:scale-105'>
         <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-2" />
         <p className='font-semibold text-center text-lg'>{product.name}</p>
