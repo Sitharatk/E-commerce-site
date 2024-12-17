@@ -11,35 +11,53 @@ const createRefreshToken = (id,isAdmin) => {
 };
 
 
-const loginUser=async (req,res)=>{
-      try{
-        const {email,password}=req.body
-        const user=await userModel.findOne({email})
-        if(!user){
-            return res.json({success:false,message:"user doesn't exists"})
-        }
-        const isMatch=await bcrypt.compare(password,user.password)
-        if (isMatch){
-          const token= createToken(user._id)
-          const refreshToken = createRefreshToken(user._id);
-          res.cookie('refreshToken', refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            maxAge: 7 * 24 * 60 * 60 * 1000, 
-          });
+const loginUser = async (req, res,next) => {
   
-          res.json({success:true,token}) 
-        }
-        else{
-            res.json({success:false,message:'invalid credentials'})
-        }
+    const { email, password } = req.body;
+    const user = await userModel.findOne({ email });
 
-      }catch(error){
-        console.log(error)
-        res.json({success:false,message:error.message})
+    if (!user) {
+      return res.json({ success: false, message: "User doesn't exist" });
+    }
+    if (user.isBlock) {
+      return next(new CustomError("Your account is blocked", 403));
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (isMatch) {
+      const token = createToken(user._id,user.isAdmin);
+      const refreshToken = createRefreshToken(user._id,user.isAdmin);
+
+      user.refreshToken = refreshToken;
+      await user.save();
+    
+      res.cookie('refreshToken', refreshToken, {
+        httpOnly: true,
+        secure: false,  
+        maxAge: 7 * 24 * 60 * 60 * 1000, 
+      });
+
+      const currentUser = {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
       }
+      //sending user details to client (for curr user)
+      res.cookie("currentUser", JSON.stringify(currentUser))
+    
+      res.json({ 
+        success: true, 
+        token, 
+        message: 'Login successful' ,
+        currentUser
+      });
+    } else {
+      res.json({ success: false, message: 'Invalid credentials' });
+    }
+  
+};
 
-}
 const registerUser=async (req,res)=>{
     try{
         const {name,email,password}=req.body
@@ -129,7 +147,11 @@ const logout=async(req,res)=>{
     secure:false,
     sameSite: "none",
   });
-  
+  res.clearCookie("currentUser", {
+    httpOnly: false,
+    secure: true,
+    sameSite: "none",
+  });
   res.clearCookie('token', {
     httpOnly: true,
     secure:false,

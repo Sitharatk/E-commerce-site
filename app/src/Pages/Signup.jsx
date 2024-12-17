@@ -7,7 +7,7 @@ import { UserContext } from '../Context/UserContext.jsx';
 
 function Registration() {
   const [Data, setData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
     cart: [],
@@ -22,27 +22,24 @@ function Registration() {
     setData({ ...Data, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const registerUser = async (name, email, password) => {
+    const data = { name, email, password };
+    try {
+      const response = await axios.post("http://localhost:3000/auth/register",data);
+      toast.success(response.data.message);
+      navigate("/login");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Registration failed");
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.get("http://localhost:4000/users")
-      .then((response) => {
-        const existingUsers = response.data;
-        if (!existingUsers.some(user => user.email === Data.email)) {
-          if (Data.password === cPassword) {
-            axios.post("http://localhost:4000/users", Data)
-              .then(() => {
-                toast("User successfully registered");
-                navigate('/login');
-              })
-              .catch((err) => console.log(err));
-          } else {
-            toast("Passwords do not match");
-          }
-        } else {
-          toast("User already exists");
-        }
-      })
-      .catch((error) => console.log(error));
+    if (Data.name && Data.email && Data.password && Data.password === cPassword) {
+      await registerUser(Data.name, Data.email, Data.password);
+    } else {
+      alert("Please fill in all fields and ensure passwords match.");
+    }
   };
 
   const handleGoogleSignIn = () => {
@@ -51,33 +48,36 @@ function Registration() {
         const user = result.user;
         // Set the current user after Google sign-in
         setCurrentUser({
-          username: user.displayName,
+          name: user.displayName,
           email: user.email,
           cart: [],
           order: [],
         });
-  
+
         // Optionally, save user to backend if required
         axios.post("http://localhost:4000/users", {
-          username: user.displayName,
+          name: user.displayName,
           email: user.email,
           password: "", // No password for Google users
           cart: [],
           order: [],
         })
           .then(() => {
-            toast("Signed in with Google");
-            // Redirect to the user's login page
+            toast.success("Signed in with Google");
+            // Redirect to the user's home page
             navigate('/');
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.error("Google Sign-In Error", err);
+            toast.error("Failed to save Google user data");
+          });
       })
       .catch((error) => {
         console.error("Google Sign-In Error", error);
         toast.error("Google Sign-In failed");
       });
   };
-  
+
   return (
     <div
       className="flex items-center justify-center w-full min-h-screen"
@@ -102,9 +102,9 @@ function Registration() {
           <div className="mb-4">
             <input
               type="text"
-              id="username"
-              name="username"
-              value={Data.username}
+              id="name"
+              name="name"
+              value={Data.name}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
               placeholder="Username"
@@ -177,6 +177,7 @@ function Registration() {
 }
 
 export default Registration;
+
 
 
 // import { Link, useNavigate } from 'react-router-dom';

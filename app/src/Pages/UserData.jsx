@@ -1,23 +1,27 @@
-
+import axios from 'axios';
 import { useContext,  } from 'react';
 import { UserContext } from '../Context/UserContext';
-import { cartContext } from './../Context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function UserData() {
   const {currentUser,setCurrentUser}=useContext(UserContext)
-  const {setCartItems,setOrderItems}=useContext(cartContext)
+  console.log("Current User:", currentUser);
+
+
   const navigate=useNavigate()
 
-  const userLogout=()=>{
-    setCurrentUser(null)
-    setCartItems([])
-    setOrderItems([])
-   localStorage.removeItem('currentUser')
-    localStorage.removeItem('cartItems')
-  localStorage.removeItem('orderItems')
-  navigate('/')
+  const userLogout=async()=>{
+    try{
+      await axios.post('http://localhost:3000/auth/logout',{},{ withCredentials: true })
+      toast.success("logout successful")
+      setCurrentUser(null);
+      navigate('/')
+    }catch(error){
+      toast.error("error in login out")
+      console.error(error)
+    }
     
   }
   
@@ -27,7 +31,7 @@ function UserData() {
     <div className="bg-white shadow-lg rounded-lg border border-gray-200 p-8 w-96">
   
       <p className="text-2xl font-bold text-[#31180d] text-center mb-6">
-        Hello, {currentUser?.username || 'User'}!
+        Hello, {currentUser?.name || 'User'}!
       </p>
       <Link to="/orders">
         <div className="border border-[#31180d] rounded-lg px-6 py-4 mb-4 text-lg font-semibold text-center text-[#31180d] hover:bg-gray-100 transition duration-300">
@@ -42,7 +46,7 @@ function UserData() {
         Log Out
       </button>
 
-      {currentUser && currentUser.isAdmin && (
+      {currentUser?.isAdmin &&(
         <Link to="/dashboard">
           <button className="w-full px-6 py-3 bg-[#31180d] text-white rounded-lg text-lg font-semibold hover:bg-[#b4978a] transition duration-300">
             Go To Admin Hub
