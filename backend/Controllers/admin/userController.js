@@ -1,5 +1,6 @@
 import userModel from "../../models/userModel.js";
 import CustomError from "../../utils/CustomError.js";
+import mongoose from "mongoose";
 
 const getAllusers=async(req,res,next)=>{
    const users=await userModel.find({},{password:0})
@@ -11,6 +12,9 @@ const getAllusers=async(req,res,next)=>{
 
 const getUserById=async(req,res,next)=>{
   const {id}=req.params
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return next(new CustomError("Invalid ID format", 400));
+  }
   const user=await userModel.findById(id,{password:0})
   if (!user) {
     return next(new CustomError("No users found", 404));
@@ -19,6 +23,9 @@ const getUserById=async(req,res,next)=>{
 }
 
 const blockUser=async(req,res,next)=>{
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return next(new CustomError("Invalid order ID format", 400));
+  }
    const user=await userModel.findById(req.params.id)
    if (!user) {
     return next(new CustomError("No users found", 404));

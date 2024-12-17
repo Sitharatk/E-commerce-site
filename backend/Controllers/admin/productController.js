@@ -19,6 +19,11 @@ const createProduct=async(req,res,next)=>{
     if (!req.file || !req.file.path) {
         return next(new CustomError("Product image is required", 400));
       }
+      const existingProduct = await ProductModel.findOne({ name });
+      if (existingProduct) {
+        return next(new CustomError("A product with the same name already exists", 400));
+      }
+      
       const newProduct = new ProductModel({
         name,arrival,description,category,price,
         image: req.file.path,
@@ -37,7 +42,7 @@ const updateProduct=async(req,res)=>{
     return next(new CustomError("Product not found", 404));
   }
   let image = product.image;
-  // uploading the image using multer and cloudinary
+
   if (req.file) {
     image = req.file.path;
   }

@@ -14,7 +14,7 @@ function Navbar() {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
 
-  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  // const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const handlechange = (value) => {
     setSearch(value);
@@ -98,9 +98,9 @@ function Navbar() {
               <Link to="/cart">
                 <FontAwesomeIcon className="sm:text-xl text-md text-[#522815] " icon={faShoppingCart} />
               </Link>
-              <div className="absolute -top-2 -right-3 w-5 h-5 flex items-center justify-center rounded-full bg-red-900 text-white text-xs">
+              {/* <div className="absolute -top-2 -right-3 w-5 h-5 flex items-center justify-center rounded-full bg-red-900 text-white text-xs">
                 {cartCount}
-              </div>
+              </div> */}
             </div>
             <Link to="/wishlist">
               <FontAwesomeIcon className="cursor-pointer text-xl sm:mb-3 mt-1 text-[#522815] " icon={faHeart} />

@@ -1,7 +1,7 @@
 import orderModel from './../../models/orderModel.js';
 import CustomError from './../../utils/CustomError.js';
-
-const getTotalOrder=async(req,res)=>{
+import mongoose from 'mongoose';
+const getTotalOrder=async(req,res,next)=>{
 
     const orders = await orderModel.find().populate("products.productId", "name price image")
     .sort({ createdAt: -1 });
@@ -11,7 +11,12 @@ const getTotalOrder=async(req,res)=>{
   res.status(200).json({data:orders})
 }
 
-const getOrderByUser=async(req,res)=>{
+const getOrderByUser=async(req,res,next)=>{
+
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return next(new CustomError("Invalid ID format", 400));
+  }
+
   const orders = await orderModel.find({ userId: req.params.id }).populate("products.productId", "name price image")
   .sort({ createdAt: -1 });
 if (!orders) {
@@ -45,6 +50,9 @@ const getTotalRevenue=async(req,res,next)=>{
 }
 
 const updateShipingStatus=async(req,res,next)=>{
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return next(new CustomError("Invalid order ID format", 400));
+  }
   const order = await orderModel.findOneAndUpdate(
     { _id: req.params.id },
     { $set: { shippingStatus: req.body.status } },
@@ -61,8 +69,12 @@ const updateShipingStatus=async(req,res,next)=>{
 };
 
 const updatePaymentStatus = async (req, res, next) => {
+
   const { id } = req.params;
 
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return next(new CustomError("Invalid order ID format", 400));
+  }
   const order = await orderModel.findOneAndUpdate(
     {  _id: id, 
       paymentStatus: { $ne: "paid" }, 

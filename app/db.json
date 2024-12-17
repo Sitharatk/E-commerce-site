@@ -114,6 +114,18 @@
           "description": "The Plain Silk Dress exudes elegance with its luxurious fabric and simple, classic design, perfect for any occasion.",
           "arrival": "old",
           "quantity": 1
+        },
+        {
+          "_id": "6746b318afc61a698fbe97e9",
+          "name": "slit knit dress",
+          "category": "women",
+          "image": "https://img.freepik.com/free-photo/expressive-woman-posing-bridge-full-shot_23-2148926721.jpg?t=st=1728968947~exp=1728972547~hmac=79c7d478f6c05a2d6b1cc841e9ad9bdcfc83ed3c3bcaae5d4401f4b5b80af616&w=360",
+          "price": 38,
+          "old_price": 80.5,
+          "description": "Made from soft, stretchy knit fabric for comfort and ease of wear.",
+          "arrival": "new",
+          "isDelete": false,
+          "quantity": 1
         }
       ],
       "order": []

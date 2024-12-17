@@ -1,6 +1,8 @@
 import { createContext, useState ,useEffect, useContext} from 'react';
 import { UserContext } from './UserContext';
 import axios from 'axios';
+import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -8,85 +10,66 @@ export const cartContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 function CartProvider({children}) {
-  const [cartItems, setCartItems] = useState(() => {
-    const savedCartItems = localStorage.getItem('cartItems');
-    return savedCartItems ? JSON.parse(savedCartItems) : [];
-  });
-  const [orderItems, setOrderItems] = useState(() => {
-    const savedOrderItems = localStorage.getItem('orderItems');
-    return savedOrderItems ? JSON.parse(savedOrderItems) : [];
-  }); 
 
-    useEffect(() => {
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      localStorage.setItem('orderItems', JSON.stringify(orderItems));
-    }, [cartItems,orderItems]);
 
-    
+const [userCart,setUserCart]=useState([])   
 const {currentUser,setCurrentUser}=useContext(UserContext)
-  
-    const updateQuantity = (itemId, action) => {
-    setCartItems((prevItems) =>{
-      const updateCart=prevItems.map((item) =>item.id === itemId
-       ? { ...item, quantity: action === 'increment' ? item.quantity + 1 : Math.max(1, item.quantity - 1) }: item)
-       patchUpdateCart(updateCart)
-       return updateCart
-    });
-    
-    }; 
 
-    const patchUpdateCart = async (updatedCart) => {
-      if (currentUser&&currentUser.id) {
-        try {
-          await axios.patch(`http://localhost:4000/users/${currentUser.id}`, { cart: updatedCart });
-          const updateddata={...currentUser,cart:updatedCart}
-          setCurrentUser(updateddata)
-          localStorage.setItem('currentUser',JSON.stringify(updateddata))
-        } catch (error) {
-          console.error("Error updating cart:", error);
-        }
-      }
-    };
-   
-    useEffect(()=>{
-      const fetchCartItems = async () => {
-        if (currentUser) {
-          try {
-            const { data } = await axios.get(`http://localhost:4000/users/${currentUser.id}`);
-            if (data) {
-              setCartItems(data.cart); 
-              setOrderItems(data.order)
-            }
-          } catch (error) {
-            console.error("Error:", error);
-          }
-        }
-      };
-      fetchCartItems()
-    },[currentUser])
 
-  const addToCart = (item) => {
-      setCartItems((prevItems) => {
-        const updatedCart = [...prevItems, { ...item, quantity: 1 }];
-        patchUpdateCart(updatedCart);
-        return updatedCart; 
+const fetchUserCart = async () => {
+  if (!currentUser) return;
+  const token = Cookies.get("token");
+  if (!token) return;
+    try {
+      const { data } = await axios.get(`http://localhost:3000/user/cart`,{
+        headers: { Authorization: `Bearer ${token}` },
       });
-    };
-    const patchUpdateOrder = (orderItems) => {
-      axios.patch(`http://localhost:4000/users/${currentUser?.id}`, { order: orderItems });
-       
-    };
-    useEffect(() => {
-      if (currentUser!==null) {
-        patchUpdateOrder(orderItems);
-      }
-    }, [currentUser, orderItems]);
-    
+
+      setUserCart(data.cart || []); 
+    } catch (error) {
+      console.error("Error fetching user cart:", error);
+    }
   
-     
+};
+useEffect(()=>{fetchUserCart()},[currentUser])
+
+const addToCart=async(productId,quantity)=>{
+  const token = Cookies.get("token");
+  if (!token) {
+    toast.error("user not authenticated ,log in")
+    return;
+  }
+  try{
+    const response=await axios.post("http://localhost:3000/user/cart",{productId,quantity},
+    { headers: { Authorization: `Bearer ${token}` },})
+    await fetchUserCart()
+    toast.success(response.data.message);
+  }catch(error){
+      toast.error("failed to add to cart")
+      console.error(error)
+  }
+}
+
+
+const removeFromCart=async(productId)=>{
+  const token = Cookies.get("token");
+  if (!token) {
+    toast.error("user not authenticated ,log in")
+    return;
+  }
+  try{
+    const response=await axios.delete("http://localhost:3000/user/cart",{data:{productId},
+    headers: { Authorization: `Bearer ${token}` }})
+    await fetchUserCart()
+    toast.success(response.data.message);
+}catch(error){
+  toast.error("failed to rremove from cart")
+  console.error(error)
+}
+}
     
   return (
-    <cartContext.Provider value={{cartItems,addToCart,setCartItems,setOrderItems,updateQuantity,orderItems,patchUpdateCart}}>
+    <cartContext.Provider value={{fetchUserCart,setUserCart,userCart,addToCart,removeFromCart}}>
      {children}
     </cartContext.Provider>
   )

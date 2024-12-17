@@ -1,43 +1,29 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../Context/UserContext';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setCurrentUser } = useContext(UserContext);
-  const [users, setUsers] = useState([]);
+  const { loginUser } = useContext(UserContext);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:4000/users')
-      .then((response) => setUsers(response.data))
-      .catch((error) => console.log(error));
-  }, []);
+
+
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-
-    const foundUser = users.find(
-      (user) => user.email === email && user.password === password
-    );
-    const foundBlock = users.find(
-      (user) =>
-        user.email === email && user.password === password && user.isBlock === true
-    );
-
-    if (foundBlock) {
-      toast.error('User is Blocked');
-    } else if (foundUser) {
-      setCurrentUser(foundUser);
-      navigate('/');
-    } else {
-      toast.error('User not found');
+    try{
+      await loginUser(email,password)
+      toast.success("login sucessfull")
+      navigate('/')
+    }catch (error) {
+      toast.error('Login failed. Please check your credentials.');
+      console.error('Login error:', error);
     }
+
   };
 
   return (
