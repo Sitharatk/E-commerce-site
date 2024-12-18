@@ -17,7 +17,7 @@ import { shopContext } from '../Context/shopContext';
 
 function Product() {
   
-  const { addToCart,cartItems } = useContext(cartContext);
+  const { addToCart,userCart } = useContext(cartContext);
 
   const {products}=useContext(shopContext)
   const { id } = useParams();
@@ -41,18 +41,16 @@ useEffect(()=>{
   fetchProduct()
 },[id])
 
- 
-  
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(()=>{
-    if(product&&cartItems){
-    let includedProduct=cartItems?.some(items=>items._id===product._id)
-    setAdded(includedProduct)}
-  },[product,cartItems])
+  useEffect(() => {
+    if (product && Array.isArray(userCart)) {
+      const includedProduct = userCart.some(item => item.productId._id === id);
+      setAdded(includedProduct);
+    }
+  }, [id, product, userCart]);
 
   const handleAddToCart = () => {
     if (currentUser) {
-      addToCart(product);
+      addToCart(product._id,1);
       
     } else {
       toast("Please login")
@@ -70,6 +68,7 @@ useEffect(()=>{
     }
   };
   
+
 //   eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     window.scrollTo(0, 0);

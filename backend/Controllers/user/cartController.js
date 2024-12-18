@@ -2,6 +2,7 @@ import Cart from '../../models/cartModel.js'
 import CustomError from '../../utils/CustomError.js'
 
 const getUserCart=async (req,res)=>{
+
     const data =await Cart.findOne({ userId: req.user.id }).populate('products.productId');
     if (data) {
         res.status(200).json(data);
@@ -11,10 +12,11 @@ const getUserCart=async (req,res)=>{
 }
 
 const updateCart=async(req,res,next)=>{
- const { productId, quantity } = req.body;
- if (quantity <1) {
+  const { productId, quantity } = req.body;
+  if (quantity < 1) {
     next(new CustomError("Quantity is not valid " + quantity, 400));
   }
+  console.log( productId, quantity )
   let cart=await Cart.findOne({userId:req.user.id})
   if(!cart){
     cart= new Cart({

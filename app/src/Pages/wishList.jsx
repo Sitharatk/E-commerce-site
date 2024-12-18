@@ -14,16 +14,16 @@ function Wishlist() {
         </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {wishlistItems.map((product) => (
-            <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <Link to={`/product/${product.id}`} className="no-underline">
+          {wishlistItems.map((product,index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <Link to={`/product/${product._id}`} className="no-underline">
                 <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
               </Link>
               <div className="p-3">
                 <div className="flex justify-between items-center">
                   <p className="font-semibold text-lg text-gray-800">{product.name}</p>
                   <button
-                    onClick={() => removeFromWishlist(product.id)}
+                    onClick={() => removeFromWishlist(product._id)}
                     className="bg-black text-white px-3 py-1 rounded text-sm hover:bg-amber-950 transition duration-300"
                   >
                     Remove

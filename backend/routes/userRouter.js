@@ -1,6 +1,6 @@
 import express from 'express'
 import { allproducts,productById,productByCatogary } from '../Controllers/publicController.js'
-import { getUserCart, removefromCart, updateCart } from '../Controllers/user/cartController.js'
+import {  getUserCart, removefromCart, updateCart } from '../Controllers/user/cartController.js'
 import { getwishList,addTowishList, removefromwishList } from '../Controllers/user/wishListController.js'
 import { verifyToken } from '../middlewares/verifyTokens.js'
 import tryCatch from '../utils/trycatch.js'
