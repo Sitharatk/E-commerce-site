@@ -16,11 +16,11 @@ const fetchwishlist = async () => {
   const token = Cookies.get("token");
   if (!token) return;
     try {
-      const {data}= await axios.get(`http://localhost:3000/user/wishlist`,{
+      const response= await axios.get(`http://localhost:3000/user/wishlist`,{
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(data.products)
-      setWishlistItems(data?.products || []); 
+      console.log(response.data.products)
+      setWishlistItems(response.data?.products || []); 
     } catch (error) {
       console.error("Error fetching user cart:", error);
     }
@@ -30,10 +30,10 @@ const fetchwishlist = async () => {
 useEffect(()=>{fetchwishlist()},[currentUser])
 
   const addToWishlist = async(productId) => {
-     if (!productId) {
-        toast.error("Invalid product or quantity");
-        return;
-    }
+    //  if (!productId) {
+    //     toast.error("Invalid product or quantity");
+    //     return;
+    // }
     
       const token = Cookies.get("token");
       if (!token) {
@@ -41,12 +41,12 @@ useEffect(()=>{fetchwishlist()},[currentUser])
         return;
       }
       try {
-        const response = await axios.post("http://localhost:3000/user/wishlist", { productId }, {
+      await axios.post("http://localhost:3000/user/wishlist", { productId }, {
           headers: { Authorization: `Bearer ${token}` },
         });
       
         await fetchwishlist();
-        toast.success(response.data.message);
+        // toast.success(response.data.message);
       } catch (error) {
         console.error(error.response?.data?.message || "Failed to add to cart");
       }

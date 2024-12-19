@@ -4,7 +4,7 @@ import { WishlistContext } from '../Context/WishlistContext';
 
 function Wishlist() {
   const { wishlistItems, removeFromWishlist } = useContext(WishlistContext);
-
+console.log(wishlistItems)
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold text-[#522815] font-serif mb-4">Wishlist</h2>
@@ -18,6 +18,7 @@ function Wishlist() {
             <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
               <Link to={`/product/${product._id}`} className="no-underline">
                 <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+
               </Link>
               <div className="p-3">
                 <div className="flex justify-between items-center">

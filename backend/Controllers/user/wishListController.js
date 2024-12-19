@@ -3,11 +3,11 @@ import CustomError from "../../utils/CustomError.js";
 
 
 const getwishList=async(req,res,next)=>{
-   const data=await wishList.findOne({ userId: req.user.id }).populate('products.productId');
+   const data=await wishList.findOne({ userId: req.user.id }).populate('products');
    if (data) {
     res.status(200).json(data);
   } else {
-    res.status(200).json({ product: [] });
+    res.status(200).json({ products: [] });
   }
 }
 
