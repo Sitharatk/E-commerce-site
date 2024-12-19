@@ -148,17 +148,31 @@ const getoneOrder=async(req,res,next)=>{
   res.status(200).json({ data: [] });
 }
 }
+const cancelOrder = async (req, res, next) => {
+  // Find the order and update the shippingStatus and paymentStatus to 'Cancelled'
+  const order = await orderModel.findByIdAndUpdate(
+    { _id: req.params.orderId, userId: req.user.id },
+    { 
+      $set: { 
+        shippingStatus: "Cancelled", 
+        paymentStatus: "Cancelled", 
+        cancelled: true // Add the 'cancelled' flag for frontend to recognize
+      }
+    },
+    { new: true } // Return the updated order
+  );
 
-const cancelOrder =async(req,res,next)=>{
-  const Orders = await orderModel.findByIdAndUpdate({_id:req.params.orderId, userId: req.user.id },
-   { $set: { shippingStatus: "Cancelled" } },
-    { new: true }
-  )
-  if(!Orders){
+  // If the order is not found, return a 404 error
+  if (!order) {
     return next(new CustomError("Order not found", 404));
   }
-  res.status(200).json({ message: "Order cancelled" });
-}
+
+  // Send the updated order data back to the frontend
+  res.status(200).json({
+    message: "Order cancelled successfully",
+    data: order, // Send the updated order to the frontend
+  });
+};
 
 
 export {orderbycashondelvry,getAllOrders,getoneOrder,cancelOrder,stripePayment,successStripe}

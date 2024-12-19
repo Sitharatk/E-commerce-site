@@ -2,6 +2,7 @@ import  { useContext, useState ,useEffect} from 'react';
 import { shopContext } from '../../Context/shopContext';
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
+import axiosInstance from './../../../utlities/axiosInstance';
 
 
 function Edit() {
@@ -29,7 +30,7 @@ function Edit() {
         if (product) {
             try {
                 const updatedProduct = { ...product, name, description, price, image: imageurl };
-                await axios.patch(`http://localhost:4000/products/${product.id}`, updatedProduct);
+                await axios.axiosInstance(`/products/${product.id}`, updatedProduct);
                 setProducts((prevProducts) => 
                     prevProducts.map((item) => (item.id === product.id ? updatedProduct : item))
                 );
@@ -56,7 +57,13 @@ function Edit() {
         }
 
  }
-   
+ const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        setImage(file);
+        console.log("Selected file:", file.name); 
+    }
+};
 
   return (
     <div className="p-6 ml-64">
@@ -75,11 +82,11 @@ function Edit() {
                 type="text" value={name} onChange={(e) => setName(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded mb-4"
             />
-            <label className="block text-lg font-semibold mb-1">Image URL:</label>
+            <label className="block text-lg font-semibold mb-1">Image :</label>
             <input
-                type="text"
-               value={imageurl} onChange={(e) => setImageurl(e.target.value)}
-                className="border border-gray-300 p-2 w-full rounded mb-4"
+               
+               value={imageurl} type="file" accept="image/*"
+               onChange={handleImageChange} className="border border-gray-300 p-2 w-full rounded mb-4"
             />
             <label className="block text-lg font-semibold mb-1">Description:</label>
             <input

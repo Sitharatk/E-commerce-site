@@ -32,8 +32,8 @@ function ProductManagement() {
           <tbody>
             {
               products.map((product)=>(
-                <tr  key={product.id}>
-                  <td className="border border-gray-300 p-3 text-center">{product.id}</td>
+                <tr  key={product._id}>
+                  <td className="border border-gray-300  text-center">{product._id}</td>
                   <td className="border border-gray-300 p-3 text-center">
                   <img src={product.image} alt={product.name} className="w-16 h-16 object-cover mx-auto" />
                   </td>
