@@ -3,24 +3,28 @@ import { useContext,  } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext';
-import { cartContext } from '../../Context/CartContext';
+
+import axiosInstance from '../../../utlities/axiosInstance';
+import { toast } from 'react-toastify';
 
 
 function Sidebar() {
 
   const navigate = useNavigate()
   const {setCurrentUser}=useContext(UserContext)
-  const {setCartItems,setOrderItems}=useContext(cartContext)
-  const adminLogout =()=>{
-    setCurrentUser(null)
-    setCartItems([])
-    setOrderItems([])
-   localStorage.removeItem('currentUser')
-    localStorage.removeItem('cartItems')
-  localStorage.removeItem('orderItems')
-  navigate('/')
-    
-  }
+  
+  const adminLogout =async()=>{
+
+    try{
+      await axiosInstance.post('/auth/logout',{},{ withCredentials: true })
+      toast.success("logout successful")
+      setCurrentUser(null);
+      navigate('/')
+    }catch(error){
+      toast.error("error in login out")
+      console.error(error)
+    }
+    }
   return (
     <div className="fixed top-0 left-0 w-64 h-full bg-slate-700 text-white flex flex-col p-6 ">
       <div className="flex items-center mb-8">

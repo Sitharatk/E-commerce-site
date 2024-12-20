@@ -1,38 +1,54 @@
 import  { useContext, useState ,useEffect} from 'react';
 import { shopContext } from '../../Context/shopContext';
 import { useNavigate, useParams } from 'react-router-dom'
-import axios from 'axios';
 import axiosInstance from './../../../utlities/axiosInstance';
 
 
 function Edit() {
     const {id} =useParams()
-    const {products,setProducts}=useContext(shopContext)
-
+    const {products}=useContext(shopContext)
+    const [product, setProduct] = useState(null);
     const [name,setName]=useState('')
-    const [imageurl,setImageurl]=useState('')
+    const [image,setImage]=useState('')
     const [description,setDescritption]=useState('')
     const [price,setPrice]=useState('')
+    const [category,setCategory]=useState('')
     const navigate = useNavigate()
        
-    const product = products.find((item) => item.id === id);
-   
+    useEffect(() => {
+        console.log("ID from useParams:", id);
+    }, [id]);
+    
     // eslint-disable-next-line no-undef
     useEffect(() => {
-        if (product) {
-            setName(product.name);
-            setImageurl(product.image);
-            setDescritption(product.description);
-            setPrice(product.price);
+        if (products) {
+    const getproduct = products.find((item) => item._id === id);
+    setProduct(getproduct)
+            if(getproduct){
+                setName(getproduct.name);
+            setImage(getproduct.image);
+            setDescritption(getproduct.description);
+            setPrice(getproduct.price);
+            setCategory(getproduct.category)
+            }
+            
         }
-    }, [product]);
+    }, [id,products]);
     const handleSave = async () => {
         if (product) {
             try {
-                const updatedProduct = { ...product, name, description, price, image: imageurl };
-                await axios.axiosInstance(`/products/${product.id}`, updatedProduct);
-                setProducts((prevProducts) => 
-                    prevProducts.map((item) => (item.id === product.id ? updatedProduct : item))
+                const formData = new FormData();
+                formData.append("name", name);
+                formData.append("description", description);
+                formData.append("price", parseFloat(price));
+                formData.append("category",category)
+                if (image) {
+                    formData.append("image", image);
+                };
+                const response=await axiosInstance.patch(`/admin/products/${id}`, formData);
+                const updatedProduct = response.data;
+                setProduct((prevProducts) => 
+                    prevProducts.map((item) => (item._id === product._id ? updatedProduct : item))
                 );
                 // toast("product Updated")
                 navigate('/productmanagment');
@@ -46,10 +62,13 @@ function Edit() {
         return <p>Product not found</p>;
     }
 
-    const handleRemove = async () => {
+    const handleRemoveOrrestore = async () => {
         try {
-              await axios.delete(`http://localhost:4000/products/${product.id}`)
-              setProducts((preitems)=>preitems.filter(item=>item.id!==product.id))
+            const updatedProduct = { ...product, isDelete: !product.isDelete };
+              await axiosInstance.patch(`/admin/products/delete/${id}`,{ isDelete: updatedProduct.isDelete })
+              setProduct((preitems)=>preitems.map(item =>
+                item._id === product._id ? { ...item, isDelete: updatedProduct.isDelete } : item
+            ))
             //   toast("product Deleted")
               navigate('/productmanagment')
         }catch (error) {
@@ -85,13 +104,19 @@ function Edit() {
             <label className="block text-lg font-semibold mb-1">Image :</label>
             <input
                
-               value={imageurl} type="file" accept="image/*"
+                type="file" accept="image/*"
                onChange={handleImageChange} className="border border-gray-300 p-2 w-full rounded mb-4"
             />
             <label className="block text-lg font-semibold mb-1">Description:</label>
             <input
                 type="text"
                 value={description} onChange={(e) => setDescritption(e.target.value)}
+                className="border border-gray-300 p-2 w-full rounded mb-4"
+            />
+             <label className="block text-lg font-semibold mb-1">category:</label>
+            <input
+                type="text"
+                value={category} onChange={(e) => setCategory(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded mb-4"
             />
             <label className="block text-lg font-semibold mb-1">Price:</label>
@@ -103,8 +128,12 @@ function Edit() {
             <div className="flex gap-4 mt-4 ml-96 ">
             <button  onClick={handleSave}className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
             Save</button>
-            <button onClick={handleRemove} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
-            Delete</button>
+            <button onClick={handleRemoveOrrestore}   className={`${
+                                product && product.isDelete
+                                    ? "bg-green-500  px-4 py-2 rounded hover:bg-green-600"
+                                    : "bg-red-500  px-4 py-2 rounded hover:bg-red-600"
+            }`}>
+           {product && product.isDelete ? "Restore Product" : "Delete Product"}</button>
             </div>
         </div>
     </div>

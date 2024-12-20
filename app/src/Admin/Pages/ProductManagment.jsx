@@ -39,7 +39,7 @@ function ProductManagement() {
                   </td>
                   <td className="border border-gray-300 p-3 text-center">{product.name}</td>
                   <td className="border border-gray-300 p-3 text-center">${product.price}</td>
-                  <td className="border border-gray-300 p-3 text-center"> <Link to={`/edit/${product?.id}`} ><button className="bg-gray-500 text-white py-1 px-4 rounded hover:bg-black transition duration-200">
+                  <td className="border border-gray-300 p-3 text-center"> <Link to={`/edit/${product?._id}`} ><button className="bg-gray-500 text-white py-1 px-4 rounded hover:bg-black transition duration-200">
                   Edit</button></Link></td>
                  </tr>)
               )
