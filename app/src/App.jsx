@@ -26,6 +26,8 @@ import Edit from './Admin/Pages/Edit';
 import AddProduct from './Admin/Pages/AddProduct';
 import Usersdetails from './Admin/Pages/Usersdetails';
 import Wishlist from './Pages/WishList';
+import Sucess from './Pages/Sucess';
+import Cancel from './Pages/Cancel';
 
 
 
@@ -56,6 +58,8 @@ return (
             <Route path='/payment' element={<Payment />} />
             <Route path='/userdata' element={<UserData />} />
             <Route path='/wishlist'element={<Wishlist/>}/>
+            <Route path='/success/:sessionId'element={<Sucess/>}/>
+            <Route path='/cancel' element={<Cancel/>}/>
           </>
         ):(<Route path='/*' element={<NotFound/>}/>
         )}

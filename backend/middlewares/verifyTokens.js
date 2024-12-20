@@ -8,14 +8,14 @@ export const verifyToken=(req,res,next)=>{
             const token=authHeader.split(" ")[1]
             jwt.verify(token,process.env.JWT_SECRET,(err,user)=>{
                 if (err) {
-                    throw new CustomError("Token is not valid", 403);
+                    throw new CustomError("Token is not valid", 401);
                   }
                   req.user=user
                   next()
 
             })
         }else{
-            throw new CustomError("You are not authenticated", 403);
+            throw new CustomError("You are not authenticated", 401);
         }
 
     }catch(err ){

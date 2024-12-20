@@ -33,8 +33,8 @@ const loginUser = async (req, res,next) => {
     
       res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
-        secure: false,  
-        maxAge: 7 * 24 * 60 * 60 * 1000, 
+        secure: true,  
+        sameSite: "none",
       });
 
       const currentUser = {
@@ -45,6 +45,12 @@ const loginUser = async (req, res,next) => {
       }
       //sending user details to client (for curr user)
       res.cookie("currentUser", JSON.stringify(currentUser))
+
+      res.cookie("token", token, {
+        httpOnly: false,
+        secure: true,
+        sameSite: "none",
+      });
     
       res.json({ 
         success: true, 
@@ -81,7 +87,6 @@ const registerUser=async (req,res)=>{
              password:hashedPassword
         })
         const user=await newUser.save()
-        console.log("user registerd")
 
         res.json({success:true,message:"succes"})
             
@@ -114,7 +119,21 @@ const adminLogin = async (req, res) => {
       await user.save();
 
       res.cookie("refreshToken", refreshToken, { httpOnly: true,
-  secure: false,
+  secure: true,
+  sameSite: "none",
+});
+  const currentUser = {
+  id: user._id,
+  name: user.name,
+  email: user.email,
+  isAdmin: user.isAdmin,
+};
+
+res.cookie("currentUser", JSON.stringify(currentUser));
+
+res.cookie("token", token, {
+  httpOnly: false,
+  secure: true,
   sameSite: "none",
 });
 res.json({ success: true, message: "Logged in successfully", token });
@@ -126,6 +145,7 @@ res.json({ success: true, message: "Logged in successfully", token });
   };
 
   const refreshToken=async(req,res)=>{
+    console.log("from refreshing token")
     const refreshToken = req.cookies.refreshToken;
 
     if (!refreshToken) {
@@ -144,7 +164,7 @@ res.json({ success: true, message: "Logged in successfully", token });
 const logout=async(req,res)=>{
   res.clearCookie('refreshToken', {
     httpOnly: true,
-    secure:false,
+    secure:true,
     sameSite: "none",
   });
   res.clearCookie("currentUser", {
@@ -153,8 +173,8 @@ const logout=async(req,res)=>{
     sameSite: "none",
   });
   res.clearCookie('token', {
-    httpOnly: true,
-    secure:false,
+    httpOnly: false,
+    secure:true,
     sameSite: "none",
   });
 

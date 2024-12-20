@@ -75,7 +75,10 @@ useEffect(()=>{
  }, [id]); 
  const rating = Math.floor(Math.random() * (90 - 10)) + 10; // Random rating between 10 and 90
  const starCount = Math.floor(rating / 20); // Assuming 5 stars as maximum, so 20 rating per star
- 
+ if (!product) {
+  return <div>Loading...</div>;
+}
+
   return (
    <>{!product ? (
     <div className="flex items-center justify-center h-screen">

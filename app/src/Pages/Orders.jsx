@@ -90,7 +90,7 @@ function Orders() {
                 <div className="flex flex-col gap-4 w-full md:w-1/2">
                   {/* Address */}
                   <p className="text-sm text-gray-600">
-                    <span className="font-medium">Address:</span> {order.address.state || "Not Provided"}
+                    <span className="font-medium">Address:</span> {order.address || "Not Provided"}
                   </p>
 
                   {/* Shipping Status */}

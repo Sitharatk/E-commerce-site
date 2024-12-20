@@ -8,7 +8,7 @@ const orderSchema = new mongoose.Schema( {
       ],
       orderId:{type:String},
       purchasedDate: { type: Date, default: Date.now },
-      address: { type: Object, required: true },
+      address: { type: String, required: true },
       totalAmount: { type: Number},
       paymentMethod:{type:String,enum: ['cash on delivery', 'stripe'],
         default: 'cash on delivery'},

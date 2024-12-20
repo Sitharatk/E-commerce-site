@@ -38,8 +38,8 @@ const orderbycashondelvry=async(req,res,next)=>{
         address,
         totalAmount,
         paymentMethod: "cash on delivery",
-        paymentStatus: 'pending',  
-        shippingStatus: 'pending',
+        paymentStatus: 'pending' 
+        // shippingStatus: 'pending',
 
       });
       console.log(order);
@@ -80,8 +80,8 @@ const stripePayment=async(req,res,next)=>{
       payment_method_types: ['card'],
       line_items,
       mode: 'payment',
-      success_url: `http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `http://localhost:3000/cancel`,
+      success_url: `http://localhost:5173/success/{CHECKOUT_SESSION_ID}`,
+      cancel_url: `http://localhost:5173/cancel`,
     });
     const newTotal=Math.round(totalAmount*100)
 

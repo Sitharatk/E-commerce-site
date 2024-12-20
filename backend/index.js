@@ -9,6 +9,7 @@ import router from './routes/userRouter.js'
 import errorHandler from './middlewares/errorHandler.js'
 import admin from './routes/adminRoute.js'
 import { connectCloudinary } from './Config/cloudinary.js'
+import cookieParser from 'cookie-parser'
 dotenv.config()
 
 const app=express()
@@ -23,7 +24,7 @@ app.use(cors({
     credentials:true,
     allowedHeaders: ["Content-Type", "Authorization"]
 }))
-
+app.use(cookieParser())
 app.use('/auth',userRouter)
 app.use('/user',router)
 app.use('/admin',admin)

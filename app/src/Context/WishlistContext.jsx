@@ -1,8 +1,7 @@
 import { createContext, useContext, useState,useEffect } from 'react';
 import { UserContext } from './UserContext';
-import axios from 'axios';
-import Cookies  from 'js-cookie';
 import { toast } from 'react-toastify';
+import axiosInstance from '../../utlities/axiosInstance';
 
 export const WishlistContext = createContext();
 
@@ -13,12 +12,8 @@ export const WishlistProvider = ({ children }) => {
 
 const fetchwishlist = async () => {
   if (!currentUser) return;
-  const token = Cookies.get("token");
-  if (!token) return;
     try {
-      const response= await axios.get(`http://localhost:3000/user/wishlist`,{
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response= await axiosInstance.get(`/user/wishlist`);
       console.log(response.data.products)
       setWishlistItems(response.data?.products || []); 
     } catch (error) {
@@ -35,15 +30,8 @@ useEffect(()=>{fetchwishlist()},[currentUser])
     //     return;
     // }
     
-      const token = Cookies.get("token");
-      if (!token) {
-        toast.error("user not authenticated ,log in")
-        return;
-      }
       try {
-      await axios.post("http://localhost:3000/user/wishlist", { productId }, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+      await axiosInstance.post("/user/wishlist", { productId },);
       
         await fetchwishlist();
         // toast.success(response.data.message);
@@ -54,14 +42,8 @@ useEffect(()=>{fetchwishlist()},[currentUser])
   };
 
   const removeFromWishlist = async(productId) => {
-    const token = Cookies.get("token");
-      if (!token) {
-        toast.error("user not authenticated ,log in")
-        return;
-      }
       try{
-        const response=await axios.delete("http://localhost:3000/user/wishlist",{data:{productId},
-        headers: { Authorization: `Bearer ${token}` }})
+        const response=await axiosInstance.delete("/user/wishlist",{data:{productId},})
         await fetchwishlist()
         toast.success(response.data.message);
     }catch(error){

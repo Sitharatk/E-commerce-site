@@ -1,9 +1,8 @@
 import { createContext, useState ,useEffect, useContext} from 'react';
 import { UserContext } from './UserContext';
-import axios from 'axios';
-import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import axiosErrorManager from '../../utlities/axiosErrorManager';
+import axiosInstance from '../../utlities/axiosInstance';
 
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -24,12 +23,8 @@ const cartItemCalculate = () => {
 
 const fetchUserCart = async () => {
   if (!currentUser) return;
-  const token = Cookies.get("token");
-  if (!token) return;
-    try {
-      const {data}= await axios.get(`http://localhost:3000/user/cart`,{
-        headers: { Authorization: `Bearer ${token}` },
-      });
+try {
+      const {data}= await axiosInstance.get(`/user/cart`);
       console.log(data.products)
       setUserCart(data.products || []); 
     } catch (error) {
@@ -44,16 +39,8 @@ const addToCart=async(productId,quantity)=>{
     toast.error("Invalid product or quantity");
     return;
 }
-
-  const token = Cookies.get("token");
-  if (!token) {
-    toast.error("user not authenticated ,log in")
-    return;
-  }
   try {
-    const response = await axios.post("http://localhost:3000/user/cart", { productId, quantity }, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axiosInstance.post("/user/cart",{ productId, quantity });
   
     await fetchUserCart();
     toast.success(response.data.message);
@@ -65,14 +52,9 @@ const addToCart=async(productId,quantity)=>{
 
 
 const removeFromCart=async(productId)=>{
-  const token = Cookies.get("token");
-  if (!token) {
-    toast.error("user not authenticated ,log in")
-    return;
-  }
+  
   try{
-    const response=await axios.delete("http://localhost:3000/user/cart",{data:{productId},
-    headers: { Authorization: `Bearer ${token}` }})
+    const response=await axiosInstance.delete("/user/cart",{data:{productId},})
     await fetchUserCart()
     toast.success(response.data.message);
 }catch(error){
@@ -95,9 +77,8 @@ setUserCart(updatedCart);
 
 const update = async (productId, quantity) => {
   try {
-       const token = Cookies.get("token");
-       const response=await axios.post('http://localhost:3000/user/cart',{productId,quantity},
-           { headers: { Authorization: `Bearer ${token}` }, } );
+
+       const response=await axiosInstance.post('/user/cart',{productId,quantity} ,);
            console.log(response.data)
    } catch (error) {
        console.error(axiosErrorManager(error));
