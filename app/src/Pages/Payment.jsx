@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
     
 
 function Payment() {
+  const {fetchUserCart,cartItemCalculate}=useState('')
   const [fullName, setFullName] = useState('');
   const [address, setAddress] = useState('');
   const [landmark, setLandmark] = useState('');
