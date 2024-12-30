@@ -18,5 +18,11 @@ This is an e-commerce clothing website built using **React** and **Tailwind CSS*
   - React Router for navigation
   - Font Awesome for icons
   - React Toastify for notifications
-    
+
+ - **Backend**:
+   - Node.js
+   - Express.js
+   - MongoDB (database)
+   - JWT (JSON Web Token) for authentication
+   - RESTful API (for communication between frontend and backend)
 
