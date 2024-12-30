@@ -11,7 +11,6 @@ This is an e-commerce clothing website built using **React** and **Tailwind CSS*
 - User authentication (Login and Signup)
 - Product listing with filtering options
 - -Search Option
-
 - **Frontend:**
   - React.js
   - Tailwind CSS
