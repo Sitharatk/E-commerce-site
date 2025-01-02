@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import axiosInstance from "../../utlities/axiosInstance";
 
 function Payment() {
-  const { fetchUserCart, cartItemCalculate, userCart, setUserCart, setOrderItems } =
+  const {  cartItemCalculate, userCart, setUserCart, setOrderItems } =
     useContext(cartContext);
   const [fullName, setFullName] = useState("");
   const [address, setAddress] = useState("");
@@ -14,18 +14,25 @@ function Payment() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("Cash On Delivery");
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!fullName || !address || !pinCode || !phoneNumber || !landmark) {
+      toast.error("All fields are required!");
+      return;
+    }
+  
     const totalAmount = cartItemCalculate();
-
+  
     try {
       if (paymentMethod === "Cash On Delivery") {
         await axiosInstance.post(`/user/order/cod`, { address, totalAmount });
-        toast.success("Order placed successfully!");
+        // toast.success("Order placed successfully!");
+        navigate("/ordersuccess");  
+        setUserCart([]);  
         setOrderItems((prev) => [...prev, ...userCart]);
-        setUserCart([]);
-        navigate("/");
+  
+         
+      
       } else if (paymentMethod === "Card") {
         const response = await axiosInstance.post(`/user/order/stripe`, {
           address,
@@ -36,9 +43,9 @@ function Payment() {
       }
     } catch (error) {
       console.error(error);
-    
     }
   };
+  
 
   return (
     <div className="flex items-center justify-center bg-gray-100">

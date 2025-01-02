@@ -11,12 +11,15 @@ function AddProduct() {
     price: 0,
     category: ''
   });
-
+  const [isLoading, setIsLoading] = useState(false); // For loading state
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setNewproduct({ ...newproduct, [name]: value });
+    setNewproduct((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
   };
 
   const handleFileChange = (e) => {
@@ -27,23 +30,38 @@ function AddProduct() {
   };
 
   const handleSubmit = async () => {
-    try {
-      const formData = new FormData();
-      formData.append('name', newproduct.name);
-      formData.append('image', newproduct.image);
-      formData.append('description', newproduct.description);
-      formData.append('price', newproduct.price);
-      formData.append('category', newproduct.category);
+    if (!newproduct.name || !newproduct.image || !newproduct.description || !newproduct.category || newproduct.price <= 0) {
+      toast.error('All fields are required!');
+      return;
+    }
 
-      await axiosInstance.post(`/admin/products`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`, // Ensure token is defined
-        },
-      });
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append('name', newproduct.name);
+    formData.append('image', newproduct.image);
+    formData.append('description', newproduct.description);
+    formData.append('price', newproduct.price);
+    formData.append('category', newproduct.category);
+
+    try {
+      // Check if product with the same name exists
+      const checkProduct = await axiosInstance.get(`/admin/products/check-name?name=${newproduct.name}`);
+      if (checkProduct.data.exists) {
+        toast.error('A product with the same name already exists');
+        setIsLoading(false);
+        return;
+      }
+
+      // Proceed with adding the product
+      const response = await axiosInstance.post(`/admin/products`, formData);
+      console.log('Server response:', response.data);
+      toast.success('Product added successfully');
       navigate('/productmanagment');
     } catch (error) {
-      console.error('Error adding the product:', error);
+      console.error('Error adding the product:', error.response?.data || error.message);
+      toast.error('A product with the same name already exists');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -85,14 +103,17 @@ function AddProduct() {
         </div>
         <div>
           <label className="mb-1 font-semibold">Category:</label>
-          <input
-            type="text"
+          <select
             name="category"
-            className="border border-gray-300 p-2 w-full rounded mt-2"
-            placeholder="Enter product category"
-            onChange={handleChange}
             value={newproduct.category}
-          />
+            onChange={handleChange}
+            className="border border-gray-300 p-2 w-full rounded mb-4"
+          >
+            <option value="" disabled>Select a category</option>
+            <option value="women">Women</option>
+            <option value="men">Men</option>
+            <option value="sunglasses">Sunglasses</option>
+          </select>
         </div>
         <div>
           <label className="mb-1 font-semibold">Price:</label>
@@ -109,8 +130,9 @@ function AddProduct() {
           <button
             className="bg-black text-white px-4 py-2 rounded-lg hover:bg-slate-400 transition duration-200"
             onClick={handleSubmit}
+            disabled={isLoading}
           >
-            ADD
+            {isLoading ? 'Adding...' : 'ADD'}
           </button>
         </div>
       </div>

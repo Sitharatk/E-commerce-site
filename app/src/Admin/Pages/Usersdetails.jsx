@@ -82,10 +82,13 @@ if (!user) {
              <span className="font-normal ">User</span> )}
              </p>
            
-        <button onClick={()=>handleBlock(user._id)}
-        className="bg-gray-500 text-white py-2 px-4 mt-4 rounded hover:bg-black transition duration-200">
-        {user.isBlock ? 'Unblock' : 'Block'}
-                </button>
+             {!user.isAdmin && (
+  <button 
+    onClick={() => handleBlock(user._id)}
+    className="bg-gray-500 text-white py-2 px-4 mt-4 rounded hover:bg-black transition duration-200">
+    {user.isBlock ? 'Unblock' : 'Block'}
+  </button>
+)}
 
             </div>
 

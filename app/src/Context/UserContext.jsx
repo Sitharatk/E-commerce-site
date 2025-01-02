@@ -45,9 +45,32 @@ function UserProvider({ children }) {
       
     }
   };
+
+  const loginAdmin = async (email, password) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/auth/admin",
+        { email, password },
+        { withCredentials: true }
+      );
+      console.log(res);
+  
+      const admin = Cookies.get("currentUser");
+      if (admin) {
+        setCurrentUser(JSON.parse(admin));
+        toast.success("Admin logged in successfully");
+      } else {
+        toast.error("Failed to retrieve admin details.");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      throw error; // Re-throw the error to let the caller handle it, if necessary.
+    }
+  };
+  
   
   return (
-    <UserContext.Provider value={{ currentUser, setCurrentUser, loginUser}}>
+    <UserContext.Provider value={{ currentUser, setCurrentUser, loginUser,loginAdmin}}>
       {children}
     </UserContext.Provider>
   );

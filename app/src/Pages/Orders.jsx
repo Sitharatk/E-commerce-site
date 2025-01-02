@@ -87,7 +87,7 @@ function Orders() {
                 </div>
 
                 {/* Right Section: Order Summary */}
-                <div className="flex flex-col gap-4 w-full md:w-1/2">
+                <div className="flex flex-col gap-3 w-full md:w-1/2">
                   {/* Address */}
                   <p className="text-sm text-gray-600">
                     <span className="font-medium">Address:</span> {order.address || "Not Provided"}
@@ -95,7 +95,7 @@ function Orders() {
 
                   {/* Shipping Status */}
                   <p className="text-sm text-gray-600">
-                    <span className="font-medium">Shipping Status:</span> {order.shippingStatus || "Pending"}
+                    <span className="font-medium">Shipping Status:</span> {order.shippingStatus || "processing"}
                   </p>
 
                   {/* Payment Status */}

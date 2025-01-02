@@ -65,17 +65,21 @@ function Edit() {
     const handleRemoveOrrestore = async () => {
         try {
             const updatedProduct = { ...product, isDelete: !product.isDelete };
-              await axiosInstance.patch(`/admin/products/delete/${id}`,{ isDelete: updatedProduct.isDelete })
-              setProduct((preitems)=>preitems.map(item =>
-                item._id === product._id ? { ...item, isDelete: updatedProduct.isDelete } : item
-            ))
-            //   toast("product Deleted")
-              navigate('/productmanagment')
-        }catch (error) {
-            console.error('Error deleting the product:', error);
+            await axiosInstance.patch(`/admin/products/delete/${id}`, { isDelete: updatedProduct.isDelete });
+    
+            // Assuming you have a method to update the products in your context
+            setProduct((prevProducts) =>
+                prevProducts.map((item) =>
+                    item._id === product._id ? { ...item, isDelete: updatedProduct.isDelete } : item
+                )
+            );
+    
+            navigate('/productmanagment');
+        } catch (error) {
+            console.error('Error deleting/restoring the product:', error);
         }
-
- }
+    };
+    
  const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -113,12 +117,20 @@ function Edit() {
                 value={description} onChange={(e) => setDescritption(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded mb-4"
             />
-             <label className="block text-lg font-semibold mb-1">category:</label>
-            <input
-                type="text"
-                value={category} onChange={(e) => setCategory(e.target.value)}
-                className="border border-gray-300 p-2 w-full rounded mb-4"
-            />
+             <label className="block text-lg font-semibold mb-1">Category:</label>
+<select
+  value={category}
+  onChange={(e) => setCategory(e.target.value)}
+  className="border border-gray-300 p-2 w-full rounded mb-4"
+>
+  <option value="" disabled>
+    Select a category
+  </option>
+  <option value="women">Women</option>
+  <option value="men">Men</option>
+  <option value="sunglasses">Sunglasses</option>
+</select>
+
             <label className="block text-lg font-semibold mb-1">Price:</label>
             <input
                 type="number"

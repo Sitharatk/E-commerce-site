@@ -4,10 +4,10 @@ import { cartContext } from './../Context/CartContext';
 import { Link} from 'react-router-dom';
 import { UserContext } from '../Context/UserContext';
 import { toast } from 'react-toastify';
-import { faHeart} from '@fortawesome/free-solid-svg-icons';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { WishlistContext } from '../Context/WishlistContext'
-
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import axiosErrorManager from '../../utlities/axiosErrorManager';
 import axios from 'axios';
@@ -16,14 +16,14 @@ import { shopContext } from '../Context/shopContext';
 
 
 function Product() {
-  
+  const { wishlistItems, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
   const { addToCart,userCart } = useContext(cartContext);
 
   const {products}=useContext(shopContext)
   const { id } = useParams();
   const [added, setAdded] = useState(false);
   const {currentUser}=useContext(UserContext);
-  const {addToWishlist}=useContext(WishlistContext)
+ 
   const [product,setProduct]=useState(null)
   const navigate=useNavigate()
 
@@ -48,6 +48,20 @@ useEffect(()=>{
     }
   }, [id, product, userCart]);
 
+  const toggleWishlist = (product) => {
+    if(currentUser){
+    const isInWishlist = wishlistItems.some((item) => item._id === product._id);
+    if (isInWishlist) {
+      removeFromWishlist(product._id); // Remove from wishlist
+    } else {
+      addToWishlist(product._id); // Add to wishlist
+    }}  
+  else {
+      toast("Please login")
+      navigate('/login');
+    }
+  };
+
   const handleAddToCart = () => {
     if (currentUser) {
       addToCart(product._id,1);
@@ -58,16 +72,7 @@ useEffect(()=>{
     }
   };
 
-  const handleAddToWishlist = () => {
-    if (currentUser) {
-      addToWishlist(product);
-   
-    } else {
-      toast("Please login");
-      navigate('/login');
-    }
-  };
-  
+ 
 
 //   eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
@@ -93,13 +98,13 @@ useEffect(()=>{
           <p className='font-bold text-2xl text-[#31180d]  mb-2'>{product.name}</p>
           <p className='text-lg text-[#522815]  mb-2'>${product.price}</p>
           <p className='text-sm text-gray-500 mb-4'>{product.description}</p>
-          <div className='flex'>
+          {/* <div className='flex'>
             <p>Size:</p>
         
             <div><p>S</p></div>
             <div><p>M</p></div>
             <div><p>L</p></div>
-          </div>
+          </div> */}
           <p className='text-sm text-[#522815]  mb-3'>
            
             <span className="text-yellow-500">
@@ -115,24 +120,32 @@ useEffect(()=>{
           </p>
           
           <div className='flex items-center space-x-5'>
-            {added ? (
-              <Link to='/cart'>
-                <button className='bg-[#522815]  text-white w-40 px-2 py-1 rounded hover:bg-[#a78475] transition duration-300'>
-                  Go To Cart
+              {added ? (
+                <Link to='/cart'>
+                  <button className='bg-[#522815] text-white w-40 px-2 py-1 rounded hover:bg-[#a78475] transition duration-300'>
+                    Go To Cart
+                  </button>
+                </Link>
+              ) : (
+                <button onClick={handleAddToCart} className='bg-[#522815] text-white w-40 px-2 py-1 rounded hover:bg-[#a5897c] transition duration-300'>
+                  Add To Cart
                 </button>
-              </Link>
-            ) : (
-              <button onClick={handleAddToCart} className='bg-[#522815]  text-white w-40 px-2 py-1 rounded hover:bg-[#a5897c]  transition duration-300'>
-                Add To Cart
+              )}
+
+              <button
+                onClick={() => toggleWishlist(product)}
+                className="text-2xl text-[#31180d] hover:text-[#b17b64] transition duration-300"
+              >
+                {wishlistItems.some((item) => item._id === product._id) ? (
+                  <FaHeart className="text-[#31180d]" />
+                ) : (
+                  <FaRegHeart />
+                )}
               </button>
-            )}
-            <button onClick={handleAddToWishlist}> 
-              <FontAwesomeIcon className="text-[#522815]  text-3xl hover:text-[#aa8c7f] transition duration-300" icon={faHeart} />
-            </button>
+            </div>
           </div>
         </div>
-      </div>
-)}
+      )}
    <div className="relative flex items-center font-sans mt-8 mb-8 px-5 py-4 ">
    <p className="text-2xl font-semibold text-[#31180d] relative z-10 bg-white px-4">RELATED PRODUCTS</p>
    <div className="absolute inset-0 flex items-center mb-2">

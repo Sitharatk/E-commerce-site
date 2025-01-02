@@ -40,10 +40,10 @@ const addToCart=async(productId,quantity)=>{
     return;
 }
   try {
-    const response = await axiosInstance.post("/user/cart",{ productId, quantity });
+ await axiosInstance.post("/user/cart",{ productId, quantity });
   
     await fetchUserCart();
-    toast.success(response.data.message);
+    // toast.success(response.data.message);
   } catch (error) {
     toast.error(error.response?.data?.message || "Failed to add to cart");
   }
@@ -58,7 +58,7 @@ const removeFromCart=async(productId)=>{
     await fetchUserCart()
     toast.success(response.data.message);
 }catch(error){
-  toast.error("failed to rremove from cart")
+  toast.error("failed to remove from cart")
   console.error(error)
 }
 }

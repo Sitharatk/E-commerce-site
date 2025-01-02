@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
   price: {type: Number,required: true},
   old_price: {type: Number},
   description: { type: String,required: true },
-  arrival: {type: String, enum: ['new', 'old'], required: true},
+  arrival: {type: String, enum: ['new', 'old']},
   isDelete:{type:Boolean,default:false}
 });
 

@@ -83,7 +83,7 @@ function Navbar() {
           {search && results.length > 0 && (
             <div className="absolute bg-white w-full z-10 shadow-lg rounded-lg">
               {results.map((item) => (
-                <Link key={item.id} to={`/product/${item.id}`}>
+                <Link key={item._id} to={`/product/${item._id}`}>
                   <div className="p-2 border-gray-200 hover:bg-gray-100 cursor-pointer">
                     {item.name}
                   </div>
@@ -111,7 +111,7 @@ function Navbar() {
           </>
         ) : (
           <Link to="/login">
-            <button className="w-36 bg-[#c79d89] text-white py-2 rounded-md transition duration-300 ease-in-out hover:bg-[#7c472e] hover:text-white">
+            <button className="w-36 bg-[#774229] text-white py-2 rounded-md transition duration-300 ease-in-out hover:bg-[#b88c78] hover:text-white">
               Login
             </button>
           </Link>

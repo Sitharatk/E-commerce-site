@@ -6,7 +6,7 @@ import Navbar from "../Component/Navbar";
 function MainLayout() {
   const location=useLocation()
 
-  const hide=location.pathname==='/login' || location.pathname === '/signup';
+  const hide=location.pathname==='/login' || location.pathname === '/signup' || location.pathname === '/adminlogin';
     return (
       <>
        {!hide && <Navbar />}

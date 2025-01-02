@@ -2,9 +2,10 @@ import validator from "validator"
 import bcrypt from "bcrypt"
 import jwt from 'jsonwebtoken'
 import userModel from "../models/userModel.js"
+import CustomError from "../utils/CustomError.js"
 
 const createToken=(id,isAdmin)=>{
-   return jwt.sign({id,isAdmin},process.env.JWT_SECRET, { expiresIn: '45m' })
+   return jwt.sign({id,isAdmin},process.env.JWT_SECRET, { expiresIn: '5s' })
 }
 const createRefreshToken = (id,isAdmin) => {
   return jwt.sign({ id,isAdmin }, process.env.JWT_REFRESH_TOKEN, { expiresIn: '7d' });
@@ -19,6 +20,7 @@ const loginUser = async (req, res,next) => {
     if (!user) {
       return res.json({ success: false, message: "User doesn't exist" });
     }
+
     if (user.isBlock) {
       return next(new CustomError("Your account is blocked", 403));
     }

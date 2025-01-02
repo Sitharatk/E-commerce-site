@@ -38,6 +38,7 @@ function Sidebar() {
        <Link to='/dashboard'> <button className="text-left text-lg hover:bg-slate-600 p-2 rounded transition duration-300">Dashboard</button></Link> 
        <Link to='/user' ><button className="text-left text-lg hover:bg-slate-600 p-2 rounded transition duration-300">User Management</button></Link> 
        <Link to='/productmanagment' > <button className="text-left text-lg hover:bg-slate-600 p-2 rounded transition duration-300">Product Management</button></Link> 
+       <Link to='/ordermanagment' > <button className="text-left text-lg hover:bg-slate-600 p-2 rounded transition duration-300">Orders</button></Link> 
         <button onClick={adminLogout} className="w-full  font-semibold text-black text-center text-lg bg-slate-200 hover:bg-black hover:text-white p-2 rounded transition duration-300 ">
           Logout
         </button>

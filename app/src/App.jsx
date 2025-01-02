@@ -28,6 +28,10 @@ import Usersdetails from './Admin/Pages/Usersdetails';
 import Wishlist from './Pages/WishList';
 import Sucess from './Pages/Sucess';
 import Cancel from './Pages/Cancel';
+import Adminlogin from './Admin/Components/Adminlogin';
+import OrderMangament from './Admin/Pages/OrderMangament';
+import OrderSucessCOD from './Pages/OrderSucessCOD';
+
 
 
 
@@ -42,6 +46,7 @@ return (
      
       <Route element={<MainLayout/>}>
         <Route path='/login' element={<Login />} />
+        <Route path='/adminlogin' element={<Adminlogin/>}/>
         <Route path='/signup' element={<Signup />} />
         <Route path='/' element={<Home />} />
         <Route path='/product/:id' element={<Product />} />
@@ -57,6 +62,7 @@ return (
             <Route path='/orders' element={<Orders />} />
             <Route path='/payment' element={<Payment />} />
             <Route path='/userdata' element={<UserData />} />
+            <Route path='/ordersuccess' element={<OrderSucessCOD/>}/>
             <Route path='/wishlist'element={<Wishlist/>}/>
             <Route path='/success/:sessionId'element={<Sucess/>}/>
             <Route path='/cancel' element={<Cancel/>}/>
@@ -72,6 +78,7 @@ return (
     <Route path="/user" element={<User />} />
     <Route path="/edit/:id" element={<Edit />} />
     <Route path="/addproduct" element={<AddProduct />} />
+    <Route path='/ordermanagment'element={<OrderMangament/>}/>
 
     <Route path="/usersdetails/:id" element={<Usersdetails />} />
   </Route>

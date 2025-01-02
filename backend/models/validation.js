@@ -17,7 +17,7 @@ const joiProductSchema=Joi.object({
     category:Joi.string().required(),
     arrival: Joi.string()
     .valid("new", "old") 
-    .required(),
+    ,
     isDelete:Joi.boolean().default(false)
 })
 

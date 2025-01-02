@@ -49,7 +49,7 @@ if (sessionId) {
         </p>
         <button
           onClick={handleGoToHome}
-          className="mt-4 py-2 px-6 text-[#522815]  text-white hover:bg-gray-700 transition duration-200 rounded"
+          className="mt-4 py-2 px-6 bg-[#522815] text-white  hover:bg-[#ad755b] transition duration-200 rounded"
         >
           Go to Home
         </button>
