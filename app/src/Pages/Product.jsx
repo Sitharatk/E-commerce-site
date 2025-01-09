@@ -98,14 +98,18 @@ useEffect(()=>{
           <p className='font-bold text-2xl text-[#31180d]  mb-2'>{product.name}</p>
           <p className='text-lg text-[#522815]  mb-2'>${product.price}</p>
           <p className='text-sm text-gray-500 mb-4'>{product.description}</p>
-          {/* <div className='flex'>
-            <p>Size:</p>
-        
-            <div><p>S</p></div>
-            <div><p>M</p></div>
-            <div><p>L</p></div>
-          </div> */}
-          <p className='text-sm text-[#522815]  mb-3'>
+          <div className="flex items-center space-x-3">
+      {/* <p className="font-medium text-[#31180d] mb-4">Size:</p>
+      {["S", "M", "L", "XL"].map((size) => (
+        <div
+          key={size}
+          className="px-2 py-1 border mb-4 border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100"
+        >
+          <p className="text-sm text-[#522815]">{size}</p>
+        </div>
+      ))} */}
+    </div>
+          <p className='text-sm text-[#522815]  mb-4'>
            
             <span className="text-yellow-500">
               {[...Array(5)].map((_, index) => (

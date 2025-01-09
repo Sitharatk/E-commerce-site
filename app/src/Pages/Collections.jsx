@@ -35,9 +35,9 @@ function Collections() {
       if(currentUser){
       const isInWishlist = wishlistItems.some((item) => item._id === product._id);
       if (isInWishlist) {
-        removeFromWishlist(product._id); // Remove from wishlist
+        removeFromWishlist(product._id);
       } else {
-        addToWishlist(product._id); // Add to wishlist
+        addToWishlist(product._id); 
       }}  
     else {
         toast("Please login")

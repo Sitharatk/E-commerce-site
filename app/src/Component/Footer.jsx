@@ -3,7 +3,7 @@ import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg
 import { Link } from "react-router-dom";
 function Footer() {
   return (
-    <div className="bg-[#f3e3db] sm:h-56 h-auto p-5 flex sm:flex-row flex-col items-center justify-evenly ">
+    <div className="bg-[#f3e3db] sm:h-60 h-auto p-5 flex sm:flex-row flex-col items-center justify-evenly ">
        <div className="flex-col mb-5 sm:mb-0  mt-5">
         <div className="flex sm:space-x-4 space-x-2 ">
         <i className="bx bxs-pyramid text-3xl sm:text-5xl text-[#522815]"></i>
