@@ -16,19 +16,19 @@ function Category() {
     if (isInWishlist) {
       removeFromWishlist(product._id);
     } else {
-      addToWishlist(product._id); 
+      addToWishlist(product._id);
     }
   };
 
   return (
-    <div>
+    <div className="px-4">
       <div className="flex items-center justify-center my-5">
         <p className="font-bold text-3xl text-[#31180d] border-b-2 border-gray-300 pb-2">
           {category.toUpperCase()} COLLECTIONS
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 p-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 sm:p-8">
         {filteredProducts.map((product) => (
           <div
             key={product._id}

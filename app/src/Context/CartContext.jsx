@@ -25,7 +25,7 @@ const fetchUserCart = async () => {
   if (!currentUser) return;
 try {
       const {data}= await axiosInstance.get(`/user/cart`);
-      console.log(data.products)
+ 
       setUserCart(data.products || []); 
     } catch (error) {
       console.error("Error fetching user cart:", error);
@@ -78,8 +78,8 @@ setUserCart(updatedCart);
 const update = async (productId, quantity) => {
   try {
 
-       const response=await axiosInstance.post('/user/cart',{productId,quantity} ,);
-           console.log(response.data)
+  await axiosInstance.post('/user/cart',{productId,quantity} ,);
+          
    } catch (error) {
        console.error(axiosErrorManager(error));
    }

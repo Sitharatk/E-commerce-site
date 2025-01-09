@@ -5,7 +5,7 @@ import userModel from "../models/userModel.js"
 import CustomError from "../utils/CustomError.js"
 
 const createToken=(id,isAdmin)=>{
-   return jwt.sign({id,isAdmin},process.env.JWT_SECRET, { expiresIn: '5s' })
+   return jwt.sign({id,isAdmin},process.env.JWT_SECRET, { expiresIn: '45m' })
 }
 const createRefreshToken = (id,isAdmin) => {
   return jwt.sign({ id,isAdmin }, process.env.JWT_REFRESH_TOKEN, { expiresIn: '7d' });
@@ -147,7 +147,7 @@ res.json({ success: true, message: "Logged in successfully", token });
   };
 
   const refreshToken=async(req,res)=>{
-    console.log("from refreshing token")
+   
     const refreshToken = req.cookies.refreshToken;
 
     if (!refreshToken) {

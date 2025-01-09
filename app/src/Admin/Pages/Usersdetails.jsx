@@ -20,7 +20,7 @@ useEffect(()=>{
   
       const response=await axiosInstance.get(`/admin/user/${id}`)
       setUser(response.data.data)
-      console.log(response.data.data)
+
       setLoading(false)
     }catch (err) {
       console.error("Error fetching user by ID:", err);
@@ -32,7 +32,7 @@ useEffect(()=>{
     try{
       const response= await axiosInstance.get(`/admin/orders/${id}`)
       setOrders(response.data.data|| []);
-      console.log(response.data.data)
+  
     
     }catch (error) {
       console.error("Failed to fetch orders:", error);

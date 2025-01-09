@@ -30,14 +30,14 @@ axiosInstance.interceptors.response.use(
         const refreshResponse = await axios.post("http://localhost:3000/auth/refreshtoken", {}, {
           withCredentials: true,
         });
-        console.log("from axios instance post")
+
         const { token } = refreshResponse.data;
         Cookies.set("token", token);
         
         originalRequest.headers["Authorization"] = `Bearer ${token}`;
         return axiosInstance(originalRequest);
       } catch (refreshError) {
-      console.log("from axios instance post error")
+
         Cookies.remove("token");
         Cookies.remove("refreshToken");
         Cookies.remove("currentUser");

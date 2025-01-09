@@ -4,7 +4,7 @@ import { WishlistContext } from '../Context/WishlistContext';
 
 function Wishlist() {
   const { wishlistItems, removeFromWishlist } = useContext(WishlistContext);
-console.log(wishlistItems)
+
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold text-[#522815] font-serif mb-4">Wishlist</h2>

@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 function UserData() {
   const {currentUser,setCurrentUser}=useContext(UserContext)
-  console.log("Current User:", currentUser);
+
 
 
   const navigate=useNavigate()

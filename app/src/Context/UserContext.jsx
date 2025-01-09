@@ -27,7 +27,7 @@ function UserProvider({ children }) {
         { withCredentials: true }
       );
       
-      console.log('Login response:', response.data); 
+    
   
       const { currentUser, token } = response.data;
   

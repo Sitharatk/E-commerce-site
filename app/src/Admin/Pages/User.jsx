@@ -18,7 +18,7 @@ const [loading, setLoading] = useState(true);
 
     const response=await axiosInstance.get("/admin/users")
     setUsers(response.data.data)
-    console.log(response.data.data)
+
     setLoading(false)
   }catch (err) {
         console.error("Error fetching users:", err);

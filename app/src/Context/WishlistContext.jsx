@@ -14,7 +14,7 @@ const fetchwishlist = async () => {
   if (!currentUser) return;
     try {
       const response= await axiosInstance.get(`/user/wishlist`);
-      console.log(response.data.products)
+      // console.log(response.data.products)
       setWishlistItems(response.data?.products || []); 
     } catch (error) {
       console.error("Error fetching user cart:", error);
