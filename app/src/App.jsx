@@ -25,12 +25,13 @@ import ProductManagment from './Admin/Pages/ProductManagment';
 import Edit from './Admin/Pages/Edit';
 import AddProduct from './Admin/Pages/AddProduct';
 import Usersdetails from './Admin/Pages/Usersdetails';
-import Wishlist from './Pages/wishlist';
 import Sucess from './Pages/Sucess';
 import Cancel from './Pages/Cancel';
 import Adminlogin from './Admin/Components/Adminlogin';
 import OrderMangament from './Admin/Pages/OrderMangament';
 import OrderSucessCOD from './Pages/OrderSucessCOD';
+import Wishlist from './Pages/Wishlist';
+// import Wishlist from './Pages/WishList';
 
 
 
