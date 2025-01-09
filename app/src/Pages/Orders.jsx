@@ -21,7 +21,7 @@ function Orders() {
    }
   fetchOrder()
   },[])
- 
+
   const handleCancelOrder = async (orderId) => {
     try {
       await axiosInstance.patch(`user/order/cancel/${orderId}`);
@@ -44,7 +44,7 @@ function Orders() {
   }
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen flex justify-center items-start">
+    <div className="p-4 sm:p-8 bg-gray-100 min-h-screen flex justify-center items-start">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
         <h2 className="text-2xl font-bold mb-5 text-gray-800 text-center">Orders</h2>
         {userOrders.length > 0 ? (
@@ -52,10 +52,10 @@ function Orders() {
             {userOrders.map((order) => (
               <div
                 key={order?._id}
-                className="bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row gap-6 md:gap-12 border border-gray-200"
+                className="bg-white shadow-lg rounded-lg p-6 flex flex-col sm:flex-row gap-6 sm:gap-12 border border-gray-200"
               >
                 {/* Left Section: Order Details */}
-                <div className="flex flex-col gap-4 w-full md:w-1/2">
+                <div className="flex flex-col gap-4 w-full sm:w-1/2">
                   <p className="font-semibold text-gray-800">Order ID: {order?._id}</p>
 
                   {/* Product Details */}
@@ -63,12 +63,12 @@ function Orders() {
                     {order.products &&
                       order.products.length > 0 &&
                       order.products.map((item) => (
-                        <div key={item.productId?._id} className="flex items-center gap-4">
+                        <div key={item.productId?._id} className="flex items-center gap-4 ">
                           {item.productId?.image && (
                             <img
                               src={item.productId?.image}
                               alt={item.productId?.name}
-                              className="w-24 h-24 ml-14 mt-5 object-cover rounded-lg shadow-md"
+                              className="w-24 h-24 ml-7 sm:ml-14 mt-1 object-cover rounded-lg shadow-md"
                             />
                           )}
                           <div>
@@ -87,7 +87,7 @@ function Orders() {
                 </div>
 
                 {/* Right Section: Order Summary */}
-                <div className="flex flex-col gap-3 w-full md:w-1/2">
+                <div className="flex flex-col gap-3 w-full sm:w-1/2">
                   {/* Address */}
                   <p className="text-sm text-gray-600">
                     <span className="font-medium">Address:</span> {order.address || "Not Provided"}
@@ -111,30 +111,29 @@ function Orders() {
                     <span>Total Amount: </span>${order?.totalAmount}
                   </p>
 
-                
-{order.paymentStatus=== "Cancelled" ? (
-  <button
-    className="mt-4 px-4 py-2 w-52 bg-gray-400 text-white text-sm font-semibold rounded-lg shadow-md cursor-not-allowed"
-    disabled
-  >
-    cancelled
-  </button>
-) : order.paymentStatus === "paid" ? (
-  <button
-    className="mt-4 px-4 py-2 w-52 bg-[#522815] text-white text-sm font-semibold rounded-lg shadow-md cursor-not-allowed"
-    disabled
-  >
-    Cannot Cancel
-  </button>
-) : (
-  <button
-    className="mt-4 px-4 py-2 w-52 bg-[#522815] text-white text-sm font-semibold rounded-lg shadow-md"
-    onClick={() => handleCancelOrder(order._id)}
-  >
-    Cancel Order
-  </button>
-)}
-
+                  {/* Cancel Order Button */}
+                  {order.paymentStatus === "Cancelled" ? (
+                    <button
+                      className="mt-4 px-4 py-2 w-full sm:w-52 bg-gray-400 text-white text-sm font-semibold rounded-lg shadow-md cursor-not-allowed"
+                      disabled
+                    >
+                      cancelled
+                    </button>
+                  ) : order.paymentStatus === "paid" ? (
+                    <button
+                      className="mt-4 px-4 py-2 w-full sm:w-52 bg-[#522815] text-white text-sm font-semibold rounded-lg shadow-md cursor-not-allowed"
+                      disabled
+                    >
+                      Cannot Cancel
+                    </button>
+                  ) : (
+                    <button
+                      className="mt-4 px-4 py-2 w-full sm:w-52 bg-[#522815] text-white text-sm font-semibold rounded-lg shadow-md"
+                      onClick={() => handleCancelOrder(order._id)}
+                    >
+                      Cancel Order
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
