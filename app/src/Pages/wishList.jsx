@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { WishlistContext } from '../Context/WishlistContext';
 
 
-function wishlist() {
+function Wishlist() {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const { wishlistItems, removeFromWishlist } = useContext(WishlistContext);
   return (
@@ -41,4 +41,4 @@ function wishlist() {
       );
     }
 
-export default wishlist
+export default Wishlist
