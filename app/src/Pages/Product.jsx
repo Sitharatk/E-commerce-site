@@ -85,94 +85,85 @@ useEffect(()=>{
 }
 
   return (
-   <>{!product ? (
-    <div className="flex items-center justify-center h-screen">
-      <p className="text-lg text-red-500">Product not found!</p>
-    </div>
-  ) : (
-    <div className='flex flex-row items-center justify-center p-14 bg-white'>
-        <div className='w-64 h-auto pr-4'>
+    <>
+    {!product ? (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-lg text-red-500">Product not found!</p>
+      </div>
+    ) : (
+      <div className="flex flex-col lg:flex-row items-center justify-center p-6 lg:p-14 bg-white">
+        <div className="w-full lg:w-64 h-auto lg:pr-4 mb-6 lg:mb-0">
           <img src={product.image} alt={product.name} className="w-full h-64 object-cover rounded-sm" />
         </div>
-        <div className='flex flex-col pl-4'>
-          <p className='font-bold text-2xl text-[#31180d]  mb-2'>{product.name}</p>
-          <p className='text-lg text-[#522815]  mb-2'>${product.price}</p>
-          <p className='text-sm text-gray-500 mb-4'>{product.description}</p>
-          <div className="flex items-center space-x-3">
-      {/* <p className="font-medium text-[#31180d] mb-4">Size:</p>
-      {["S", "M", "L", "XL"].map((size) => (
-        <div
-          key={size}
-          className="px-2 py-1 border mb-4 border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100"
-        >
-          <p className="text-sm text-[#522815]">{size}</p>
-        </div>
-      ))} */}
-    </div>
-          <p className='text-sm text-[#522815]  mb-4'>
-           
+        <div className="flex flex-col pl-0 lg:pl-4 text-center lg:text-left">
+          <p className="font-bold text-xl lg:text-2xl text-[#31180d] mb-2">{product.name}</p>
+          <p className="text-lg text-[#522815] mb-2">${product.price}</p>
+          <p className="text-sm text-gray-500 mb-4">{product.description}</p>
+          <p className="text-sm text-[#522815] mb-4 flex justify-center lg:justify-start">
             <span className="text-yellow-500">
               {[...Array(5)].map((_, index) => (
                 <FontAwesomeIcon
                   key={index}
                   icon={faStar}
-                  className={index < starCount ? "text-[#522815] " : "text-gray-300"}
+                  className={index < starCount ? "text-[#522815]" : "text-gray-300"}
                 />
               ))}
             </span>
             | Reviews: {Math.floor(Math.random() * (50 - 10)) + 10}
           </p>
-          
-          <div className='flex items-center space-x-5'>
-              {added ? (
-                <Link to='/cart'>
-                  <button className='bg-[#522815] text-white w-40 px-2 py-1 rounded hover:bg-[#a78475] transition duration-300'>
-                    Go To Cart
-                  </button>
-                </Link>
-              ) : (
-                <button onClick={handleAddToCart} className='bg-[#522815] text-white w-40 px-2 py-1 rounded hover:bg-[#a5897c] transition duration-300'>
-                  Add To Cart
+          <div className="flex items-center justify-center lg:justify-start space-x-5">
+            {added ? (
+              <Link to="/cart">
+                <button className="bg-[#522815] text-white w-40 px-2 py-1 rounded hover:bg-[#a78475] transition duration-300">
+                  Go To Cart
                 </button>
-              )}
-
-              <button
-                onClick={() => toggleWishlist(product)}
-                className="text-2xl text-[#31180d] hover:text-[#b17b64] transition duration-300"
-              >
-                {wishlistItems.some((item) => item._id === product._id) ? (
-                  <FaHeart className="text-[#31180d]" />
-                ) : (
-                  <FaRegHeart />
-                )}
+              </Link>
+            ) : (
+              <button onClick={handleAddToCart} className="bg-[#522815] text-white w-40 px-2 py-1 rounded hover:bg-[#a5897c] transition duration-300">
+                Add To Cart
               </button>
-            </div>
+            )}
+            <button
+              onClick={() => toggleWishlist(product)}
+              className="text-2xl text-[#31180d] hover:text-[#b17b64] transition duration-300"
+            >
+              {wishlistItems.some((item) => item._id === product._id) ? (
+                <FaHeart className="text-[#31180d]" />
+              ) : (
+                <FaRegHeart />
+              )}
+            </button>
           </div>
         </div>
-      )}
-   <div className="relative flex items-center font-sans mt-8 mb-8 px-5 py-4 ">
-   <p className="text-2xl font-semibold text-[#31180d] relative z-10 bg-white px-4">RELATED PRODUCTS</p>
-   <div className="absolute inset-0 flex items-center mb-2">
-     <div className="w-full border-t border-[#31180d]"></div>
-   </div>
- </div>
- <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 px-6 ">
- { products. filter((item) => item.category === product.category  && item._id !== product._id ).slice(0, 6)
-   .map((product) => (
-     <Link to={`/product/${product._id}`} key={product._id} className='no-underline'>
-     <div key={product._id} className="bg-white mb-8 rounded-lg shadow-md  overflow-hidden w-48 transition-transform duration-300 hover:scale-105">
-       <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-       <div className="p-3">
-         <p className="font-semibold text-center text-lg text-[#31180d]">{product.name}</p>
-         <p className="text-sm text-center text-[#31180d]">${product.price}</p>
-        
-       </div>
-     </div>
-     </Link>
-   ))}
-   </div>
-   </>
-  )
+      </div>
+    )}
+    <div className="relative flex items-center font-sans mt-8 mb-8 px-5 py-4">
+      <p className="text-2xl font-semibold text-[#31180d] relative z-10 bg-white px-4">RELATED PRODUCTS</p>
+      <div className="absolute inset-0 flex items-center mb-2">
+        <div className="w-full border-t border-[#31180d]"></div>
+      </div>
+    </div>
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 px-6">
+      {products
+        .filter((item) => item.category === product.category && item._id !== product._id)
+        .slice(0, 6)
+        .map((product) => (
+          <Link to={`/product/${product._id}`} key={product._id} className="no-underline">
+            <div
+              key={product._id}
+              className="bg-white mb-8 rounded-lg shadow-md overflow-hidden w-full sm:w-48 transition-transform duration-300 hover:scale-105"
+            >
+              <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+              <div className="p-3">
+                <p className="font-semibold text-center text-lg text-[#31180d]">{product.name}</p>
+                <p className="text-sm text-center text-[#31180d]">${product.price}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+    </div>
+  </>
+);
 }
 
-export default Product
+export default Product;
