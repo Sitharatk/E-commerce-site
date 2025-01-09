@@ -23,7 +23,7 @@ function Category() {
   return (
     <div className="px-4">
       <div className="flex items-center justify-center my-5">
-        <p className="font-bold text-3xl text-[#31180d] border-b-2 border-gray-300 pb-2">
+        <p className="font-serif text-3xl text-[#31180d] border-b-2 border-gray-300 pb-2">
           {category.toUpperCase()} COLLECTIONS
         </p>
       </div>
