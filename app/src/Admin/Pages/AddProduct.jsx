@@ -124,6 +124,8 @@ function AddProduct() {
             placeholder="Enter product price"
             onChange={handleChange}
             value={newproduct.price}
+             min="1"
+    step="1"
           />
         </div>
         <div className="mt-4">

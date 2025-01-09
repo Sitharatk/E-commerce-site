@@ -1,16 +1,18 @@
 import { useContext, useEffect, useState } from 'react';
 import { shopContext } from './../Context/shopContext';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { WishlistContext } from './../Context/WishlistContext';
+import { UserContext } from '../Context/UserContext';
+import { toast } from 'react-toastify';
 
 function Collections() {
   const { products } = useContext(shopContext);
   const { wishlistItems, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
-
+  const {currentUser}=useContext(UserContext);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8; // Number of products per page
-
+  const navigate=useNavigate()
   // Calculate total pages
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
@@ -30,13 +32,19 @@ function Collections() {
   };
 
   const toggleWishlist = (product) => {
-    const isInWishlist = wishlistItems.some((item) => item._id === product._id);
-    if (isInWishlist) {
-      removeFromWishlist(product._id); // Remove from wishlist
-    } else {
-      addToWishlist(product._id); // Add to wishlist
-    }
-  };
+      if(currentUser){
+      const isInWishlist = wishlistItems.some((item) => item._id === product._id);
+      if (isInWishlist) {
+        removeFromWishlist(product._id); // Remove from wishlist
+      } else {
+        addToWishlist(product._id); // Add to wishlist
+      }}  
+    else {
+        toast("Please login")
+        navigate('/login');
+      }
+    };
+  
 
   return (
     <div>

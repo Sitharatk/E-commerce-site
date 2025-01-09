@@ -63,9 +63,13 @@ function Edit() {
     }
 
     const handleRemoveOrrestore = async () => {
+        const confirm = window.confirm(
+            `Are you sure you want to ${product.isDelete ? "restore" : "delete"} this product?`
+        );
+        if (!confirm) return;
         try {
             const updatedProduct = { ...product, isDelete: !product.isDelete };
-            await axiosInstance.patch(`/admin/products/delete/${id}`, { isDelete: updatedProduct.isDelete });
+            await axiosInstance.patch(`/admin/products/${id}`, { isDelete: updatedProduct.isDelete });
     
             // Assuming you have a method to update the products in your context
             setProduct((prevProducts) =>
