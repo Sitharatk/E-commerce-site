@@ -5,6 +5,7 @@ import axiosInstance from '../../utlities/axiosInstance';
 
 export const WishlistContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const WishlistProvider = ({ children }) => {
   
   const [wishlistItems, setWishlistItems] = useState([]);
