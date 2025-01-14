@@ -4,7 +4,7 @@ import { WishlistContext } from '../Context/WishlistContext';
 
 
 function Wishlist() {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
+
       const { wishlistItems, removeFromWishlist } = useContext(WishlistContext);
   return (
     <div className="p-6">

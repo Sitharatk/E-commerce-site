@@ -33,9 +33,6 @@ import OrderSucessCOD from './Pages/OrderSucessCOD';
 import Wishlist from './Pages/Wishlist';
 
 
-
-
-
 function App() {
 
 const {currentUser} =useContext(UserContext )
