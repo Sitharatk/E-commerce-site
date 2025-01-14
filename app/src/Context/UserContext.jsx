@@ -64,7 +64,7 @@ function UserProvider({ children }) {
       }
     } catch (error) {
       console.error("Login failed:", error);
-      throw error; // Re-throw the error to let the caller handle it, if necessary.
+      throw error; 
     }
   };
   
