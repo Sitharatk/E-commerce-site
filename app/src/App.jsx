@@ -30,7 +30,7 @@ import Cancel from './Pages/Cancel';
 import Adminlogin from './Admin/Components/Adminlogin';
 import OrderMangament from './Admin/Pages/OrderMangament';
 import OrderSucessCOD from './Pages/OrderSucessCOD';
-import Wishlist from './Pages/Wishlist';
+import Wishlist from './Pages/wishlist';
 
 
 function App() {
