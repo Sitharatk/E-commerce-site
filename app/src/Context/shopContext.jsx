@@ -11,7 +11,7 @@ const ShopProvider = ({ children }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("import.meta./user/products");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/products`);
         setProducts(response.data.data);
 
       } catch (error) {
