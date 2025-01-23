@@ -30,7 +30,7 @@ import Cancel from './Pages/Cancel';
 import Adminlogin from './Admin/Components/Adminlogin';
 import OrderMangament from './Admin/Pages/OrderMangament';
 import OrderSucessCOD from './Pages/OrderSucessCOD';
-import Wishlist from './Pages/WishList.jsx';
+import WishList from './Pages/WishList'
 
 
 function App() {
@@ -61,7 +61,7 @@ return (
             <Route path='/payment' element={<Payment />} />
             <Route path='/userdata' element={<UserData />} />
             <Route path='/ordersuccess' element={<OrderSucessCOD/>}/>
-            <Route path='/wishlist'element={<Wishlist/>}/>
+            <Route path='/wishlist'element={<WishList/>}/>
             <Route path='/success/:sessionId'element={<Sucess/>}/>
             <Route path='/cancel' element={<Cancel/>}/>
           </>
