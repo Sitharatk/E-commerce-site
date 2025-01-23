@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { auth, provider, signInWithPopup } from "../firebase.js";
-import { UserContext } from '../Context/UserContext.jsx';
+
+// import { UserContext } from '../Context/UserContext.jsx';
 
 function Registration() {
   const [Data, setData] = useState({
@@ -15,7 +15,7 @@ function Registration() {
   });
   const [cPassword, setcPassword] = useState('');
   const navigate = useNavigate();
-  const { setCurrentUser } = useContext(UserContext);
+  // const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,41 +42,41 @@ function Registration() {
     }
   };
 
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        // Set the current user after Google sign-in
-        setCurrentUser({
-          name: user.displayName,
-          email: user.email,
-          cart: [],
-          order: [],
-        });
+  // const handleGoogleSignIn = () => {
+  //   signInWithPopup(auth, provider)
+  //     .then((result) => {
+  //       const user = result.user;
+  //       // Set the current user after Google sign-in
+  //       setCurrentUser({
+  //         name: user.displayName,
+  //         email: user.email,
+  //         cart: [],
+  //         order: [],
+  //       });
 
-        // Optionally, save user to backend if required
-        axios.post("http://localhost:4000/users", {
-          name: user.displayName,
-          email: user.email,
-          password: "", // No password for Google users
-          cart: [],
-          order: [],
-        })
-          .then(() => {
-            toast.success("Signed in with Google");
-            // Redirect to the user's home page
-            navigate('/');
-          })
-          .catch((err) => {
-            console.error("Google Sign-In Error", err);
-            toast.error("Failed to save Google user data");
-          });
-      })
-      .catch((error) => {
-        console.error("Google Sign-In Error", error);
-        toast.error("Google Sign-In failed");
-      });
-  };
+  //       // Optionally, save user to backend if required
+  //       axios.post("http://localhost:4000/users", {
+  //         name: user.displayName,
+  //         email: user.email,
+  //         password: "", // No password for Google users
+  //         cart: [],
+  //         order: [],
+  //       })
+  //         .then(() => {
+  //           toast.success("Signed in with Google");
+  //           // Redirect to the user's home page
+  //           navigate('/');
+  //         })
+  //         .catch((err) => {
+  //           console.error("Google Sign-In Error", err);
+  //           toast.error("Failed to save Google user data");
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Google Sign-In Error", error);
+  //       toast.error("Google Sign-In failed");
+  //     });
+  // };
 
   return (
     <div
@@ -159,14 +159,14 @@ function Registration() {
           </button>
         </form>
 
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <button
             onClick={handleGoogleSignIn}
             className="w-full bg-[#522815] text-white py-2 rounded-md font-semibold hover:bg-[#c48c70]"
           >
             Sign in with Google
           </button>
-        </div>
+        </div> */}
 
         <p className="mt-4 text-center">
           Already have an account? <Link to="/login" className="text-[#522815] font-bold underline">Login</Link>
