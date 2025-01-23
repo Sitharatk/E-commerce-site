@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Search() {
 
     const {products}= useContext(shopContext)
-    const [search,setSearch]=useState("")
+    const [,setSearch]=useState("")
     const[results,setResults]=useState([])
 
     const handlechange=(value)=>{
