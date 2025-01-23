@@ -138,7 +138,7 @@ res.cookie("token", token, {
   secure: true,
   sameSite: "none",
 });
-res.json({ success: true, message: "Logged in successfully", token });
+res.json({ success: true, message: "Logged in ", token });
 
     } catch (error) {
       console.error(error);
