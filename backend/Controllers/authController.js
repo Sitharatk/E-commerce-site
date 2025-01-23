@@ -90,7 +90,7 @@ const registerUser=async (req,res)=>{
         })
         const user=await newUser.save()
 
-        res.json({success:true,message:"succes"})
+        res.json({success:true,message:"Registered successfully! Please log in to continue."})
             
     }catch(error){
         console.log(error)
