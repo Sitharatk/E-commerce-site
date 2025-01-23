@@ -3,7 +3,7 @@ import { allproducts,productById,productByCatogary } from '../Controllers/public
 import {  getUserCart, removefromCart, updateCart } from '../Controllers/user/cartController.js'
 import { getwishList,addTowishList, removefromwishList } from '../Controllers/user/wishListController.js'
 import { verifyToken } from '../middlewares/verifyTokens.js'
-import tryCatch from '../utils/trycatch.js'
+import tryCatch from '../utils/tryCatch.js'
 import { cancelOrder, getAllOrders, getoneOrder,  orderbycashondelvry, stripePayment, successStripe } from '../Controllers/user/orderController.js'
 
 const router=express.Router()

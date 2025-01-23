@@ -1,6 +1,6 @@
 import express from 'express'
 import { verifyToken } from '../middlewares/verifyTokens.js'
-import tryCatch from '../utils/trycatch.js'
+import tryCatch from '../utils/tryCatch.js'
 import { blockUser, getAllusers, getUserById } from '../Controllers/admin/userController.js'
 import { allproducts, productByCatogary, productById } from '../Controllers/publicController.js'
 import upload from '../middlewares/multer.js'
