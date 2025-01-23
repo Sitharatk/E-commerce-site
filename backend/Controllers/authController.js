@@ -46,13 +46,13 @@ const loginUser = async (req, res,next) => {
         isAdmin: user.isAdmin,
       }
       //sending user details to client (for curr user)
-      // res.cookie("currentUser", JSON.stringify(currentUser))
+      res.cookie("currentUser", JSON.stringify(currentUser))
 
-      // res.cookie("token", token, {
-      //   httpOnly: false,
-      //   secure: true,
-      //   sameSite: "none",
-      // });
+      res.cookie("token", token, {
+        httpOnly: false,
+        secure: true,
+        sameSite: "none",
+      });
     
       res.json({ 
         success: true, 
