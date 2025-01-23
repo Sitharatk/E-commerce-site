@@ -31,7 +31,7 @@ function Product() {
 useEffect(()=>{
   const fetchProduct=async()=>{
     try{
-    const response = await axios.get(`http://localhost:3000/user/product/${id}`)
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/product/${id}`)
 
    setProduct(response.data.data)
     }catch(error){

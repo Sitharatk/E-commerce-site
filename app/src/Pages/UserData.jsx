@@ -14,7 +14,7 @@ function UserData() {
 
   const userLogout=async()=>{
     try{
-      await axios.post('http://localhost:3000/auth/logout',{},{ withCredentials: true })
+      await axios.post(`${import.meta.env.VITE_API_URL}/auth/logout`,{},{ withCredentials: true })
       toast.success("logout successful")
       setCurrentUser(null);
       navigate('/')

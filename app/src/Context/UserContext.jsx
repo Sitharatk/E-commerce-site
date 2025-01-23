@@ -22,7 +22,7 @@ function UserProvider({ children }) {
   const loginUser = async (email, password) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/auth/login',
+        `${import.meta.env.VITE_API_URL}/auth/login`,
         { email, password },
         { withCredentials: true }
       );
@@ -49,7 +49,7 @@ function UserProvider({ children }) {
   const loginAdmin = async (email, password) => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/auth/admin",
+        `${import.meta.env.VITE_API_URL}/auth/admin`,
         { email, password },
         { withCredentials: true }
       );
