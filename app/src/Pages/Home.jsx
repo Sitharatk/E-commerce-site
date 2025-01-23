@@ -12,7 +12,7 @@ function Home() {
   const { wishlistItems, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
 
   const toggleWishlist = (product) => {
-    const isInWishlist = wishlistItems.some((item) => item._id === product._id);
+    const isInWishlist = wishlistItems.some((item) => item?._id === product?._id);
     if (isInWishlist) {
       removeFromWishlist(product._id);
     } else {
@@ -100,8 +100,7 @@ function Home() {
       </div>
       <div className="p-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products
-            .filter((product) => product.arrival === 'new')
+          {products && products.filter((product) => product?.arrival === 'new')
             .map((product) => (
               <div
                 key={product._id}
