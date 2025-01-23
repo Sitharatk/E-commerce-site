@@ -1,6 +1,6 @@
 import express from 'express'
 import { loginUser,registerUser,adminLogin, refreshToken, logout } from '../Controllers/authController.js'
-import tryCatch from '../utils/trycatch.js'
+import tryCatch from '../utils/tryCatch.js'
 
 const userRouter=express.Router()
 userRouter
