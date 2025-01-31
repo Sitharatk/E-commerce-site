@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../utlities/axiosInstance';
-
+import Cookies from 'js-cookie';
 function UserData() {
   const {currentUser,setCurrentUser}=useContext(UserContext)
 
@@ -17,6 +17,9 @@ function UserData() {
     try{
       await axiosInstance.post(`/auth/logout`,{},{ withCredentials: true })
       toast.success("logout successful")
+      Cookies.remove("token");
+      Cookies.remove("refreshToken");
+      Cookies.remove("currentUser");
       setCurrentUser(null);
       
       navigate('/')
