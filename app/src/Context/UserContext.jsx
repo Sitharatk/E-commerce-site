@@ -14,10 +14,15 @@ function UserProvider({ children }) {
       try {
         setCurrentUser(JSON.parse(user));
       } catch (error) {
-        console.error('Failed to parse user cookie:', error);
+        console.error("Failed to parse currentUser cookie:", error);
       }
     }
-  }, []);
+      else{
+        setCurrentUser(null)
+      }
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [Cookies.get("currentUser")]);
 
   const loginUser = async (email, password) => {
     try {
