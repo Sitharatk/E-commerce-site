@@ -4,6 +4,7 @@ import { UserContext } from '../Context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import axiosInstance from '../../utlities/axiosInstance';
 
 function UserData() {
   const {currentUser,setCurrentUser}=useContext(UserContext)
@@ -14,7 +15,7 @@ function UserData() {
 
   const userLogout=async()=>{
     try{
-      await axios.post(`${import.meta.env.VITE_API_URL}/auth/logout`,{},{ withCredentials: true })
+      await axiosInstance.post(`/auth/logout`,{},{ withCredentials: true })
       toast.success("logout successful")
       setCurrentUser(null);
       
